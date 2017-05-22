@@ -1,2 +1,2 @@
-# justin-tooter
+# Paneity
 Tutoring Project
