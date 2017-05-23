@@ -5,10 +5,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. tutoring is about to begin. This shall be the home page of the mighty tutoring-app-thing.")
-
-def courses(request):
-    return HttpResponse("This be the courses page.")
+    return HttpResponse("List courses here.")
 
 def admin(request):
     return HttpResponse("This be the admin page.")
