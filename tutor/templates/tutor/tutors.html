@@ -1,0 +1,8 @@
+{% extends "tutor/base.html" %}
+
+{% block content %}
+    {# prints the first and last name of each tutor #}
+    {% for tutor in tutors %}
+        <h1> {{tutor.user.first_name}} {{tutor.user.last_name}}</h1>
+    {% endfor %}
+{% endblock %}

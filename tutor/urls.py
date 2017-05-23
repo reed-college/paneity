@@ -8,13 +8,10 @@ urlpatterns = [
     
     # ex: /tutor/admin/  ------- Page for the admin of the app/site
     url(r'^admin/$', views.admin, name='admin'),
-    
-    # ex: /tutor/tutors/  --------- Page listing tutors 
-    url(r'^tutors/$', views.tutors, name='tutors'),
+
+    # ex: /tutor/1/tutors/  --------- Page listing tutors
+    url(r'^(?P<course_id>[0-9]+)/tutors/$', views.tutors, name='tutors'),
 
     # ex: /tutor/startstop/  ------- Page with start and stop button to begin/end tutoring sessions
     url(r'^startstop/$', views.startstop, name='startstop'),
 ]
-
-
-
