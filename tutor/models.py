@@ -9,15 +9,21 @@ class Student(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     tutor = models.BooleanField(default=False)
-    tutoring_classes = models.ManyToManyField('Course', help_text="The courses that this student can tutor in.")
+    tutoring_classes = models.ManyToManyField(
+        'Course',
+        help_text="The courses that this student can tutor in.")
 
 
 class Subject(models.Model):
     """
     Subject that course can be taught in (i.e. Math, Humanities)
     """
-    abbreviation = models.CharField(max_length=4, help_text="3-4 letter abbreviation for a subject (i.e. HUM)")
-    name = models.CharField(max_length=50, help_text="full name of the subject (i.e. Humanities)")
+    abbreviation = models.CharField(
+        max_length=4,
+        help_text="3-4 letter abbreviation for a subject (i.e. HUM)")
+    name = models.CharField(
+        max_length=50,
+        help_text="full name of the subject (i.e. Humanities)")
 
     def __str__(self):
         return self.name
@@ -29,7 +35,9 @@ class Course(models.Model):
     """
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE,)
     number = models.IntegerField()
-    title = models.CharField(max_length=100, help_text="(i.e. Ancient Mediterranean, or Intro to Economic Analysis)")
+    title = models.CharField(
+        max_length=100,
+        help_text="(i.e. Ancient Mediterranean, or Intro to Economic Analysis)")
 
     def __str__(self):
         return "{} {}".format(self.subject.abbreviation.upper(), self.number)
