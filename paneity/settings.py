@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'tutor.apps.TutorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'twitter_bootstrap',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
