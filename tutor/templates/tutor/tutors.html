@@ -7,15 +7,23 @@
     {# prints the first and last name of each tutor #}
     <table class="table">
     {% for tutor in tutors %}
+        {% if tutor.user.first_name or tutor.user.last_name %} 
         <tr>
             <td>
                 {{tutor.user.first_name}} 
                 {{tutor.user.last_name}}
             </td>
             <td>
+                {% if tutor.profile_id %}
                 <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat!</a>
+                {% elif tutor.user.email %}
+                <a href="mailto:{{tutor.user.email}}">Email!</a>
+                {% else %}
+                Can't chat
+                {% endif %}
             </td>
         </tr>
+        {% endif %}
     {% endfor %}
     </table>
 {% endblock %}

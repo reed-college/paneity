@@ -15,6 +15,7 @@ class Student(models.Model):
     profile_id = models.CharField(
         max_length=50,
         null=True,
+        blank=True,
         help_text="ProfileID for google people API")
 
 
