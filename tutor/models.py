@@ -11,6 +11,7 @@ class Student(models.Model):
     tutor = models.BooleanField(default=False)
     tutoring_classes = models.ManyToManyField(
         'Course',
+        blank=True,
         help_text="The courses that this student can tutor in.")
     profile_id = models.CharField(
         max_length=50,
