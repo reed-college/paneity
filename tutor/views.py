@@ -8,6 +8,7 @@ import tutor.models as models
 def index(request):
     return HttpResponse("List courses here.")
 
+
 def admin(request):
     return HttpResponse("This be the admin page.")
 
