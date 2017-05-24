@@ -3,6 +3,6 @@
 {% block content %}
 	<H3> Courses </H3>
 	<ul>{% for blipbloop in Courses %}
-	<li>{{blipbloop}}</li>
+	<li><a href="{{blipbloop.id}}/tutors">{{blipbloop}}</li>
 	{% endfor %}</ul>
 {% endblock %}
