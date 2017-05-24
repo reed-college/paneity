@@ -6,7 +6,11 @@ import tutor.models as models
 
 
 def index(request):
-    return HttpResponse("List courses here.")
+	return render(
+        request,
+        'tutor/index.html',
+        {"Courses": list(models.Course.objects.all())})
+    #models.Course.objects.all
 
 
 def admin(request):
