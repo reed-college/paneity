@@ -1,8 +1,21 @@
 {% extends "tutor/base.html" %}
 
 {% block content %}
+    <div class="page-header">
+      <h1>Tutors</h1>
+    </div>
     {# prints the first and last name of each tutor #}
+    <table class="table">
     {% for tutor in tutors %}
-        <h1> {{tutor.user.first_name}} {{tutor.user.last_name}}</h1>
+        <tr>
+            <td>
+                {{tutor.user.first_name}} 
+                {{tutor.user.last_name}}
+            </td>
+            <td>
+                <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat!</a>
+            </td>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock %}
