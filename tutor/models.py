@@ -12,6 +12,10 @@ class Student(models.Model):
     tutoring_classes = models.ManyToManyField(
         'Course',
         help_text="The courses that this student can tutor in.")
+    profile_id = models.CharField(
+        max_length=50,
+        null=True,
+        help_text="ProfileID for google people API")
 
 
 class Subject(models.Model):

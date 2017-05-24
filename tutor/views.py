@@ -12,6 +12,7 @@ def index(request):
         {"Courses": list(models.Course.objects.all())})
     #models.Course.objects.all
 
+
 def admin(request):
     return HttpResponse("This be the admin page.")
 
