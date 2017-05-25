@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import Http404
+from apiclient import discovery
+from oauth2client import client
 
 import tutor.models as models
 
