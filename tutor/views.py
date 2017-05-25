@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import Http404
 
@@ -6,7 +6,7 @@ import tutor.models as models
 
 
 def index(request):
-	return render(
+    return render(
         request,
         'tutor/index.html',
         {"Courses": list(models.Course.objects.all())})
@@ -33,3 +33,22 @@ def tutors(request, course_id):
 
 def startstop(request):
     return render(request, 'tutor/startstop.html')
+
+
+def add_users(request):
+    """
+    This will use the google api to scrape the user's contact list
+    for people with reed emails, then add those people to the db
+    with their profile ids.
+    """
+    credentials = request.session.get("credentials")
+    if credentials is None:
+        return redirect('oauth2callback')
+    return HttpResponse(request.session.keys())
+
+
+def oauth2callback(request):
+    """
+    callback for google api stuff
+    """
+    return HttpResponse("Hi")

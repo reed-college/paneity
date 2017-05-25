@@ -101,5 +101,5 @@ ENV/
 .mypy_cache/
 
 # Google api client secrets
-client_secret.json
+client_secrets.json
 
