@@ -1,6 +1,7 @@
+import httplib2
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.http import Http404
+from django.http import HttpResponse, Http404
+from django.urls import reverse
 from apiclient import discovery
 from oauth2client import client
 
@@ -46,11 +47,26 @@ def add_users(request):
     credentials = request.session.get("credentials")
     if credentials is None:
         return redirect('oauth2callback')
-    return HttpResponse(request.session.keys())
+    credentials = client.OAuth2Credentials.from_json(credentials)
+    if credentials.access_token_expired:
+        return redirect('oauth2callback')
+    return HttpResponse(credentials)
 
 
-def oauth2callback(request):
+def oauth2callback(request, **kwargs):
     """
     callback for google api stuff
     """
-    return HttpResponse("Hi")
+    flow = client.flow_from_clientsecrets(
+        'client_secrets.json',
+        scope='https://www.googleapis.com/auth/calendar.readonly',
+        redirect_uri=request.build_absolute_uri(reverse('oauth2callback')))
+    print(request.build_absolute_uri(reverse('oauth2callback')))
+    if 'code' not in kwargs:
+        auth_uri = flow.step1_get_authorize_url()
+        return redirect(auth_uri)
+    else:
+        auth_code = kwargs.get('code')
+        credentials = flow.step2_exchange(auth_code)
+        request.session['credentials'] = credentials.to_json()
+        return redirect('add_users')
