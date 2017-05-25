@@ -53,20 +53,20 @@ def add_users(request):
     return HttpResponse(credentials)
 
 
-def oauth2callback(request, **kwargs):
+def oauth2callback(request):
     """
     callback for google api stuff
     """
+    print(request.GET)
     flow = client.flow_from_clientsecrets(
         'client_secrets.json',
         scope='https://www.googleapis.com/auth/calendar.readonly',
         redirect_uri=request.build_absolute_uri(reverse('oauth2callback')))
-    print(request.build_absolute_uri(reverse('oauth2callback')))
-    if 'code' not in kwargs:
+    if 'code' not in request.GET:
         auth_uri = flow.step1_get_authorize_url()
         return redirect(auth_uri)
     else:
-        auth_code = kwargs.get('code')
+        auth_code = request.GET.get('code')
         credentials = flow.step2_exchange(auth_code)
         request.session['credentials'] = credentials.to_json()
         return redirect('add_users')
