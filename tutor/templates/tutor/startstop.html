@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+<script>
+alert("IMPORTANT\nPlease do not close this page until you are finished with your tutoring session!");
+</script>
 <style>
-.button {
+
+.beginbutton {
   padding: 25px 25px;
   font-size: 28px;
   text-align: center;
@@ -15,18 +21,42 @@
   box-shadow: 0 9px #999;
 }
 
-.button:hover {background-color: #3e8e41}
+.beginbutton:hover {background-color: #3e8e41}
 
-.button:active {
+.beginbutton:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.endbutton {
+  padding: 25px 25px;
+  font-size: 28px;
+  text-align: center;
+  cursor: pointer;
+  outline: None;
+  color: #fff;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 9px #999;
+}
+
+.endbutton:hover {background-color: #cc0000}
+
+.endbutton:active {
+  background-color: #cc0000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 </style>
 </head>
 <body>
-
-<button class="button">Begin Tutoring</button>
-
+<h2>Greetings, Tutor! Please click below to:</h2>
+<button class="beginbutton">Start Tutoring</button>
+<button class="endbutton">Stop Tutoring</button>
+<p> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thanks </p>
 </body>
 </html>
+
