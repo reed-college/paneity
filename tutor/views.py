@@ -10,11 +10,6 @@ def index(request):
         request,
         'tutor/index.html',
         {"Courses": list(models.Course.objects.all())})
-    #models.Course.objects.all
-
-
-def admin(request):
-    return HttpResponse("This be the admin page.")
 
 
 def tutors(request, course_id):

@@ -6,9 +6,6 @@ urlpatterns = [
 	#ex: /tutor/ ------ This is the Main Page of the app, courses will be listed here
     url(r'^$', views.index, name='index'),
     
-    # ex: /tutor/admin/  ------- Page for the admin of the app/site
-    url(r'^admin/$', views.admin, name='admin'),
-
     # ex: /tutor/1/tutors/  --------- Page listing tutors
     url(r'^(?P<course_id>[0-9]+)/tutors/$', views.tutors, name='tutors'),
 
