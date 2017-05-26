@@ -62,7 +62,9 @@ def add_users(request):
         discoveryServiceUrl='https://people.googleapis.com/$discovery/rest')
     results = service.people().connections().list(
         resourceName='people/me',
-        pageSize=10).execute()
+        pageSize=10,
+        requestMask_includeField="person.names",
+    ).execute()
     connections = results.get('connections', [])
 
     return HttpResponse(connections)
