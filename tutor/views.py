@@ -1,8 +1,11 @@
 import httplib2
 import re
+import os
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse
+from django.contrib.auth.models import User
+from base64 import urlsafe_b64encode
 from apiclient import discovery
 from oauth2client import client
 
@@ -95,9 +98,24 @@ def add_users(request):
 
         if reed_addr and profile_id and first_name and last_name:
             print("{} {}, {}, {}".format(first_name,
-                  last_name, reed_addr, profile_id))
+                                         last_name, reed_addr, profile_id))
+            # @reed.edu is 9 characters
+            username = reed_addr[0:-9]
+            pw = str(urlsafe_b64encode(os.urandom(6)))[2:10]
 
-    return HttpResponse(connections)
+            usr = User.objects.create_user(
+                username,
+                first_name=first_name,
+                last_name=last_name,
+                email=reed_addr,
+                password=pw)
+            stu = models.Student.objects.create(
+                user=usr,
+                profile_id=profile_id)
+            usr.save()
+            stu.save()
+
+    return HttpResponse("Users were added!")
 
 
 def oauth2callback(request):
