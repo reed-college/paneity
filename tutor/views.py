@@ -1,4 +1,5 @@
 import httplib2
+import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse
@@ -62,10 +63,39 @@ def add_users(request):
         discoveryServiceUrl='https://people.googleapis.com/$discovery/rest')
     results = service.people().connections().list(
         resourceName='people/me',
-        pageSize=10,
-        requestMask_includeField="person.names",
+        pageSize=2000,
+        requestMask_includeField="person.names,person.email_addresses,person.metadata",
     ).execute()
     connections = results.get('connections', [])
+
+    # Now we add the connections to the db as users
+    reedmail = re.compile('.*@reed\.edu$')  # regex that matches reed emails
+
+    # print out every reed email in the connections list
+    # and its related profile id
+    for con in connections:
+
+        emails = con.get("emailAddresses", [])
+        reed_addr = None
+        # get reed email
+        for email in emails:
+            addr = email.get("value", "")
+            if addr and reedmail.match(addr):
+                reed_addr = addr
+        # get profileid
+        sources = con.get("metadata", {}).get("sources", [])
+        profile_id = None
+        for source in sources:
+            if source.get("type") == "PROFILE":
+                profile_id = source.get("id")
+        # get first and last name
+        # this gets the first thing in the "names" list
+        first_name = con.get("names", [{}])[0].get("givenName")
+        last_name = con.get("names", [{}])[0].get("familyName")
+
+        if reed_addr and profile_id and first_name and last_name:
+            print("{} {}, {}, {}".format(first_name,
+                  last_name, reed_addr, profile_id))
 
     return HttpResponse(connections)
 
