@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'paneity.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'paneity_demo',
+        'NAME': 'paneity_dev',
         'USER': 'paneity_usr',
         'PASSWORD': 'password',
         'HOST': 'localhost',

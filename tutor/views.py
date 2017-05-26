@@ -44,13 +44,28 @@ def add_users(request):
     for people with reed emails, then add those people to the db
     with their profile ids.
     """
+    # This block makes sure we have the credentials and they're
+    # not expired
     credentials = request.session.get("credentials")
     if credentials is None:
         return redirect('oauth2callback')
     credentials = client.OAuth2Credentials.from_json(credentials)
     if credentials.access_token_expired:
         return redirect('oauth2callback')
-    return HttpResponse(credentials)
+
+    # Now we get the contacts from the user
+    http = credentials.authorize(httplib2.Http())
+    service = discovery.build(
+        'people',
+        'v1',
+        http=http,
+        discoveryServiceUrl='https://people.googleapis.com/$discovery/rest')
+    results = service.people().connections().list(
+        resourceName='people/me',
+        pageSize=10).execute()
+    connections = results.get('connections', [])
+
+    return HttpResponse(connections)
 
 
 def oauth2callback(request):
@@ -60,7 +75,7 @@ def oauth2callback(request):
     print(request.GET)
     flow = client.flow_from_clientsecrets(
         'client_secrets.json',
-        scope='https://www.googleapis.com/auth/calendar.readonly',
+        scope='https://www.googleapis.com/auth/contacts.readonly',
         redirect_uri=request.build_absolute_uri(reverse('oauth2callback')))
     if 'code' not in request.GET:
         auth_uri = flow.step1_get_authorize_url()
