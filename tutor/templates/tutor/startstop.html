@@ -8,6 +8,41 @@ alert("IMPORTANT\nPlease do not close this page until you are finished with your
 </script>
 <style>
 
+body {
+      background-color: #A70E16;
+    }
+
+#logoleft {
+      float: left;
+      border: 2px solid black;
+      border-radius: 120px;
+    }
+#logoright {
+      float: right;
+      border: 2px solid black;
+      border-radius: 120px;
+    }
+
+h1 {
+      color: #f2f2f2;
+      text-decoration: underline overline;
+      font-family: times;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+
+div {
+  text-align: center;
+}
+
+h2 {
+      font-family: times;
+      padding: 15px;
+      font-style: normal;
+      color:  #f2f2f2;
+      text-align: center;
+    }
+
 .beginbutton {
   padding: 25px 25px;
   font-size: 28px;
@@ -16,16 +51,16 @@ alert("IMPORTANT\nPlease do not close this page until you are finished with your
   outline: None;
   color: #fff;
   background-color: #4CAF50;
-  border: none;
+  border: 2px solid black;
   border-radius: 50px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 9px black;
 }
 
 .beginbutton:hover {background-color: #3e8e41}
 
 .beginbutton:active {
   background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 5px black;
   transform: translateY(4px);
 }
 
@@ -37,26 +72,39 @@ alert("IMPORTANT\nPlease do not close this page until you are finished with your
   outline: None;
   color: #fff;
   background-color: #ff0000;
-  border: none;
+  border: 2px solid black;
   border-radius: 50px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 9px black;
 }
 
-.endbutton:hover {background-color: #cc0000}
+.endbutton:hover {
+  background-color: #cc0000;
+}
 
 .endbutton:active {
   background-color: #cc0000;
-  box-shadow: 0 5px #666;
+  box-shadow: 0 5px black;
   transform: translateY(4px);
+}
+
+p {
+  color: #f2f2f2;
+  text-align: center;
+  font-family: times;
+  font-style: italic;
+  padding: 15px;
 }
 
 </style>
 </head>
 <body>
+  <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+  <img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+  <h1> REED COLLEGE - Online Tutoring </h1>
 <h2>Greetings, Tutor! Please click below to:</h2>
-<button class="beginbutton">Start Tutoring</button>
-<button class="endbutton">Stop Tutoring</button>
-<p> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thanks </p>
+<div><button class="beginbutton">Start Tutoring</button>
+<button class="endbutton">Stop Tutoring</button></div>
+<p> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thank you. </p>
 </body>
 </html>
 
