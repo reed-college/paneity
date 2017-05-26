@@ -1,8 +1,74 @@
 {% extends "tutor/base.html" %}
 
 {% block content %}
-	<H3> Courses </H3>
+
+	<head>
+	<style>
+		h1 {
+			color: #f2f2f2;
+			text-decoration: underline overline;
+			font-family: times;
+			text-align: center;
+			letter-spacing: 4px;
+		}
+		h3 {
+			font-family: times;
+			padding: 15px;
+			font-style: serif;
+			color: 	#f2f2f2;
+			text-align: center;
+		}
+		
+		body {
+			background-color: #A70E16;
+		}
+
+		ul { 
+			line-height: 2;
+			text-align: center;
+			color: #f2f2f2;
+			list-style-position: inside;
+			list-style-type: georgian;
+			list-style-color: black;
+		}
+
+
+		a:link {
+			color: #f2f2f2;
+		}
+		a:visited {
+			color: #999999;
+		}
+		a:hover {
+			color: #660000;
+		}
+
+		#logoleft {
+			float: left;
+			border: 2px solid black;
+			border-radius: 120px;
+		}
+		#logoright {
+			float: right;
+			border: 2px solid black;
+			border-radius: 120px;
+		}
+
+
+
+	</style>
+	</head>
+
+
+	<body>
+	<img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+	<img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+	<h1> REED COLLEGE - Online Tutoring </h1>
+	<h3> Welcome! Help is currently available for the following courses: </h3>
 	<ul>{% for blipbloop in Courses %}
 	<li><a href="{{blipbloop.id}}/tutors">{{blipbloop}}</li>
 	{% endfor %}</ul>
+	</body>
+
+
 {% endblock %}
