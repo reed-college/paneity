@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from base64 import urlsafe_b64encode
 from apiclient import discovery
 from oauth2client import client
@@ -42,6 +43,7 @@ def startstop(request):
     return render(request, 'tutor/startstop.html')
 
 
+@login_required(login_url='/admin/login/')
 def add_users(request):
     """
     This will use the google api to scrape the user's contact list
@@ -97,8 +99,6 @@ def add_users(request):
         last_name = con.get("names", [{}])[0].get("familyName")
 
         if reed_addr and profile_id and first_name and last_name:
-            print("{} {}, {}, {}".format(first_name,
-                                         last_name, reed_addr, profile_id))
             # @reed.edu is 9 characters
             username = reed_addr[0:-9]
             pw = str(urlsafe_b64encode(os.urandom(6)))[2:10]
