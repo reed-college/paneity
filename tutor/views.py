@@ -55,7 +55,7 @@ def add_users(request):
             request.user.has_perm('auth.change_user') or
             request.user.has_perm('tutor.add_student') or
             request.user.has_perm('tutor.change_student')):
-        return HttpResponse("please dont do that thanks", status=403)
+        return render(request, "error/403.html", status=403)
 
     # This block makes sure we have the credentials and they're
     # not expired
