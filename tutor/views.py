@@ -103,15 +103,22 @@ def add_users(request):
             username = reed_addr[0:-9]
             pw = str(urlsafe_b64encode(os.urandom(6)))[2:10]
 
-            usr = User.objects.create_user(
-                username,
-                first_name=first_name,
-                last_name=last_name,
-                email=reed_addr,
-                password=pw)
-            stu = models.Student.objects.create(
-                user=usr,
-                profile_id=profile_id)
+            # see if this user already exists
+            usr = User.objects.filter(username=username).first()
+            # I'm using .filter and then .first rather than .get
+            # because .get throws an error if the user does not
+            # exist while .first just returns None
+            if usr:
+                stu = models.Student.objects.get(user=usr)
+            else:
+                usr = User.objects.create_user(
+                    username,
+                    first_name=first_name,
+                    last_name=last_name,
+                    email=reed_addr,
+                    password=pw)
+                stu = models.Student.objects.create(user=usr)
+            stu.profile_id = profile_id
             usr.save()
             stu.save()
 
