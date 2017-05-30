@@ -50,6 +50,13 @@ def add_users(request):
     for people with reed emails, then add those people to the db
     with their profile ids.
     """
+    # Make sure the user has the permissions to change the db
+    if not (request.user.has_perm('auth.add_user') or
+            request.user.has_perm('auth.change_user') or
+            request.user.has_perm('tutor.add_student') or
+            request.user.has_perm('tutor.change_student')):
+        raise Http404("please dont do that thanks")
+
     # This block makes sure we have the credentials and they're
     # not expired
     credentials = request.session.get("credentials")
