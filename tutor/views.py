@@ -104,7 +104,7 @@ def add_users(request):
             pw = str(urlsafe_b64encode(os.urandom(6)))[2:10]
 
             # see if this user already exists
-            usr = User.objects.filter(username=username).first()
+            usr = User.objects.filter(email=reed_addr).first()
             # I'm using .filter and then .first rather than .get
             # because .get throws an error if the user does not
             # exist while .first just returns None
