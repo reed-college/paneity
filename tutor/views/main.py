@@ -1,20 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.http import Http404
 
 import tutor.models as models
 
 
 def index(request):
-	return render(
+    return render(
         request,
         'tutor/index.html',
         {"Courses": list(models.Course.objects.all())})
-    #models.Course.objects.all
-
-
-def admin(request):
-    return HttpResponse("This be the admin page.")
 
 
 def tutors(request, course_id):
