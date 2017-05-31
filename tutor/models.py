@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 
 
 class Student(models.Model):
@@ -32,13 +33,23 @@ class Subject(models.Model):
     """
     abbreviation = models.CharField(
         max_length=4,
-        help_text="3-4 letter abbreviation for a subject (i.e. HUM)")
+        help_text="3-4 letter abbreviation (i.e. HUM)")
     name = models.CharField(
         max_length=50,
-        help_text="full name of the subject (i.e. Humanities)")
+        help_text="Full name of the subject (i.e. Humanities)")
+
+    def save(self, *args, **kwargs):
+        for field_name in ['abbreviation', 'name']:
+            val = getattr(self, field_name, False)
+            if field_name == 'abbreviation':
+                setattr(self, 'abbreviation', val.upper())
+            elif field_name == 'name':
+                setattr(self, 'name', val.capitalize())
+        super(Subject, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+
 
 
 class Course(models.Model):
@@ -52,4 +63,4 @@ class Course(models.Model):
         help_text="(i.e. Ancient Mediterranean, or Intro to Economic Analysis)")
 
     def __str__(self):
-        return "{} {}".format(self.subject.abbreviation.upper(), self.number)
+        return "{} {}".format(self.subject.abbreviation, self.number)
