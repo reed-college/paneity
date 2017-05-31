@@ -68,7 +68,6 @@ def oauth2callback(request):
     """
     callback for google api stuff
     """
-    print(request.GET)
     flow = client.flow_from_clientsecrets(
         'client_secrets.json',
         scope='https://www.googleapis.com/auth/contacts.readonly',
