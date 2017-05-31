@@ -13,6 +13,7 @@ class StudentInline(admin.StackedInline):
     can_delete = False
     verbose_name = "Student Information"
     verbose_name_plural = "Student Information"
+    filter_horizontal = ['tutoring_classes', 'enrolled_classes']
 
 
 # Define a new User admin
