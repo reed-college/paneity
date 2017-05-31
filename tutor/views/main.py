@@ -27,7 +27,7 @@ def tutors(request, course_id):
     return render(
         request,
         'tutor/tutors.html',
-        {"tutors": course.student_set.all()})
+        {"tutors": course.tutors.all()})
 
 
 def startstop(request):
