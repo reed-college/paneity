@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class AddUsersTestCase(TestCase):
@@ -16,3 +17,14 @@ class AddUsersTestCase(TestCase):
         """
         response = self.client.get(reverse('tutor:add_users'))
         self.assertEqual(response.status_code, 302)
+
+    def test_unauthorized_user_cant_add(self):
+        """
+        Tests that if you're logged in but unauthorized, then you
+        get a 403
+        """
+        bob = User.objects.create_user("bob", password="bar")
+        bob.save()
+        self.client.login(username="bob", password="bar")
+        response = self.client.get(reverse('tutor:add_users'))
+        self.assertEqual(response.status_code, 403)
