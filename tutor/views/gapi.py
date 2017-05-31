@@ -44,15 +44,22 @@ def add_users(request):
         'v1',
         http=http,
         discoveryServiceUrl='https://people.googleapis.com/$discovery/rest')
-    results = service.people().connections().list(
-        resourceName='people/me',
-        pageSize=2000,
-        requestMask_includeField="person.names,person.email_addresses,person.metadata",
-    ).execute()
-    connections = results.get('connections', [])
 
-    # Now we add the connections to the db as users
-    util.add_connections(connections)
+    # Loop through the pages of connections
+    next_page_token = ""
+    while next_page_token is not None:
+        results = service.people().connections().list(
+            resourceName='people/me',
+            pageSize=2000,
+            pageToken=next_page_token,
+            requestMask_includeField="person.names,person.email_addresses,person.metadata",
+        ).execute()
+        connections = results.get('connections', [])
+
+        # Now we add the connections to the db as users
+        util.add_connections(connections)
+
+        next_page_token = results.get("nextPageToken")
 
     return HttpResponse("Users were added!")
 
