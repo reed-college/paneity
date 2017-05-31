@@ -32,10 +32,10 @@ def add_users(request):
     # not expired
     credentials = request.session.get("credentials")
     if credentials is None:
-        return redirect('oauth2callback')
+        return redirect('tutor:oauth2callback')
     credentials = client.OAuth2Credentials.from_json(credentials)
     if credentials.access_token_expired:
-        return redirect('oauth2callback')
+        return redirect('tutor:oauth2callback')
 
     # Now we get the contacts from the user
     http = credentials.authorize(httplib2.Http())
@@ -44,15 +44,22 @@ def add_users(request):
         'v1',
         http=http,
         discoveryServiceUrl='https://people.googleapis.com/$discovery/rest')
-    results = service.people().connections().list(
-        resourceName='people/me',
-        pageSize=2000,
-        requestMask_includeField="person.names,person.email_addresses,person.metadata",
-    ).execute()
-    connections = results.get('connections', [])
 
-    # Now we add the connections to the db as users
-    util.add_connections(connections)
+    # Loop through the pages of connections
+    next_page_token = ""
+    while next_page_token is not None:
+        results = service.people().connections().list(
+            resourceName='people/me',
+            pageSize=2000,
+            pageToken=next_page_token,
+            requestMask_includeField="person.names,person.email_addresses,person.metadata",
+        ).execute()
+        connections = results.get('connections', [])
+
+        # Now we add the connections to the db as users
+        util.add_connections(connections)
+
+        next_page_token = results.get("nextPageToken")
 
     return HttpResponse("Users were added!")
 
@@ -61,11 +68,10 @@ def oauth2callback(request):
     """
     callback for google api stuff
     """
-    print(request.GET)
     flow = client.flow_from_clientsecrets(
         'client_secrets.json',
         scope='https://www.googleapis.com/auth/contacts.readonly',
-        redirect_uri=request.build_absolute_uri(reverse('oauth2callback')))
+        redirect_uri=request.build_absolute_uri(reverse('tutor:oauth2callback')))
     if 'code' not in request.GET:
         auth_uri = flow.step1_get_authorize_url()
         return redirect(auth_uri)
@@ -73,4 +79,4 @@ def oauth2callback(request):
         auth_code = request.GET.get('code')
         credentials = flow.step2_exchange(auth_code)
         request.session['credentials'] = credentials.to_json()
-        return redirect('add_users')
+        return redirect('tutor:add_users')
