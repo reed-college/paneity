@@ -32,10 +32,10 @@ def add_users(request):
     # not expired
     credentials = request.session.get("credentials")
     if credentials is None:
-        return redirect('oauth2callback')
+        return redirect('tutor:oauth2callback')
     credentials = client.OAuth2Credentials.from_json(credentials)
     if credentials.access_token_expired:
-        return redirect('oauth2callback')
+        return redirect('tutor:oauth2callback')
 
     # Now we get the contacts from the user
     http = credentials.authorize(httplib2.Http())
@@ -72,7 +72,7 @@ def oauth2callback(request):
     flow = client.flow_from_clientsecrets(
         'client_secrets.json',
         scope='https://www.googleapis.com/auth/contacts.readonly',
-        redirect_uri=request.build_absolute_uri(reverse('oauth2callback')))
+        redirect_uri=request.build_absolute_uri(reverse('tutor:oauth2callback')))
     if 'code' not in request.GET:
         auth_uri = flow.step1_get_authorize_url()
         return redirect(auth_uri)
@@ -80,4 +80,4 @@ def oauth2callback(request):
         auth_code = request.GET.get('code')
         credentials = flow.step2_exchange(auth_code)
         request.session['credentials'] = credentials.to_json()
-        return redirect('add_users')
+        return redirect('tutor:add_users')
