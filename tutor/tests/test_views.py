@@ -3,6 +3,18 @@ from django.urls import reverse
 from django.contrib.auth.models import User, Permission
 
 
+class IndexTestCase(TestCase):
+    """
+    Tests for the index view
+    """
+
+    def test_index_doesnt_error(self):
+        response = self.client.get(reverse('tutor:index'))
+        # Assert that its not an error code
+        self.assertTrue(response.status_code < 400)
+        self.assertTrue(response.status_code >= 200)
+
+
 class AddUsersTestCase(TestCase):
     """
     Tests for the add_users view
