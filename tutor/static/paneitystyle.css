@@ -1,0 +1,127 @@
+
+		h1 {
+			color: white;
+			text-decoration: underline overline;
+			font-family: times;
+			text-align: center;
+			letter-spacing: 4px;
+		}
+		h3 {
+			font-family: times;
+			padding: 15px;
+			color: 	#f2f2f2;
+			text-align: center;
+		}
+		
+		body {
+			background-color: #A70E16;
+		}
+
+		ul { 
+			overflow: hidden;
+			line-height: 1.7;
+			text-align: center;
+			color: #f2f2f2;
+			list-style-position: inside;
+			list-style-type: disc;
+		}
+
+		p {
+			color: white;
+		}
+		td {
+			color: white;
+		}
+
+		a:link {
+			color: white;
+			text-decoration: none;
+			font-size: 14px;
+		}
+		a:visited {
+			color: white;
+		}
+
+		.courselisting {
+			text-align: center;
+		}
+
+
+	/* governs text styling on start/stop page */
+		.startstopgreetings {
+			color: white;
+			font-family: times;
+			text-align: center;
+		}
+
+		.startstopwarning {
+  			color: #f2f2f2;
+  		text-align: center;
+  		font-family: times;
+  		font-style: italic;
+  		font-size: 16px;
+  		padding: 15px; 
+  		}
+
+
+
+	/* governs the reed logos across all pages */
+		#logoleft {
+			float: left;
+			border: 2px solid black;
+			border-radius: 120px;
+		}
+		#logoright {
+			float: right;
+			border: 2px solid black;
+			border-radius: 120px;
+		}
+
+	/*governs the buttons on the start/stop tutoring page*/
+.buttondiv {
+	text-align: center;
+}
+
+.beginbutton {
+  padding: 25px 25px;
+  font-size: 28px;
+  text-align: center;
+  cursor: pointer;
+  outline: None;
+  color: #fff;
+  background-color: #4CAF50;
+  border: 2px solid black;
+  border-radius: 50px;
+  box-shadow: 0 9px black;
+}
+
+.beginbutton:hover {background-color: #3e8e41}
+
+.beginbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
+}
+
+.endbutton {
+  padding: 25px 25px;
+  font-size: 28px;
+  text-align: center;
+  cursor: pointer;
+  outline: None;
+  color: #fff;
+  background-color: #ff0000;
+  border: 2px solid black;
+  border-radius: 50px;
+  box-shadow: 0 9px black;
+}
+
+.endbutton:hover {
+  background-color: #cc0000;
+}
+
+.endbutton:active {
+  background-color: #cc0000;
+  box-shadow: 0 5px black;
+  transform: translateY(4px);
+}
