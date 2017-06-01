@@ -4,50 +4,8 @@
 
 <head>
 <title>Paneity - Available Tutors</title>
-<style>
-    body {
-      background-color: white;
-    }
-
-#logoleft {
-      float: left;
-      border: 2px solid black;
-      border-radius: 120px;
-    }
-#logoright {
-      float: right;
-      border: 2px solid black;
-      border-radius: 120px;
-    }
-
-h1 {
-      color: #A70E16;
-      text-decoration: underline overline;
-      font-family: times;
-      text-align: center;
-      letter-spacing: 4px;
-    }
-h2 {
-      font-family: times;
-      padding: 8px;
-      font-style: normal;
-      color:  #A70E16;
-      text-align: center;
-      text-decoration: none;
-      font-style: italic;
-    }
-
-table {
-    color: black;
-    font-family: times;
-
-}
-
-a:link {
-    color: #A70E16;
-}
-
-</style>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 </head>
 
 
@@ -55,8 +13,8 @@ a:link {
 <body>
   <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
   <img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-<h1> REED COLLEGE - Online Tutoring </h1>
-<h2>Available Tutors:</h2>
+<h1>REED COLLEGE - Online Tutoring</h1>
+<h3>Available Tutors:</h3>
     {# prints the first and last name of each tutor #}
     <table class="table">
     {% for tutor in tutors %}

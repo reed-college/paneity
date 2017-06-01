@@ -1,5 +1,8 @@
-<!DOCTYPE html>
 
+{% extends "tutor/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,105 +10,18 @@
 <script>
 alert("IMPORTANT\nPlease do not close this page until you are finished with your tutoring session!");
 </script>
-<style>
-
-body {
-      background-color: #A70E16;
-    }
-
-#logoleft {
-      float: left;
-      border: 2px solid black;
-      border-radius: 120px;
-    }
-#logoright {
-      float: right;
-      border: 2px solid black;
-      border-radius: 120px;
-    }
-
-h1 {
-      color: #f2f2f2;
-      text-decoration: underline overline;
-      font-family: times;
-      text-align: center;
-      letter-spacing: 4px;
-    }
-
-div {
-  text-align: center;
-}
-
-h2 {
-      font-family: times;
-      padding: 15px;
-      font-style: normal;
-      color:  #f2f2f2;
-      text-align: center;
-    }
-
-.beginbutton {
-  padding: 25px 25px;
-  font-size: 28px;
-  text-align: center;
-  cursor: pointer;
-  outline: None;
-  color: #fff;
-  background-color: #4CAF50;
-  border: 2px solid black;
-  border-radius: 50px;
-  box-shadow: 0 9px black;
-}
-
-.beginbutton:hover {background-color: #3e8e41}
-
-.beginbutton:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px black;
-  transform: translateY(4px);
-}
-
-.endbutton {
-  padding: 25px 25px;
-  font-size: 28px;
-  text-align: center;
-  cursor: pointer;
-  outline: None;
-  color: #fff;
-  background-color: #ff0000;
-  border: 2px solid black;
-  border-radius: 50px;
-  box-shadow: 0 9px black;
-}
-
-.endbutton:hover {
-  background-color: #cc0000;
-}
-
-.endbutton:active {
-  background-color: #cc0000;
-  box-shadow: 0 5px black;
-  transform: translateY(4px);
-}
-
-p {
-  color: #f2f2f2;
-  text-align: center;
-  font-family: times;
-  font-style: italic;
-  padding: 15px;
-}
-
-</style>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 </head>
 <body>
   <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
   <img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-  <h1> REED COLLEGE - Online Tutoring </h1>
-<h2>Greetings, Tutor! Please click below to:</h2>
-<div><button class="beginbutton">Start Tutoring</button>
+  <h1>REED COLLEGE - Online Tutoring</h1>
+<h2 class="startstopgreetings">Greetings, Tutor! Please click below to:</h2>
+<div class="buttondiv"><button class="beginbutton">Start Tutoring</button>
 <button class="endbutton">Stop Tutoring</button></div>
-<p> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thank you. </p>
+<p class="startstopwarning"> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thank you. </p>
 </body>
 </html>
+{% endblock %}
 
