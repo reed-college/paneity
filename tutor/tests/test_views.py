@@ -39,6 +39,7 @@ class AddUsersTestCase(TestCase):
         ads = Permission.objects.get(codename='add_student')
         chs = Permission.objects.get(codename='change_student')
         fred.user_permissions.add(adu, chu, ads, chs)
+        fred.is_staff = True
         fred.save()
         # have fred access the page
         self.client.login(username="fred", password="foo")
@@ -47,3 +48,21 @@ class AddUsersTestCase(TestCase):
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
         fred.delete()
+
+    def test_superuser_can_access_add_users(self):
+        """
+        This tests that a superuser can access the add_users page
+        This way, if fred can't access the page but jim can, then
+        we know the error is with the authorization system
+        """
+        # jim is going to be a superuser
+        jim = User.objects.create_user("jim", password="baz")
+        jim.is_staff = True
+        jim.is_superuser = True
+        jim.save()
+        self.client.login(username="jim", password="baz")
+        response = self.client.get(reverse('tutor:add_users'))
+        # Assert that its not an error code
+        self.assertTrue(response.status_code < 400)
+        self.assertTrue(response.status_code >= 200)
+        jim.delete()
