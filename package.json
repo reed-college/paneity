@@ -1,0 +1,26 @@
+{
+  "name": "paneity",
+  "version": "0.0.0",
+  "description": "It means the state of being bread",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t [ babelify --presets [ react ] ] board/react/list.js -o board/static/list.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reed-college/paneity.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reed-college/paneity/issues"
+  },
+  "homepage": "https://github.com/reed-college/paneity#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}

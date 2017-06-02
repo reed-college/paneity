@@ -103,3 +103,5 @@ ENV/
 # Google api client secrets
 client_secrets.json
 
+# node stuffs
+node_modules/
