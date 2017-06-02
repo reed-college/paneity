@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'tutor.apps.TutorConfig',
+    'board.apps.BoardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'twitter_bootstrap',
@@ -121,4 +122,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
