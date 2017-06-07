@@ -39,7 +39,7 @@ class Subject(models.Model):
         help_text="Full name of the subject (i.e. Humanities)")
         # below we are creating a one-to-one relationship between Subjects and Categories, so that the forum is structured
         # around Reed's departments, not arbitrary categories.
-    category = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True, editable = False)
     def save(self, *args, **kwargs):
         for field_name in ['abbreviation', 'name']:
             val = getattr(self, field_name, False)
