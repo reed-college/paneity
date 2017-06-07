@@ -1,0 +1,3 @@
+[submodule "submodules/Spirit"]
+	path = submodules/Spirit
+	url = https://github.com/reed-college/Spirit.git
