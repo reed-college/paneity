@@ -5,5 +5,6 @@ services:
     - postgresql: "9.6"
 before_script:
     - psql -c "CREATE ROLE paneity_usr WITH LOGIN PASSWORD 'password' CREATEDB;" -U postgres
+    - cd .. && git clone https://github.com/reed-college/Spirit.git && cd paneity 
 install: "pip install -r requirements.txt"
 script: "python manage.py test tutor"
