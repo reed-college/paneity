@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
-
+from spirit.category.models import Category
 
 class Student(models.Model):
     """
@@ -37,7 +37,9 @@ class Subject(models.Model):
     name = models.CharField(
         max_length=50,
         help_text="Full name of the subject (i.e. Humanities)")
-
+        # below we are creating a one-to-one relationship between Subjects and Categories, so that the forum is structured
+        # around Reed's departments, not arbitrary categories.
+    category = models.OneToOneField(Category, on_delete=models.CASCADE, null=True, blank=True, editable = False)
     def save(self, *args, **kwargs):
         for field_name in ['abbreviation', 'name']:
             val = getattr(self, field_name, False)
@@ -45,6 +47,10 @@ class Subject(models.Model):
                 setattr(self, 'abbreviation', val.upper())
             elif field_name == 'name':
                 setattr(self, 'name', val.capitalize())
+        cat = Category.objects.create(title=self.name)
+        cat.save()
+        self.category = cat
+
         super(Subject, self).save(*args, **kwargs)
 
     def __str__(self):
