@@ -15,8 +15,9 @@
 			font-family: times;
 			text-align: center;
 		}
-		#bannertext:hover {
-			color: black;
+		/*#bannertext:hover {
+			color: #A70E16;
+			background-color: white;*/
 		}
 
 		h1 {
@@ -32,12 +33,12 @@
 			text-align: center;
 			padding: 10px;
 		}
-		
+
 		body {
 			background-color: #A70E16;
 		}
 
-		ul { 
+		ul {
 			overflow: hidden;
 			line-height: 1.7;
 			text-align: center;
@@ -80,9 +81,9 @@
   		font-family: times;
   		font-style: italic;
   		font-size: 16px;
-  		padding: 15px; 
+  		padding: 15px;
   		}
-	
+
 		#logoleft {
 			float: left;
 			border-radius: 120px;
@@ -155,3 +156,36 @@
 
 td { border: none !important; }
 
+/* NavBar style stuff */
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #A70E16; /* #333 */
+    overflow: hidden;
+	text-align: center;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+/*    float: left; */
+	overflow: hidden;
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+	font-family: 'Times';
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: white; /* #ddd */
+    color: #A70E16;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}

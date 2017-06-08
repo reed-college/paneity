@@ -9,6 +9,10 @@
 </head>
 
 <body>
+<div class="topnav" id="myTopnav">
+  <a href="http://localhost:8000">Go to Tutoring Homepage</a>
+  <a href="http://localhost:8000/forum/">Go to Forum</a>
+</div>
 <div class="bannerdiv">
 <a href="http://localhost:8000">
   <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
@@ -21,10 +25,10 @@
     {# prints the first and last name of each tutor #}
     <table class="table">
     {% for tutor in tutors %}
-        {% if tutor.user.first_name or tutor.user.last_name %} 
+        {% if tutor.user.first_name or tutor.user.last_name %}
         <tr>
             <td>
-                {{tutor.user.first_name}} 
+                {{tutor.user.first_name}}
                 {{tutor.user.last_name}}
             </td>
             <td>
