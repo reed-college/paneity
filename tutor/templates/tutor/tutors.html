@@ -1,49 +1,38 @@
 {% extends "tutor/base.html" %}
 
+{% block head %}
+    <title>
+        Paneity - Available Tutors
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+{% endblock %}
+
 {% block content %}
-
-<head>
-<title>Paneity - Available Tutors</title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
-</head>
-
-<body>
-<div class="topnav" id="myTopnav">
-  <a href="{% url "tutor:index" %}">Go to Tutoring Homepage</a>
-  <a href="http://localhost:8000/forum/">Go to Forum</a>
-</div>
-<div class="bannerdiv">
-<a href="http://localhost:8000">
-  <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-  <img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-<h1 id="bannertext">REED COLLEGE - Online Tutoring</h1>
-</a></div>
-<h3 style="padding-bottom: 30px">Available Tutors:</h3>
+    <h3 style="padding-bottom: 30px">Available Tutors:</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
-    <table class="table">
-    {% for tutor in tutors %}
-        {% if tutor.user.first_name or tutor.user.last_name %}
-        <tr>
-            <td>
-                {{tutor.user.first_name}}
-                {{tutor.user.last_name}}
-            </td>
-            <td>
-                {% if tutor.profile_id %}
-                <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat!</a>
-                {% elif tutor.user.email %}
-                <a href="mailto:{{tutor.user.email}}">Email!</a>
-                {% else %}
-                Can't chat
-                {% endif %}
-            </td>
-        </tr>
-        {% endif %}
-    {% endfor %}
-    </table>
+        <table class="table">
+        {% for tutor in tutors %}
+            {% if tutor.user.first_name or tutor.user.last_name %}
+            <tr>
+                <td>
+                    {{tutor.user.first_name}}
+                    {{tutor.user.last_name}}
+                </td>
+                <td>
+                    {% if tutor.profile_id %}
+                    <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat!</a>
+                    {% elif tutor.user.email %}
+                    <a href="mailto:{{tutor.user.email}}">Email!</a>
+                    {% else %}
+                    Can't chat
+                    {% endif %}
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </table>
     </div>
-    </body>
 {% endblock %}

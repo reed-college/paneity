@@ -1,35 +1,26 @@
 
 {% extends "tutor/base.html" %}
 
+{% block head %}
+    <title>
+        Paneity - Start/Stop Tutoring
+    </title>
+    <script>
+        alert("IMPORTANT\nPlease do not close this page until you are finished with your tutoring session!");
+    </script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+{% endblock %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
+    <h2 class="startstopgreetings">Greetings, Tutor! Please click below to:</h2>
 
-<head>
-<title>Paneity - Start/Stop Tutoring</title>
-<script>
-alert("IMPORTANT\nPlease do not close this page until you are finished with your tutoring session!");
-</script>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
-</head>
-<body>
-    <div class="topnav" id="myTopnav">
-        <a href="{% url "tutor:index" %}">Go to Tutoring Homepage</a>
-        <a href="http://localhost:8000/forum/">Go to Forum</a>
+    <div class="buttondiv">
+        <button class="beginbutton">Start Tutoring</button>
+        <button class="endbutton">Stop Tutoring</button>
     </div>
-<div class="bannerdiv">
-<a href="http://localhost:8000">
-  <img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-  <img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-  <h1 id="bannertext">REED COLLEGE - Online Tutoring</h1>
-</a></div>
 
-
-<h2 class="startstopgreetings">Greetings, Tutor! Please click below to:</h2>
-<div class="buttondiv"><button class="beginbutton">Start Tutoring</button>
-<button class="endbutton">Stop Tutoring</button></div>
-<p class="startstopwarning"> IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thank you. </p>
-</body>
-</html>
+    <p class="startstopwarning">
+        IMPORTANT: please do not close this page until you are ready to end your tutoring session! Thank you.
+    </p>
 {% endblock %}
