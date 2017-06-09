@@ -1,4 +1,5 @@
 <!doctype html>
+<html>
 <head>
 
 {% block bootstrap %}
@@ -20,8 +21,20 @@
 </head>
 <body>
     <div class="container">
+        <div class="topnav" id="myTopnav">
+    	  	<a href="{% url "tutor:index" %}">Go to Tutoring Homepage</a>
+    	  	<a href="{% url "spirit:index" %}">Go to Forum</a>
+    	</div>
+        <div id="bannerdiv">
+    		<a href="{% url "tutor:index" %}">
+    			<img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+    			<img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+    			<h1 id="bannertext">REED COLLEGE - Online Tutoring</h1>
+    		</a>
+    	</div>
     {% block content %}
 
     {% endblock %}
     </div>
 </body>
+</html>
