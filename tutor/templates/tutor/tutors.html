@@ -21,6 +21,11 @@
                     {{tutor.user.first_name}}
                     {{tutor.user.last_name}}
                 </td>
+            {% else %}
+                <td>
+                    {{tutor.user.username}}
+                </td>
+            {% endif %}
                 <td>
                     {% if tutor.profile_id %}
                     <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat with me!</a>
@@ -31,7 +36,6 @@
                     {% endif %}
                 </td>
             </tr>
-            {% endif %}
         {% endfor %}
         </table>
     </div>
