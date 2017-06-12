@@ -14,41 +14,35 @@
 {% block content %}
 	<h3> Welcome! Help is currently available for the following courses: </h3>
 		<div class="courselisting">
-			<div class="dropdown">
-			<button onclick="myFunction()" class="dropbtn">Click to Select a Subject</button>
-			  <div id="myDropdown" class="dropdown-content">
-					{% for subject in Subjects %}
-		  			<a>{{subject}}</a>
-		  			{% endfor %}
-			  </div>
-			</div>
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+			<ul id="myUL">
+				{% for subject in Subjects %}
+					<li><a href="#" class="header">{{subject}}</a></li>
+					{% for classes in subject.course_set.all %}
+						<li><a href = "{{classes.id}}/tutors">{{classes}}</a></li>
+						
+					{% endfor %}
+				{% endfor %}
+			</ul>
 
 			<script>
-			/* When the user clicks on the button,
-			toggle between hiding and showing the dropdown content */
 			function myFunction() {
-			    document.getElementById("myDropdown").classList.toggle("show");
-			}
+			    var input, filter, ul, li, a, i;
+			    input = document.getElementById("myInput");
+			    filter = input.value.toUpperCase();
+			    ul = document.getElementById("myUL");
+			    li = ul.getElementsByTagName("li");
+			    for (i = 0; i < li.length; i++) {
+			        a = li[i].getElementsByTagName("a")[0];
+			        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+			            li[i].style.display = "";
+			        } else {
+			            li[i].style.display = "none";
 
-			// Close the dropdown if the user clicks outside of it
-			window.onclick = function(event) {
-			  if (!event.target.matches('.dropbtn')) {
-
-			    var dropdowns = document.getElementsByClassName("dropdown-content"); var i;
-			    for (i = 0; i < dropdowns.length; i++) {var openDropdown = dropdowns[i];
-			      if (openDropdown.classList.contains('show')) {
-			        openDropdown.classList.remove('show');
-			      }
+			        }
 			    }
-			  }
 			}
 			</script>
-		</div>
+
 {% endblock %}
-
-
-
-
-
-
-<!-- subject.course_set - list of courses that have that subject -->
