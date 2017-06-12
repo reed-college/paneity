@@ -58,12 +58,6 @@ class Subject(models.Model):
 
         super(Subject, self).save(*args, **kwargs)
 
-    def delete(self, *args, **kwargs):
-        # delete category when deleting subject
-        if self.category:
-            self.category.delete()
-        super(Subject, self).delete(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
