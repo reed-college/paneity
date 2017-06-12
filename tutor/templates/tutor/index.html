@@ -12,7 +12,12 @@
 {% endblock %}
 
 {% block content %}
+
 	<h3> Welcome! Help is currently available for the following courses: </h3>
+
+	<h4> Welcome! To find a tutor, please select a course from the list below: </h4>
+
+
 		<div class="courselisting">
 			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
@@ -21,7 +26,7 @@
 					<li><a href="#" class="header">{{subject}}</a></li>
 					{% for classes in subject.course_set.all %}
 						<li><a href = "{{classes.id}}/tutors">{{classes}}</a></li>
-						
+
 					{% endfor %}
 				{% endfor %}
 			</ul>
