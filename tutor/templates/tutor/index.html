@@ -17,8 +17,8 @@
 			<div class="dropdown">
 			<button onclick="myFunction()" class="dropbtn">Click to Select a Subject</button>
 			  <div id="myDropdown" class="dropdown-content">
-					{% for course in Courses %}
-		  			<a href="{% url 'tutor:tutors' course.id %}">{{course}}</a>
+					{% for subject in Subjects %}
+		  			<a>{{subject}}</a>
 		  			{% endfor %}
 			  </div>
 			</div>
