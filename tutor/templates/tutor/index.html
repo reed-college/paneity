@@ -4,15 +4,51 @@
 	<title> Paneity - Homepage/Course List </title>
 	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="dropdown.js"></script>
 {% endblock %}
 
 {% block content %}
 	<h3> Welcome! Help is currently available for the following courses: </h3>
-	<ul>
 		<div class="courselisting">
-			{% for blipbloop in Courses %}
-			<li><a href="{{blipbloop.id}}/tutors">{{blipbloop}}</li>
-			{% endfor %}
+			<div class="dropdown">
+			<button onclick="myFunction()" class="dropbtn">Click to Select a Subject</button>
+			  <div id="myDropdown" class="dropdown-content">
+					{% for course in Courses %}
+		  			<a href="{% url 'tutor:tutors' course.id %}">{{course}}</a>
+		  			{% endfor %}
+			  </div>
+			</div>
+
+			<script>
+			/* When the user clicks on the button,
+			toggle between hiding and showing the dropdown content */
+			function myFunction() {
+			    document.getElementById("myDropdown").classList.toggle("show");
+			}
+
+			// Close the dropdown if the user clicks outside of it
+			window.onclick = function(event) {
+			  if (!event.target.matches('.dropbtn')) {
+
+			    var dropdowns = document.getElementsByClassName("dropdown-content"); var i;
+			    for (i = 0; i < dropdowns.length; i++) {var openDropdown = dropdowns[i];
+			      if (openDropdown.classList.contains('show')) {
+			        openDropdown.classList.remove('show');
+			      }
+			    }
+			  }
+			}
+			</script>
 		</div>
-	</ul>
 {% endblock %}
+
+
+
+
+
+
+<!-- subject.course_set - list of courses that have that subject -->
