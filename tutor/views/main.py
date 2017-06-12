@@ -27,7 +27,7 @@ def tutors(request, course_id):
     return render(
         request,
         'tutor/tutors.html',
-        {"tutors": course.tutors.all()})
+        {"tutors": course.tutors.all(), "course_name": models.Course.objects.get(pk=course_id)})
 
 
 def startstop(request):
