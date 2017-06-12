@@ -27,7 +27,7 @@
 			text-align: center;
 			letter-spacing: 4px;
 		}
-		h3 {
+		h4, h3 {
 			font-family: times;
 			color: 	white;
 			text-align: center;
@@ -182,10 +182,56 @@ td { border: none !important; }
 .topnav a:hover {
     background-color: white; /* #ddd */
     color: #A70E16;
+    border-radius: 8px;
+	transition-delay: .15s; /* delays for .15 seconds */
+	-webkit-transition-delay: .15s; /* ^for Safari & Chrome */
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
+}
+
+/* search function styling */
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a.header {
+  background-color: #e2e2e2;
+  cursor: default;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
 }

@@ -8,7 +8,7 @@ def index(request):
     return render(
         request,
         'tutor/index.html',
-        {"Courses": list(models.Course.objects.all())})
+        {"Subjects": list(models.Subject.objects.all())})
 
 
 def tutors(request, course_id):

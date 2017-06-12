@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <h3 style="padding-bottom: 30px">Available Tutors:</h3>
+    <h3 style="padding-bottom: 30px">Tutors:</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
@@ -23,9 +23,9 @@
                 </td>
                 <td>
                     {% if tutor.profile_id %}
-                    <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat!</a>
+                    <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat with me!</a>
                     {% elif tutor.user.email %}
-                    <a href="mailto:{{tutor.user.email}}">Email!</a>
+                    <a href="mailto:{{tutor.user.email}}">Email me!</a>
                     {% else %}
                     Can't chat
                     {% endif %}

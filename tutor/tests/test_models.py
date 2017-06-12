@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import random
 
 import tutor.models as models
+from spirit.category.models import Category
 
 
 class CourseTestCase(TestCase):
@@ -49,6 +50,29 @@ class SubjectTestCase(TestCase):
         hum = models.Subject.objects.get(abbreviation="HUM", name="Humanities")
         self.assertTrue((hum.name in hum.__str__())
                         or (hum.abbreviation in hum.__str__()))
+
+    def test_subject_delete_deletes_category_as_well(self):
+        """
+        This tests that when you delete a subject it deletes the
+        category associated with that subject
+        """
+        lit = models.Subject.objects.create(
+            abbreviation="LIT", name="Literature")
+        cat_id = lit.category.id
+        lit.delete()
+        self.assertFalse(Category.objects.filter(id=cat_id).exists())
+
+    def test_subject_queryset_delete_deletes_category(self):
+        """
+        Same as the above test but does a queryset delete. This is
+        important because the admin interface uses queryset deletes
+        """
+        lit = models.Subject.objects.create(
+            abbreviation="LIT", name="Literature")
+        cat_id = lit.category.id
+        subs = models.Subject.objects.filter(id=lit.id)
+        subs.delete()
+        self.assertFalse(Category.objects.filter(id=cat_id).exists())
 
 
 class StudentTestCase(TestCase):

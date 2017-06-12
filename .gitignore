@@ -103,5 +103,8 @@ ENV/
 # Google api client secrets
 client_secrets.json
 
-package-lock.json
+# Whoosh searches
+paneity/search/
 
+# Django staticfiles
+static/
