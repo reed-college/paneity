@@ -12,13 +12,10 @@ class CourseTestCase(TestCase):
     """
 
     def setUp(self):
-        hum = models.Subject.objects.create(
-            abbreviation="HUM",
-            name="Humanities")
-        models.Course.objects.create(
-            subject=hum,
-            number=110,
-            title="Ancient Mediterranean")
+        _make_hum()
+
+    def tearDown(self):
+        _delete_hum()
 
     def test_course_model_has_useful_string(self):
         """
@@ -83,6 +80,12 @@ class StudentTestCase(TestCase):
     def setUp(self):
         bob = User.objects.create_user('bob', password='bar')
         models.Student.objects.create(user=bob)
+        _make_hum()
+
+    def tearDown(self):
+        bob = User.objects.get(username='bob')
+        bob.delete()
+        _delete_hum()
 
     def test_student_can_store_profile_id(self):
         """
@@ -101,3 +104,44 @@ class StudentTestCase(TestCase):
         stu.profile_id = profile_id
         stu.save()
         self.assertEquals(stu.profile_id, profile_id)
+
+    def test_student_that_tutors_a_class_is_a_tutor(self):
+        """
+        Makes sure that when you add a tutoring class to a student,
+        the server makes that student a tutor
+        """
+        bob = User.objects.get(username="bob")
+        stu = models.Student.objects.get(user=bob)
+        hum110 = models.Course.objects.get(
+            number=110,
+            title="Ancient Mediterranean")
+        stu.tutoring_classes.add(hum110)
+        stu.save()
+        self.assertTrue(stu.tutor)
+
+
+def _make_hum():
+    """
+    Makes HUM subject and Hum110 course
+    """
+    hum = models.Subject.objects.create(
+        abbreviation="HUM",
+        name="Humanities")
+    models.Course.objects.create(
+        subject=hum,
+        number=110,
+        title="Ancient Mediterranean")
+
+
+def _delete_hum():
+    """
+    deletes hum and hum 110
+    """
+    hum110 = models.Course.objects.get(
+        number=110,
+        title="Ancient Mediterranean")
+    hum110.delete()
+    hum = models.Subject.objects.get(
+        abbreviation="HUM",
+        name="Humanities")
+    hum.delete()
