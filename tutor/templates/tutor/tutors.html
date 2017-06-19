@@ -18,6 +18,9 @@
             {% if tutor.user.first_name or tutor.user.last_name %}
             <tr>
                 <td>
+                    <a href="#" id="user-{{tutor.user.username}}">On</a>
+                </td>
+                <td>
                     {{tutor.user.first_name}}
                     {{tutor.user.last_name}}
                 </td>
@@ -36,4 +39,85 @@
         {% endfor %}
         </table>
     </div>
+    <script>
+	var base_ws_server_path = "{{ ws_server_path }}";
+
+        $(document).ready(function () {
+            var websocket = null;
+
+            function setUserOnlineOffline(username, online) {
+                var elem = $("#user-" + username);
+                if (online) {
+                    elem.attr("class", "btn btn-success");
+                } else {
+                    elem.attr("class", "btn btn-danger");
+                }
+            }
+
+            function setupChatWebSocket() {
+                var opponent_username = getOpponnentUsername();
+                websocket = new WebSocket(base_ws_server_path + '{{ request.session.session_key }}/' + opponent_username);
+                websocket.onopen = function (event) {
+                    var opponent_username = getOpponnentUsername();
+                    var onOnlineCheckPacket = JSON.stringify({
+                        type: "check-online",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username
+                        {#                      Sending username because the user needs to know if his opponent is online #}
+                    });
+                    var onConnectPacket = JSON.stringify({
+                        type: "online",
+                        session_key: '{{ request.session.session_key }}'
+                    });
+                    console.log('connected, sending:', onConnectPacket);
+                    websocket.send(onConnectPacket);
+                    console.log('checking online opponents with:', onOnlineCheckPacket);
+                    websocket.send(onOnlineCheckPacket);
+                };
+                window.onbeforeunload = function () {
+                    var onClosePacket = JSON.stringify({
+                        type: "offline",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username,
+                        {# Sending username because to let opponnent know that the user went offline #}
+                    });
+                    console.log('unloading, sending:', onClosePacket);
+                    websocket.send(onClosePacket);
+                    websocket.close();
+                };
+                websocket.onmessage = function (event) {
+                    var packet;
+                    try {
+                        packet = JSON.parse(event.data);
+                        console.log(packet)
+                    } catch (e) {
+                        console.log(e);
+                    }
+                    switch (packet.type) {
+                        case "gone-online":
+                            if (packet.usernames.indexOf(opponent_username) != -1) {
+                                gone_online();
+                            } else {
+                                gone_offline();
+                            }
+                            for (var i = 0; i < packet.usernames.length; ++i) {
+                                setUserOnlineOffline(packet.usernames[i], true);
+                            }
+                            break;
+                        case "gone-offline":
+                            if (packet.username == opponent_username) {
+                                gone_offline();
+                            }
+                            setUserOnlineOffline(packet.username, false);
+                            break;
+                        default:
+                            console.log('error: ', event)
+                    }
+                }
+            }
+
+            setupChatWebSocket();
+        });
+
+    </script>
 {% endblock %}
