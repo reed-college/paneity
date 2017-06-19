@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import Http404
-
+from django.shortcuts import get_object_or_404
 import tutor.models as models
 
 
@@ -18,16 +17,13 @@ def tutors(request, course_id):
     Then, if the course exists, it renders the tutors.html page and passes
     the list of tutors on that course to the page.
     """
-    try:
-        course = models.Course.objects.get(pk=course_id)
-    except models.Course.DoesNotExist:
-        raise Http404("Course does not exist")
-    # student_set has the info of all of the users who are marked as tutors
+    course = get_object_or_404(models.Course, pk=course_id)
+    # course.tutors has the info of all of the users who are marked as tutors
     # for this course
     return render(
         request,
         'tutor/tutors.html',
-        {"tutors": course.tutors.all(), "course_name": models.Course.objects.get(pk=course_id)})
+        {"tutors": course.tutors.all(), "course_name": course})
 
 
 def startstop(request):
