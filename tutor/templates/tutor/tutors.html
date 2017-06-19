@@ -28,6 +28,8 @@
             {% endif %}
                 <td>
                     <a href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
+                </td>
+                <td>
                     <a href="mailto:{{tutor.user.email}}">Email me!</a>
                 </td>
             </tr>
