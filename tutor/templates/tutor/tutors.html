@@ -32,6 +32,11 @@
                 <td>
                     <a href="mailto:{{tutor.user.email}}">Email me!</a>
                 </td>
+                <td>
+                    <small>
+                        Last Login: {{tutor.user.last_login|timesince}} ago
+                    </small> 
+                </td>
             </tr>
         {% endfor %}
         </table>

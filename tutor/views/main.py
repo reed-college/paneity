@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from datetime import datetime
 import tutor.models as models
 
 
@@ -20,10 +21,17 @@ def tutors(request, course_id):
     course = get_object_or_404(models.Course, pk=course_id)
     # course.tutors has the info of all of the users who are marked as tutors
     # for this course
+    context = {
+        "tutors": course.tutors.all(),
+        "course_name": course,
+        "now": datetime.now(),
+    }
+
     return render(
         request,
         'tutor/tutors.html',
-        {"tutors": course.tutors.all(), "course_name": course})
+        context
+    )
 
 
 def startstop(request):
