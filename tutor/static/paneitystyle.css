@@ -1,100 +1,97 @@
 
-		/* governs banner across all pages */
-		.bannerdiv {
-			margin: auto;
-			background-color: #A70E16;
-			text-align: center;
-			white-space: nowrap;
-  			overflow: hidden;
-		}
-		#bannertext {
-			padding-top: 45px;
-			margin: auto;
-			font-size: 37.5px;
-			color: white;
-			font-family: times;
-			text-align: center;
-		}
-		/*#bannertext:hover {
-			color: #A70E16;
-			background-color: white;*/
-		}
+* {
+  box-sizing: border-box;
+}
 
-		h1 {
-			color: white;
-			text-decoration: underline overline;
-			font-family: times;
-			text-align: center;
-			letter-spacing: 4px;
-		}
-		h4, h3 {
-			font-family: times;
-			color: 	white;
-			text-align: center;
-			padding: 10px;
-		}
+/* governs banner across all pages */
+.banner {
+    background-color: #85070A;
+    background-image: url("REEDGRIFFIN.png");
+    background-repeat: no-repeat;
+    background-size: 140px 150px;
+    text-align: left;
+    padding-left: 85px;
+    padding-bottom: 20px;
 
-		body {
-			background-color: #A70E16;
-		}
+}
 
-		ul {
-			overflow: hidden;
-			line-height: 1.7;
-			text-align: center;
-			list-style-position: inside;
-			list-style-type: none;
-		}
+.bannerdiv {
+	white-space: nowrap;
+		overflow: hidden;
+}
 
-		a:link {
-			color: white;
-			text-decoration: none;
-		}
-		a:visited {
-			color: white;
-		}
-		a:hover {
-			color: black;
-		}
+#bannertext {
+	padding-top: 20px;
+	margin: auto;
+	font-size: 30px;
+	color: white;
+	font-family: times;
+}
 
 
-		.courselisting {
-			margin: auto;
-			padding-top: 15px;
-			text-align: center;
-			font-size: 14px;
-			background-color: #A70E16;
-			text-decoration: none;
-		}
+h1 {
+	color: white;
+	font-family: times;
+	letter-spacing: 2px;
+}
+
+h2 {
+  color: black;
+  font-family: 'Nunito', serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+h3 {
+	font-family: 'Nunito', serif;
+	color: black;
+  font-size: 20px;
+  padding-bottom: 3px;
+  text-align: center;
+
+}
 
 
-	/* governs text styling on start/stop page */
-		.startstopgreetings {
-			color: white;
-			font-family: times;
-			text-align: center;
-		}
+ul {
+	overflow: hidden;
+	line-height: 1.7;
+	text-align: center;
+	list-style-position: inside;
+	list-style-type: none;
+  color: black;
+}
 
-		.startstopwarning {
-  			color: white;
-  		text-align: center;
-  		font-family: times;
-  		font-style: italic;
-  		font-size: 16px;
-  		padding: 15px;
-  		}
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+}
+a:hover {
+	color: black;
+}
 
-		#logoleft {
-			float: left;
-			border-radius: 120px;
-		}
 
-		#logoright {
-			float: right;
-			border-radius: 120px;
-		}
+/* governs text styling on start/stop page */
+.startstopgreetings {
+	color: white;
+	font-family: times;
+	text-align: center;
+}
 
-	/*governs the buttons on the start/stop tutoring page*/
+.startstopwarning {
+		color: white;
+	text-align: center;
+	font-family: times;
+	font-style: italic;
+	font-size: 16px;
+	padding: 15px;
+	}
+
+
+/*governs the buttons on the start/stop tutoring page*/
+
 .buttondiv {
 	text-align: center;
 }
@@ -146,12 +143,19 @@
 #tutorsdiv {
 	margin: auto;
 	color: white;
-	background-color: #A70E16;
-	border: 5px dotted white;
-	border-radius: 30px;
+	background-color: rgba(225, 225, 225, 0.4);
+  border: 2px solid white;
+  border-radius: 2px;
 	padding-top: 20px;
+  padding-bottom: 20px;
 	width: 600px;
 	text-align: center;
+
+}
+
+th {
+  border: none !important;
+  text-align: center;
 }
 
 td { border: none !important; }
@@ -160,29 +164,27 @@ td { border: none !important; }
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #A70E16; /* #333 */
     overflow: hidden;
-	text-align: center;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-/*    float: left; */
 	overflow: hidden;
     display: inline-block;
+    padding: 10px;
+    padding-left: 0;
+    padding-top: 2px;
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
-	font-family: 'Times';
+    font-size: 12px;
+	font-family: 'Myriad', sans-serif;
+    letter-spacing: 1px;
+    
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: white; /* #ddd */
-    color: #A70E16;
-    border-radius: 8px;
+  color: #787562;
 	transition-delay: .15s; /* delays for .15 seconds */
 	-webkit-transition-delay: .15s; /* ^for Safari & Chrome */
 }
@@ -194,44 +196,65 @@ td { border: none !important; }
 }
 
 /* search function styling */
+.homepage {
+  background-image: url('Studyingbooks.jpg');
+  background-size:cover;
+  
 
-* {
-  box-sizing: border-box;
 }
 
+.courselisting {
+  text-align: center;
+  
+}
+
+
 #myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
+  background-image: url('search-icon.png');
+  background-position: 2px 0px;
+  background-size: 30px 30px;
   background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+  width: 50%;
+  font-size: 14px;
+  padding: 5px 20px 5px 40px;
+  border: 1px solid #787562;
+  margin-top: 10px;
 }
 
 #myUL {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding: 40px 80px 20px 80px;
 }
 
 #myUL li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
   color: black;
-  display: block
+  font-family: 'Lato', sans-serif;
+  display: block;
+  text-align: left;
 }
 
 #myUL li a.header {
-  background-color: #e2e2e2;
+  color: #85070A;
   cursor: default;
+  font-weight: bold;
+  border-bottom: 1px solid #787562;
+  text-align: left;
+  padding-left: 3px;
+
 }
 
 #myUL li a:hover:not(.header) {
-  background-color: #eee;
+  color: white;
 }
+
+#myUL li a.subheader {
+    color: black;
+}
+
+
+
+
+

@@ -2,21 +2,25 @@
 
 {% block head %}
     <title>
-        Paneity - Available Tutors
+        Paneity | Available Tutors
     </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 {% endblock %}
 
 {% block content %}
-    <h3 style="padding-bottom: 30px"> {{course_name}} Tutors:</h3>
+    <h2> {{course_name}} Tutors:</h2>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
         <table class="table">
+            <tr>
+                <th>Tutor</th>
+                <th>Status</th>
+            </tr>
         {% for tutor in tutors %}
             {% if tutor.user.first_name or tutor.user.last_name %}
-            <tr>
+            <tr> 
                 <td>
                     {{tutor.user.first_name}}
                     {{tutor.user.last_name}}
@@ -24,8 +28,9 @@
             {% else %}
                 <td>
                     {{tutor.user.username}}
-                </td>
+                </td> 
             {% endif %}
+
                 <td>
                     {% if tutor.profile_id %}
                     <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat with me!</a>
