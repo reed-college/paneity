@@ -20,6 +20,11 @@ class Student(models.Model):
         blank=True,
         related_name="students",
         help_text="The courses that this student is currently enrolled in.")
+    profile_id = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        help_text="ProfileID for Google People API")
 
 
 class Subject(models.Model):
