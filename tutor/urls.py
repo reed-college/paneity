@@ -11,7 +11,4 @@ urlpatterns = [
 
     # ex: /startstop/  ------- Page with start and stop button to begin/end tutoring sessions
     url(r'^startstop/$', views.startstop, name='startstop'),
-
-    url(r'^add_users/$', views.add_users, name='add_users'),
-    url(r'^oauth2callback/$', views.oauth2callback, name='oauth2callback'),
 ]
