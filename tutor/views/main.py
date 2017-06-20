@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from datetime import datetime
 import tutor.models as models
 
 
@@ -22,9 +21,8 @@ def tutors(request, course_id):
     # course.tutors has the info of all of the users who are marked as tutors
     # for this course
     context = {
-        "tutors": course.tutors.all(),
+        "tutors": course.tutors.all().order_by('-user__last_login'),
         "course_name": course,
-        "now": datetime.now(),
     }
 
     return render(
