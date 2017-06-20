@@ -32,3 +32,6 @@ def tutors(request, course_id):
 
 def startstop(request):
     return render(request, 'tutor/startstop.html')
+
+def dropin(request):
+    return render(request, 'tutor/dropin.html')
