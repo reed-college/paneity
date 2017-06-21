@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
+from django.db.models import Count
 import tutor.models as models
 
 
@@ -20,10 +21,11 @@ def tutors(request, course_id):
     the list of tutors on that course to the page.
     """
     course = get_object_or_404(models.Course, pk=course_id)
-    # course.tutors has the info of all of the users who are marked as tutors
-    # for this course
+    # course.tutors has the info of all of the users who are marked
+    # as tutors for this course
+    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')).order_by('-null_login', '-user__last_login')
     context = {
-        "tutors": course.tutors.all().order_by('-user__last_login'),
+        "tutors": tutors,
         "course_name": course,
         "day": timedelta(days=1),
         "week": timedelta(days=7),
