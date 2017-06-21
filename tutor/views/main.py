@@ -20,10 +20,11 @@ def tutors(request, course_id):
     the list of tutors on that course to the page.
     """
     course = get_object_or_404(models.Course, pk=course_id)
-    # course.tutors has the info of all of the users who are marked as tutors
-    # for this course
+    # course.tutors has the info of all of the users who are marked
+    # as tutors for this course
+    tutors = course.tutors.all().order_by('-user__last_login')
     context = {
-        "tutors": course.tutors.all().order_by('-user__last_login'),
+        "tutors": tutors,
         "course_name": course,
         "day": timedelta(days=1),
         "week": timedelta(days=7),
