@@ -9,7 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <h2> {{course_name}} Tutors:</h2>
+    {% load tutor_extras %}
+    <h3 style="padding-bottom: 30px"> {{course_name}} Tutors:</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
@@ -36,6 +37,28 @@
                 </td>
                 <td>
                     <a href="mailto:{{tutor.user.email}}">Email me!</a>
+                </td>
+                <td class="last-log">
+                    <small>
+                        Last Login: 
+                        {% comment %}
+                        This checks if a tutor has logged in in the
+                        last day.
+                        It uses a function in 
+                        tutor/templatetags/tutor_extras.py
+                        {% endcomment %}
+                        {% if tutor.user.last_login|add:day|datetime_ge:dnow %} 
+                            {{tutor.user.last_login|timesince}} ago
+                        {% comment %}
+                        Similar to the last clause, this one checks 
+                        if they have logged in within the last week
+                        {% endcomment %}
+                        {% elif tutor.user.last_login|add:week|datetime_ge:dnow %} 
+                            {{tutor.user.last_login|date:"l"}}
+                        {% else %}
+                            {{tutor.user.last_login|date:"m/d/y"}}
+                        {% endif %}
+                    </small> 
                 </td>
             </tr>
         {% endfor %}
