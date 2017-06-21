@@ -36,14 +36,18 @@
                 <td class="last-log">
                     <small>
                         Last Login: 
+                        {% if not tutor.user.last_login %}
+                            Never
+
                         {% comment %}
                         This checks if a tutor has logged in in the
                         last day.
                         It uses a function in 
                         tutor/templatetags/tutor_extras.py
                         {% endcomment %}
-                        {% if tutor.user.last_login|add:day|datetime_ge:dnow %} 
+                        {% elif tutor.user.last_login|add:day|datetime_ge:dnow %} 
                             {{tutor.user.last_login|timesince}} ago
+
                         {% comment %}
                         Similar to the last clause, this one checks 
                         if they have logged in within the last week
