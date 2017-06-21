@@ -1,10 +1,15 @@
 
-<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
 
 /* governs banner across all pages */
+
+body {
+  background-image: url('Studyingbooks.jpg');
+  padding: 0;
+}
+
 .banner {
     background-color: #85070A;
     background-image: url("REEDGRIFFIN.png");
@@ -29,7 +34,6 @@
 	font-family: times;
 }
 
-
 h1 {
 	color: white;
 	font-family: times;
@@ -41,13 +45,15 @@ h2 {
   font-family: 'Nunito', serif;
   font-size: 40px;
   text-align: center;
+  padding-top: 20px;
 }
 
 h3 {
 	font-family: 'Nunito', serif;
 	color: black;
   font-size: 20px;
-  padding-bottom: 3px;
+  padding-top: 30px;
+  padding-bottom: 25px;
   text-align: center;
 
 }
@@ -60,6 +66,7 @@ ul {
 	list-style-position: inside;
 	list-style-type: none;
   color: black;
+  margin: 10px 50px 20px 50px;
 }
 
 a:link {
@@ -71,101 +78,14 @@ a:visited {
 }
 a:hover {
 	color: black;
-=======
-/* governs banner across all pages */
-.bannerdiv {
-        margin: auto;
-        background-color: #A70E16;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-}
-#bannertext {
-        padding-top: 45px;
-        margin: auto;
-        font-size: 37.5px;
-        color: white;
-        font-family: times;
-        text-align: center;
-}
-/*#bannertext:hover {
-        color: #A70E16;
-        background-color: white;
-}*/
-
-h1 {
-        color: white;
-        text-decoration: underline overline;
-        font-family: times;
-        text-align: center;
-        letter-spacing: 4px;
-}
-h4, h3 {
-        font-family: times;
-        color: 	white;
-        text-align: center;
-        padding: 10px;
-}
-
-body {
-        background-color: #A70E16;
-}
-
-ul {
-        overflow: hidden;
-        line-height: 1.7;
-        text-align: center;
-        list-style-position: inside;
-        list-style-type: none;
-}
-
-a:link {
-        color: white;
-        text-decoration: none;
-}
-a:visited {
-        color: white;
-}
-a:hover {
-        color: black;
-}
-
-
-.courselisting {
-        margin: auto;
-        padding-top: 15px;
-        text-align: center;
-        font-size: 14px;
-        background-color: #A70E16;
-        text-decoration: none;
->>>>>>> f3b57925e4a07a68b75a8a324ff1955bf48240c0
 }
 
 
 /* governs text styling on start/stop page */
 .startstopgreetings {
-<<<<<<< HEAD
 	color: white;
 	font-family: times;
 	text-align: center;
-}
-
-.startstopwarning {
-		color: white;
-	text-align: center;
-	font-family: times;
-	font-style: italic;
-	font-size: 16px;
-	padding: 15px;
-	}
-
-
-/*governs the buttons on the start/stop tutoring page*/
-
-=======
-        color: white;
-        font-family: times;
-        text-align: center;
 }
 
 .startstopwarning {
@@ -177,18 +97,8 @@ font-size: 16px;
 padding: 15px;
 }
 
-#logoleft {
-        float: left;
-        border-radius: 120px;
-}
-
-#logoright {
-        float: right;
-        border-radius: 120px;
-}
 
 /*governs the buttons on the start/stop tutoring page*/
->>>>>>> f3b57925e4a07a68b75a8a324ff1955bf48240c0
 .buttondiv {
 	text-align: center;
 }
@@ -241,7 +151,7 @@ padding: 15px;
 	margin: auto;
 	color: white;
 	background-color: rgba(225, 225, 225, 0.4);
-  border: 2px solid white;
+  border: 2px solid #787562;
   border-radius: 2px;
 	padding-top: 20px;
   padding-bottom: 20px;
@@ -293,12 +203,7 @@ td { border: none !important; }
 }
 
 /* search function styling */
-.homepage {
-  background-image: url('Studyingbooks.jpg');
-  background-size:cover;
-  
 
-}
 
 .courselisting {
   text-align: center;
@@ -352,13 +257,8 @@ td { border: none !important; }
 }
 
 
-<<<<<<< HEAD
-
-
-
-=======
 /* last login element */
 .last-log {
-    text-align: left;
+    text-align: center;
 }
->>>>>>> f3b57925e4a07a68b75a8a324ff1955bf48240c0
+

@@ -10,14 +10,13 @@
 
 {% block content %}
     {% load tutor_extras %}
-    <h3 style="padding-bottom: 30px"> {{course_name}} Tutors:</h3>
+    <h3> {{course_name}} Tutors:</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
         <table class="table">
             <tr>
                 <th>Tutor</th>
-                <th>Status</th>
             </tr>
         {% for tutor in tutors %}
             <tr>
