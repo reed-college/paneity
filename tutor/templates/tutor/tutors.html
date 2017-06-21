@@ -34,7 +34,10 @@
                 </td>
                 <td>
                     <small>
-                        Last Login: {{tutor.user.last_login|timesince}} ago
+                        Last Login: 
+                        {% if dnow - tutor.user.last_login <= day %} 
+                            {{tutor.user.last_login|timesince}} ago
+                        {% endif %}
                     </small> 
                 </td>
             </tr>
