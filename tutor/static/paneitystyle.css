@@ -60,7 +60,7 @@ a:hover {
 
 .courselisting {
         margin: auto;
-        padding-top: 15px;
+        padding: 15px 0;
         text-align: center;
         font-size: 14px;
         background-color: #A70E16;
