@@ -19,8 +19,8 @@
                 <th>Status</th>
             </tr>
         {% for tutor in tutors %}
+            <tr>
             {% if tutor.user.first_name or tutor.user.last_name %}
-            <tr> 
                 <td>
                     {{tutor.user.first_name}}
                     {{tutor.user.last_name}}
@@ -32,13 +32,10 @@
             {% endif %}
 
                 <td>
-                    {% if tutor.profile_id %}
-                    <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat with me!</a>
-                    {% elif tutor.user.email %}
+                    <a href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
+                </td>
+                <td>
                     <a href="mailto:{{tutor.user.email}}">Email me!</a>
-                    {% else %}
-                    Can't chat
-                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

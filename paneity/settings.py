@@ -69,6 +69,7 @@ INSTALLED_APPS = [
 
     'djconfig',
     'haystack',
+    'django_private_chat',
 ]
 
 MIDDLEWARE = [
@@ -201,3 +202,7 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'search', 'whoosh_index'),
     },
 }
+
+# Stuff for django_private_chat
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
