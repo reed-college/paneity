@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from datetime import timedelta, datetime
+from django.utils import timezone
+from datetime import timedelta
 import tutor.models as models
 
 
@@ -26,7 +27,7 @@ def tutors(request, course_id):
         "course_name": course,
         "day": timedelta(days=1),
         "week": timedelta(days=7),
-        "dnow": datetime.now(),
+        "dnow": timezone.now(),
     }
 
     return render(
