@@ -2,7 +2,7 @@
 
 {% block head %}
     <title>
-        Paneity | Available Tutors
+        Paneity | {{course_name}} Tutors
     </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
@@ -10,7 +10,7 @@
 
 {% block content %}
     {% load tutor_extras %}
-    <h3> {{course_name}} Tutors:</h3>
+    <h3 id="tutortitle"> {{course_name}} Tutors</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
@@ -32,10 +32,10 @@
             {% endif %}
 
                 <td>
-                    <a href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
+                    <a class="tutorlink" href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
                 </td>
                 <td>
-                    <a href="mailto:{{tutor.user.email}}">Email me!</a>
+                    <a class="tutorlink" href="mailto:{{tutor.user.email}}">Email me!</a>
                 </td>
                 <td class="last-log">
                     <small>
