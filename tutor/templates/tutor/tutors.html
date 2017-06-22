@@ -1,22 +1,26 @@
 {% extends "tutor/base.html" %}
+{% block title %}
+{{course_name}} Tutors
+{% endblock %}
 
 {% block head %}
-    <title>
-        Paneity - Available Tutors
-    </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 {% endblock %}
 
 {% block content %}
-    <h3 style="padding-bottom: 30px"> {{course_name}} Tutors:</h3>
+    {% load tutor_extras %}
+    <h3 id="tutortitle"> {{course_name}} Tutors</h3>
 
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
         <table class="table">
-        {% for tutor in tutors %}
-            {% if tutor.user.first_name or tutor.user.last_name %}
             <tr>
+                <th>Tutor</th>
+            </tr>
+        {% for tutor in tutors %}
+            <tr>
+            {% if tutor.user.first_name or tutor.user.last_name %}
                 <td>
                     {{tutor.user.first_name}}
                     {{tutor.user.last_name}}
@@ -24,16 +28,40 @@
             {% else %}
                 <td>
                     {{tutor.user.username}}
-                </td>
+                </td> 
             {% endif %}
+
                 <td>
-                    {% if tutor.profile_id %}
-                    <a href="https://hangouts.google.com/chat/person/{{tutor.profile_id}}">Chat with me!</a>
-                    {% elif tutor.user.email %}
-                    <a href="mailto:{{tutor.user.email}}">Email me!</a>
-                    {% else %}
-                    Can't chat
-                    {% endif %}
+                    <a class="tutorlink" href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
+                </td>
+                <td>
+                    <a class="tutorlink" href="mailto:{{tutor.user.email}}">Email me!</a>
+                </td>
+                <td class="last-log">
+                    <small>
+                        Last Login: 
+                        {% if not tutor.user.last_login %}
+                            Never
+
+                        {% comment %}
+                        This checks if a tutor has logged in in the
+                        last day.
+                        It uses a function in 
+                        tutor/templatetags/tutor_extras.py
+                        {% endcomment %}
+                        {% elif tutor.user.last_login|add:day|datetime_ge:dnow %} 
+                            {{tutor.user.last_login|timesince}} ago
+
+                        {% comment %}
+                        Similar to the last clause, this one checks 
+                        if they have logged in within the last week
+                        {% endcomment %}
+                        {% elif tutor.user.last_login|add:week|datetime_ge:dnow %} 
+                            {{tutor.user.last_login|date:"l"}}
+                        {% else %}
+                            {{tutor.user.last_login|date:"m/d/y"}}
+                        {% endif %}
+                    </small> 
                 </td>
             </tr>
         {% endfor %}

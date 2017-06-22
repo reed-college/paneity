@@ -23,7 +23,10 @@ SECRET_KEY = 'gx%$r_#kkf!c61ojaz8bxi=g20m78&ifs&_%_k2i^r2efw4w-e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.ngrok.io',
+    'localhost',
+]
 
 
 # Application definition
@@ -69,6 +72,7 @@ INSTALLED_APPS = [
 
     'djconfig',
     'haystack',
+    'django_private_chat',
 ]
 
 MIDDLEWARE = [
@@ -201,3 +205,7 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'search', 'whoosh_index'),
     },
 }
+
+# Stuff for django_private_chat
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002

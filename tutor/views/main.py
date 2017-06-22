@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import Http404
-
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
+from datetime import timedelta
+from django.db.models import Count
 import tutor.models as models
 
 
@@ -18,16 +20,23 @@ def tutors(request, course_id):
     Then, if the course exists, it renders the tutors.html page and passes
     the list of tutors on that course to the page.
     """
-    try:
-        course = models.Course.objects.get(pk=course_id)
-    except models.Course.DoesNotExist:
-        raise Http404("Course does not exist")
-    # student_set has the info of all of the users who are marked as tutors
-    # for this course
+    course = get_object_or_404(models.Course, pk=course_id)
+    # course.tutors has the info of all of the users who are marked
+    # as tutors for this course
+    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')).order_by('-null_login', '-user__last_login')
+    context = {
+        "tutors": tutors,
+        "course_name": course,
+        "day": timedelta(days=1),
+        "week": timedelta(days=7),
+        "dnow": timezone.now(),
+    }
+
     return render(
         request,
         'tutor/tutors.html',
-        {"tutors": course.tutors.all(), "course_name": models.Course.objects.get(pk=course_id)})
+        context
+    )
 
 
 def startstop(request):

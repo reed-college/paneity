@@ -2,5 +2,5 @@
 
 It means the state of being bread 
 
-Tutoring Project
+You should take a look at our [wiki](https://github.com/reed-college/paneity/wiki)
 
