@@ -35,7 +35,6 @@ body {
 }
 
 h1 {
-<<<<<<< HEAD
 	color: white;
 	font-family: times;
 	letter-spacing: 2px;
@@ -154,18 +153,21 @@ padding: 15px;
 }
 
 #tutorsdiv {
-	margin: auto;
+	margin: 10px 170px 20px 170px;
 	color: black;
 	background-color: rgba(225, 225, 225, 0.2);
   border: 2px solid white;
   border-radius: 2px;
-	padding-top: 20px;
+	padding: 20px;
 	text-align: center;
+  overflow: scroll;
 
 }
 
 .table {
   font-family: "Crimson Text", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
 }
 
 th {
