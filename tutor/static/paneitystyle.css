@@ -12,7 +12,7 @@
         margin: auto;
         font-size: 37.5px;
         color: white;
-        font-family: times;
+        font-family: times, serif;
         text-align: center;
 }
 /*#bannertext:hover {
@@ -23,12 +23,12 @@
 h1 {
         color: white;
         text-decoration: underline overline;
-        font-family: times;
+        font-family: times, serif;
         text-align: center;
         letter-spacing: 4px;
 }
 h4, h3 {
-        font-family: times;
+        font-family: times, serif;
         color: 	white;
         text-align: center;
         padding: 10px;
@@ -71,14 +71,14 @@ a:hover {
 /* governs text styling on start/stop page */
 .startstopgreetings {
         color: white;
-        font-family: times;
+        font-family: times, serif;
         text-align: center;
 }
 
 .startstopwarning {
         color: white;
 text-align: center;
-font-family: times;
+font-family: times, serif;
 font-style: italic;
 font-size: 16px;
 padding: 15px;
