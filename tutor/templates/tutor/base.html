@@ -1,6 +1,9 @@
 <!doctype html>
 <html>
 <head>
+<title>
+Paneity - {% block title %}{% endblock %}
+</title>
 
 {% block bootstrap %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,6 +17,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 {% endblock %}
 
+{# main stylsheet #}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+{# stuff to make mobile friendly #}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 {% block head %}
 
 {% endblock %}
@@ -26,8 +35,8 @@
     	</div>
         <div id="bannerdiv">
     		<a href="{% url "tutor:index" %}">
-    			<img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-    			<img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+    			<img class="hidden-xs" id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
+    			<img class="hidden-xs" id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
     			<h1 id="bannertext">REED COLLEGE - Online Tutoring</h1>
     		</a>
     	</div>
