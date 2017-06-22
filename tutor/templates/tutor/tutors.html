@@ -1,9 +1,9 @@
 {% extends "tutor/base.html" %}
+{% block title %}
+Available Tutors
+{% endblock %}
 
 {% block head %}
-    <title>
-        Paneity - Available Tutors
-    </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 {% endblock %}
@@ -11,7 +11,6 @@
 {% block content %}
     {% load tutor_extras %}
     <h3 style="padding-bottom: 30px"> {{course_name}} Tutors:</h3>
-
     <div id="tutorsdiv">
     {# prints the first and last name of each tutor #}
         <table class="table">

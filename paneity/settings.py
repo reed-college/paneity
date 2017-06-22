@@ -25,6 +25,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '.ngrok.io',
+    'localhost',
 ]
 
 
