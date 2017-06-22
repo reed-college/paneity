@@ -13,7 +13,7 @@
 			font-size: 37.5px;
 			color: white;
 			font-family: times;
-			text-align: center;
+			text-align: center;	
 		}
 		/*#bannertext:hover {
 			color: #A70E16;
@@ -235,3 +235,41 @@ td { border: none !important; }
 #myUL li a:hover:not(.header) {
   background-color: #eee;
 }
+
+/* styling for drop-in tutoring + office hrs page */
+
+#dropindiv {
+	float: left; 
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+}
+
+#dropinheader, #officehrsheader {
+	text-align: center;
+	font-family: times;
+	color: maroon;
+}
+
+
+
+#officehrsdiv {
+	float:right;
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+}
+
+
