@@ -2,6 +2,10 @@
 <html>
 <head>
 <link rel="icon" href="../../static/REEDGRIFFIN.png"> 
+<title>
+Paneity | {% block title %}{% endblock %}
+</title>
+
 
 {% block bootstrap %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,6 +22,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Nunito|Crimson+Text"/>
 {% endblock %}
 
+{# main stylsheet #}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+{# stuff to make mobile friendly #}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 {% block head %}
 
 {% endblock %}
@@ -27,7 +37,6 @@
         <div id="bannerdiv">
     		<a href="{% url 'tutor:index' %}">
     			<h1 id="bannertext">REED COLLEGE</h1>
-    		</a>
     	</div>
         <div class="topnav" id="myTopnav">
             <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>

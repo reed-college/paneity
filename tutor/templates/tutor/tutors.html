@@ -1,9 +1,9 @@
 {% extends "tutor/base.html" %}
+{% block title %}
+{{course_name}} Tutors
+{% endblock %}
 
 {% block head %}
-    <title>
-        Paneity | {{course_name}} Tutors
-    </title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
 {% endblock %}

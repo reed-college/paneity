@@ -31,11 +31,11 @@ body {
 	margin: auto;
 	font-size: 30px;
 	color: white;
-	font-family: times;
+	font-family: times, serif;
 }
 
-
 h1 {
+<<<<<<< HEAD
 	color: white;
 	font-family: times;
 	letter-spacing: 2px;
@@ -90,14 +90,14 @@ a:hover {
 /* governs text styling on start/stop page */
 .startstopgreetings {
 	color: white;
-	font-family: times;
+	font-family: times, serif;
 	text-align: center;
 }
 
 .startstopwarning {
         color: white;
 text-align: center;
-font-family: times;
+font-family: times, serif;
 font-style: italic;
 font-size: 16px;
 padding: 15px;
@@ -160,8 +160,6 @@ padding: 15px;
   border: 2px solid white;
   border-radius: 2px;
 	padding-top: 20px;
-  padding-bottom: 20px;
-	width: 600px;
 	text-align: center;
 
 }
@@ -282,5 +280,10 @@ td .tutorlink:hover {
 /* last login element */
 .last-log {
     text-align: center;
+}
+
+
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
 }
 
