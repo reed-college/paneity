@@ -1,9 +1,8 @@
-
 * {
   box-sizing: border-box;
 }
 
-/* governs banner across all pages */
+		/* governs banner across all pages */
 
 body {
   background-image: url('Studyingbooks.jpg');
@@ -84,7 +83,6 @@ a:visited {
 a:hover {
 	color: black;
 }
-
 
 /* governs text styling on start/stop page */
 .startstopgreetings {
@@ -287,5 +285,52 @@ td .tutorlink:hover {
 
 @-moz-document url-prefix() {
     fieldset { display: table-cell; }
+    }
+
+
+/* styling for drop-in tutoring + office hrs page */
+
+#dropindiv {
+	float: left; 
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+	list-style-type: disc;
+}
+
+#dropinheader, #officehrsheader {
+	text-align: center;
+	font-family: times;
+	color: maroon;
+}
+
+#officehrsdiv {
+	float:right;
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+	list-style-type: disc;
+}
+
+#officehrsdiv li, #dropindiv li {
+	list-style-type: disc;
+}
+
+.dropinlink {
+	text-align: center;
+	font-family: times;
+	padding-top: 30px;
 }
 
