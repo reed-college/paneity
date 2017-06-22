@@ -249,6 +249,7 @@ td { border: none !important; }
 	font-family: times;
 	color: black;
 	text-align: center;
+	list-style-type: disc;
 }
 
 #dropinheader, #officehrsheader {
@@ -256,8 +257,6 @@ td { border: none !important; }
 	font-family: times;
 	color: maroon;
 }
-
-
 
 #officehrsdiv {
 	float:right;
@@ -270,6 +269,15 @@ td { border: none !important; }
 	font-family: times;
 	color: black;
 	text-align: center;
+	list-style-type: disc;
 }
 
+#officehrsdiv li, #dropindiv li {
+	list-style-type: disc;
+}
 
+.dropinlink {
+	text-align: center;
+	font-family: times;
+	padding-top: 30px;
+}
