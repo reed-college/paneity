@@ -1,4 +1,5 @@
 from django.test import TestCase
+from datetime import datetime
 from random import randint
 import tutor.templatetags.tutor_extras as tutor_extras
 from tutor.util import random_string
@@ -48,3 +49,18 @@ class GetVcLinkTestCase(TestCase):
 
             username1 = username3
             username2 = username4
+
+
+class DatetimeGeTestCase(TestCase):
+    """
+    tests on the datetime_ge function
+    """
+
+    def test_that_one_date_is_greater_than_other(self):
+        """
+        Pretty silly test, but it will make sure that the function
+        has basic functionaliy and doesn't get imported incorectly
+        """
+        dt1 = datetime(1980, 1, 1)
+        dt2 = datetime(1990, 1, 1)
+        self.assertTrue(tutor_extras.datetime_ge(dt2, dt1))
