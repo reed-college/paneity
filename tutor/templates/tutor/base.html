@@ -1,6 +1,11 @@
 <!doctype html>
 <html>
 <head>
+<link rel="icon" href="../../static/REEDGRIFFIN.png"> 
+<title>
+Paneity | {% block title %}{% endblock %}
+</title>
+
 
 {% block bootstrap %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,28 +17,34 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Google fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Nunito|Crimson+Text"/>
 {% endblock %}
+
+{# main stylsheet #}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+{# stuff to make mobile friendly #}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% block head %}
 
 {% endblock %}
 </head>
 <body>
-    <div class="container">
-        <div class="topnav" id="myTopnav">
-    	  	<a href="{% url "tutor:index" %}">Go to Tutoring Homepage</a>
-    	  	<a href="{% url "spirit:index" %}">Go to Forum</a>
-    	</div>
+    <div class="banner">
         <div id="bannerdiv">
-    		<a href="{% url "tutor:index" %}">
-    			<img id="logoleft" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-    			<img id="logoright" src=https://d28htnjz2elwuj.cloudfront.net/wp-content/uploads/2013/11/reed_college_logo.jpg height="130" width="130">
-    			<h1 id="bannertext">REED COLLEGE - Online Tutoring</h1>
-    		</a>
+    		<a href="{% url 'tutor:index' %}">
+    			<h1 id="bannertext">REED COLLEGE</h1>
     	</div>
+        <div class="topnav" id="myTopnav">
+            <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
+            <a href="{% url "spirit:index" %}">FORUM</a>
+        </div>
+    </div>
     {% block content %}
 
     {% endblock %}
-    </div>
 </body>
 </html>

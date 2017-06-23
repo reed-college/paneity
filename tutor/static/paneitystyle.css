@@ -1,100 +1,107 @@
+* {
+  box-sizing: border-box;
+}
 
 		/* governs banner across all pages */
-		.bannerdiv {
-			margin: auto;
-			background-color: #A70E16;
-			text-align: center;
-			white-space: nowrap;
-  			overflow: hidden;
-		}
-		#bannertext {
-			padding-top: 45px;
-			margin: auto;
-			font-size: 37.5px;
-			color: white;
-			font-family: times;
-			text-align: center;
-		}
-		/*#bannertext:hover {
-			color: #A70E16;
-			background-color: white;*/
-		}
 
-		h1 {
-			color: white;
-			text-decoration: underline overline;
-			font-family: times;
-			text-align: center;
-			letter-spacing: 4px;
-		}
-		h4, h3 {
-			font-family: times;
-			color: 	white;
-			text-align: center;
-			padding: 10px;
-		}
+body {
+  background-image: url('Studyingbooks.jpg');
+  padding: 0;
+}
 
-		body {
-			background-color: #A70E16;
-		}
+.banner {
+    background-color: #85070A;
+    background-image: url("REEDGRIFFIN.png");
+    background-repeat: no-repeat;
+    background-size: 140px 150px;
+    text-align: left;
+    padding-left: 85px;
+    padding-bottom: 20px;
 
-		ul {
-			overflow: hidden;
-			line-height: 1.7;
-			text-align: center;
-			list-style-position: inside;
-			list-style-type: none;
-		}
+}
 
-		a:link {
-			color: white;
-			text-decoration: none;
-		}
-		a:visited {
-			color: white;
-		}
-		a:hover {
-			color: black;
-		}
+.bannerdiv {
+	white-space: nowrap;
+		overflow: hidden;
+}
+
+#bannertext {
+	padding-top: 20px;
+	margin: auto;
+	font-size: 30px;
+	color: white;
+	font-family: times, serif;
+}
+
+h1 {
+	color: white;
+	font-family: times;
+	letter-spacing: 2px;
+}
+
+h2 {
+  color: black;
+  font-family: 'Nunito', serif;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 25px;
+}
+
+h3 {
+	font-family: 'Nunito', serif;
+	color: black;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+#tutortitle {
+  font-size: 25px;
+  margin-top: 60px;
+  margin-bottom: 27px;
+  font-weight: bold;
+}
+
+ul {
+	overflow: hidden;
+	line-height: 1.7;
+	text-align: center;
+	list-style-position: inside;
+	list-style-type: none;
+  color: black;
+  margin: 10px 50px 20px 50px;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+}
+a:hover {
+	color: black;
+}
+
+/* governs text styling on start/stop page */
+.startstopgreetings {
+	color: white;
+	font-family: times, serif;
+	text-align: center;
+}
+
+.startstopwarning {
+        color: white;
+text-align: center;
+font-family: times, serif;
+font-style: italic;
+font-size: 16px;
+padding: 15px;
+}
 
 
-		.courselisting {
-			margin: auto;
-			padding-top: 15px;
-			text-align: center;
-			font-size: 14px;
-			background-color: #A70E16;
-			text-decoration: none;
-		}
-
-
-	/* governs text styling on start/stop page */
-		.startstopgreetings {
-			color: white;
-			font-family: times;
-			text-align: center;
-		}
-
-		.startstopwarning {
-  			color: white;
-  		text-align: center;
-  		font-family: times;
-  		font-style: italic;
-  		font-size: 16px;
-  		padding: 15px;
-  		}
-
-		#logoleft {
-			float: left;
-			border-radius: 120px;
-		}
-
-		#logoright {
-			float: right;
-			border-radius: 120px;
-		}
-
-	/*governs the buttons on the start/stop tutoring page*/
+/*governs the buttons on the start/stop tutoring page*/
 .buttondiv {
 	text-align: center;
 }
@@ -144,45 +151,67 @@
 }
 
 #tutorsdiv {
-	margin: auto;
-	color: white;
-	background-color: #A70E16;
-	border: 5px dotted white;
-	border-radius: 30px;
-	padding-top: 20px;
-	width: 600px;
+	margin: 10px 170px 20px 170px;
+	color: black;
+	background-color: rgba(225, 225, 225, 0.2);
+  border: 2px solid white;
+  border-radius: 2px;
+	padding: 20px;
 	text-align: center;
+  overflow: scroll;
+
 }
 
-td { border: none !important; }
+.table {
+  font-family: "Crimson Text", sans-serif;
+  padding: 10px;
+  padding-right: 20px;
+}
 
+th {
+  text-align: center;
+  border: none !important;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+td {
+  border: none !important;
+  font-size: 18px;
+}
+
+td .tutorlink {
+  color: black;
+}
+
+td .tutorlink:hover {
+  color: #85070A;
+}
 /* NavBar style stuff */
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #A70E16; /* #333 */
     overflow: hidden;
-	text-align: center;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-/*    float: left; */
 	overflow: hidden;
     display: inline-block;
+    padding: 10px;
+    padding-left: 0;
+    padding-top: 2px;
     color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
-	font-family: 'Times';
+    font-size: 12px;
+	font-family: 'Myriad', sans-serif;
+    letter-spacing: 1px;
+    
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: white; /* #ddd */
-    color: #A70E16;
-    border-radius: 8px;
+  color: #787562;
 	transition-delay: .15s; /* delays for .15 seconds */
 	-webkit-transition-delay: .15s; /* ^for Safari & Chrome */
 }
@@ -195,43 +224,113 @@ td { border: none !important; }
 
 /* search function styling */
 
-* {
-  box-sizing: border-box;
+
+.courselisting {
+  text-align: center;
+  
 }
 
+
 #myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
+  background-image: url('search-icon.png');
+  background-position: 2px 0px;
+  background-size: 30px 30px;
   background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+  width: 50%;
+  font-size: 14px;
+  padding: 5px 20px 5px 40px;
+  border: 1px solid #787562;
+  margin-top: 10px;
 }
 
 #myUL {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding: 40px 80px 20px 80px;
 }
 
 #myUL li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
   color: black;
-  display: block
+  font-family: 'Lato', sans-serif;
+  display: block;
+  text-align: left;
 }
 
 #myUL li a.header {
-  background-color: #e2e2e2;
+  color: #85070A;
   cursor: default;
+  font-weight: bold;
+  border-bottom: 1px solid #787562;
+  text-align: left;
+  padding-left: 3px;
+
 }
 
 #myUL li a:hover:not(.header) {
-  background-color: #eee;
+  color: white;
 }
+
+#myUL li a.subheader {
+    color: black;
+}
+
+
+/* last login element */
+.last-log {
+    text-align: center;
+}
+
+
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
+    }
+
+
+/* styling for drop-in tutoring + office hrs page */
+
+#dropindiv {
+	float: left; 
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+	list-style-type: disc;
+}
+
+#dropinheader, #officehrsheader {
+	text-align: center;
+	font-family: times;
+	color: maroon;
+}
+
+#officehrsdiv {
+	float:right;
+	height: 700px;
+	width: 49%;
+	background-color: white;
+	border: 10px solid maroon;
+	border-radius: 10px;
+	box-shadow: 0px 0px 0px 1px black;
+	font-family: times;
+	color: black;
+	text-align: center;
+	list-style-type: disc;
+}
+
+#officehrsdiv li, #dropindiv li {
+	list-style-type: disc;
+}
+
+.dropinlink {
+	text-align: center;
+	font-family: times;
+	padding-top: 30px;
+}
+
