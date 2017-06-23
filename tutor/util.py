@@ -3,9 +3,15 @@ place for functions that will be used in other files
 """
 import re
 import os
+import random
+import string
 from base64 import urlsafe_b64encode
 from django.contrib.auth.models import User
 import tutor.models as models
+
+
+def random_string(n):
+    return ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=n))
 
 
 def add_connections(connections):
