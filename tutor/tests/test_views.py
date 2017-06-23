@@ -117,3 +117,28 @@ class AddUsersTestCase(TestCase):
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
         jim.delete()
+
+
+class DialogsTestCase(TestCase):
+    """
+    Tests for the dialogs view of django-private-chat
+    """
+
+    def setUp(self):
+        jim = User.objects.create_user("jim", password="baz")
+        jim.save()
+        fred = User.objects.create_user("fred", password="foo")
+        fred.save()
+
+    def tearDown(self):
+        jim = User.objects.get(username="jim")
+        fred = User.objects.get(username="fred")
+        jim.delete()
+        fred.delete()
+
+    def test_dialogs_doesnt_error(self):
+        self.client.login(username="jim", password="baz")
+        response = self.client.get(reverse('dialogs_detail', args=['fred']))
+        # Assert that its not an error code
+        self.assertTrue(response.status_code < 400)
+        self.assertTrue(response.status_code >= 200)
