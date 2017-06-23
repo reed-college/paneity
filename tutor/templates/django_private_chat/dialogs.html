@@ -45,7 +45,8 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-1">
-                        <a target="_blank" class="btn btn-success" href="https://meet.jit.si/this-will-be-replaced-later-19280912380912"> 
+                        {% load tutor_extras %}
+                        <a target="_blank" class="btn btn-success" href="{{ request.user.username|get_vc_link:opponent_username}}"> 
                             Start Video Call
                         </a>
                     </div>
