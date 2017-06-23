@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-xs-1">
                         {% load tutor_extras %}
-                        <a target="_blank" class="btn btn-success" href="{{ request.user.username|get_vc_link:opponent_username}}"> 
+                        <a id="btn-video-call" target="_blank" class="btn btn-success" href="{{ request.user.username|get_vc_link:opponent_username}}"> 
                             Start Video Call
                         </a>
                     </div>
@@ -265,6 +265,10 @@
                 if (!msg) return;
                 sendMessage($chatInput.val());
                 $chatInput.val('')
+            });
+
+            $('#btn-video-call').click(function (e) { 
+                sendMessage("I started a video call. You can access it <a target='_blank' href='{{ request.user.username|get_vc_link:opponent_username }}'>here</a>");
             });
 
             setupChatWebSocket();
