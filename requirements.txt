@@ -14,6 +14,7 @@ Pillow==4.1.1
 psycopg2==2.7.1
 pyparsing==2.2.0
 pytz==2017.2
+six==1.10.0
 uni-slugify==0.1.4
 Unidecode==0.4.20
 websockets==3.2
