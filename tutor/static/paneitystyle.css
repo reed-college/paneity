@@ -6,6 +6,7 @@
 
 body {
   background-image: url('Studyingbooks.jpg');
+  background-attachment: fixed;
   padding: 0;
 }
 
@@ -330,7 +331,17 @@ td .tutorlink:hover {
 
 .dropinlink {
 	text-align: center;
-	font-family: times;
-	padding-top: 30px;
+	font-family: 'Nunito';
+  font-size: 15px;
+	padding-top: 40px;
+  color: black;
 }
 
+.dropinlink a:visited {
+  color: black;
+}
+
+.dropinlink a:hover {
+  color: #85070A;
+
+}
