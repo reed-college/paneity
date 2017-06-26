@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 import tutor.models as models
 
 
@@ -48,5 +49,6 @@ def dropin(request):
     return render(request, 'tutor/dropin.html')
 
 
+@login_required
 def tutorchat(request):
     return render(request, 'tutor/tutorchat.html')

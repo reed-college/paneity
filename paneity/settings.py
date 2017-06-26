@@ -28,6 +28,9 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
+# Login url, will need to change to kerberos eventually
+LOGIN_URL = "/admin/"
+
 
 # Application definition
 
