@@ -23,7 +23,8 @@ def tutors(request, course_id):
     course = get_object_or_404(models.Course, pk=course_id)
     # course.tutors has the info of all of the users who are marked
     # as tutors for this course
-    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')).order_by('-null_login', '-user__last_login')
+    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')
+                                          ).order_by('-null_login', '-user__last_login')
     context = {
         "tutors": tutors,
         "course_name": course,
@@ -42,5 +43,10 @@ def tutors(request, course_id):
 def startstop(request):
     return render(request, 'tutor/startstop.html')
 
+
 def dropin(request):
     return render(request, 'tutor/dropin.html')
+
+
+def tutorchat(request):
+    return render(request, 'tutor/tutorchat.html')
