@@ -104,7 +104,10 @@ ENV/
 client_secrets.json
 
 # Whoosh searches
-paneity/search/
+/paneity/search/
 
 # Django staticfiles
-static/
+/static/
+
+# Mac os .DS_Store Files
+.DS_Store
