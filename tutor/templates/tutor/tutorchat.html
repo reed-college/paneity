@@ -3,8 +3,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-{% block css %}
-{% endblock css %}
 
 {% block content %}
     <input id="owner_username" type="hidden" value="{{ request.user.username }}">
@@ -17,19 +15,12 @@
                 <div class="panel-body">
                     <div class="user-list-div">
                         <ul style="list-style-type: none;">
-                            {% for dialog in object_list %}
+                            {% for student in students %}
                                 <li>
-                                    {% if dialog.owner == request.user %}
-                                        {% with dialog.opponent.username as username %}
-                                            <a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}"
-                                               class="btn btn-danger">{% trans "Chat with" %} {{ username }}</a>
-                                        {% endwith %}
-                                    {% else %}
-                                        {% with dialog.owner.username as username %}
-                                            <a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}"
-                                               class="btn btn-danger">{% trans "Chat with" %} {{ username }}</a>
-                                        {% endwith %}
-                                    {% endif %}
+                                    {% with student.user.username as username %}
+                                        <a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}"
+                                           class="btn btn-danger">{% trans "Chat with" %} {{ username }}</a>
+                                    {% endwith %}
                                 </li>
                             {% endfor %}
                         </ul>

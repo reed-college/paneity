@@ -67,5 +67,7 @@ def tutorchat(request):
         settings.CHAT_WS_SERVER_HOST,
         settings.CHAT_WS_SERVER_PORT,
     )
+    # Get list of students
+    context["students"] = models.Student.objects.all()
 
     return render(request, 'tutor/tutorchat.html', context)
