@@ -197,57 +197,9 @@
                         console.log(e);
                     }
 
-                    switch (packet.type) {
-                        case "new-dialog":
-                            // TODO: add new dialog to dialog_list
-                            break;
-                        case "user-not-found":
-                            // TODO: dispay some kind of an error that the user is not found
-                            break;
-                        case "gone-online":
-                            if (packet.usernames.indexOf(opponent_username) != -1) {
-                                gone_online();
-                            } else {
-                                gone_offline();
-                            }
-                            for (var i = 0; i < packet.usernames.length; ++i) {
-                                setUserOnlineOffline(packet.usernames[i], true);
-                            }
-                            break;
-                        case "gone-offline":
-                            if (packet.username == opponent_username) {
-                                gone_offline();
-                            }
-                            setUserOnlineOffline(packet.username, false);
-                            break;
-                        case "new-message":
-                            var username = packet['sender_name'];
-                           if (username == opponent_username || username == $("#owner_username").val()){
-                                addNewMessage(packet);
-                            } else {
-                                if ($("#user-"+username).length == 0){
-                                    var new_button = $(''+
-                                        '<a href="/'+ username + '"' +
-                                        'id="user-'+username+'" class="btn btn-danger">{% trans "Chat with" %} '+username+'</a>');
-                                    $("#user-list-div").find("ul").append()
-                                }
-                                flash_user_button(username);
-
-                            }
-                            break;
-                        case "opponent-typing":
-                            var typing_elem = $('#typing-text');
-                            if (!typing_elem.is(":visible")) {
-                                typing_elem.fadeIn(500);
-                            } else {
-                                typing_elem.stop(true);
-                                typing_elem.fadeIn(0);
-                            }
-                            typing_elem.fadeOut(3000);
-                            break;
-
-                        default:
-                            console.log('error: ', event)
+                    if (packet.type == "new-message") {
+                        var username = packet['sender_name'];
+                        flash_user_button(username);
                     }
                 }
             }
