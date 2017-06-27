@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
@@ -59,4 +60,12 @@ def tutorchat(request):
         return render(request, 'error/403.html', status=403)
     if not request.user.student.tutor:
         return render(request, 'error/403.html', status=403)
-    return render(request, 'tutor/tutorchat.html')
+
+    # Get websocket server
+    context = {}
+    context['ws_server_path'] = 'ws://{}:{}/'.format(
+        settings.CHAT_WS_SERVER_HOST,
+        settings.CHAT_WS_SERVER_PORT,
+    )
+
+    return render(request, 'tutor/tutorchat.html', context)
