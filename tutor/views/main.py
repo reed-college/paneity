@@ -56,9 +56,11 @@ def tutorchat(request):
     Page for tutors to get messaged
     """
     # you need to be a tutor to access this page
-    if not getattr(request.user, 'student', False):
+    if request.user.is_superuser:
+        pass
+    elif not getattr(request.user, 'student', False):
         return render(request, 'error/403.html', status=403)
-    if not request.user.student.tutor:
+    elif not request.user.student.tutor:
         return render(request, 'error/403.html', status=403)
 
     # Get websocket server
