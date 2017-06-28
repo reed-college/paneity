@@ -144,42 +144,6 @@
                 }
             }
 
-            function sendMessage(message) {
-                var opponent_username = getOpponnentUsername();
-                var newMessagePacket = JSON.stringify({
-                    type: 'new-message',
-                    session_key: '{{ request.session.session_key }}',
-                    username: opponent_username,
-                    message: message
-                });
-                websocket.send(newMessagePacket)
-            }
-
-            $('#chat-message').keypress(function (e) {
-                if (e.which == 13 && this.value) {
-                    sendMessage(this.value);
-                    this.value = "";
-                    return false
-                } else {
-                    var opponent_username = getOpponnentUsername();
-                    var packet = JSON.stringify({
-                        type: 'is-typing',
-                        session_key: '{{ request.session.session_key }}',
-                        username: opponent_username,
-                        typing: true
-                    });
-                    websocket.send(packet);
-                }
-            });
-
-            $('#btn-send-message').click(function (e) {
-                var $chatInput = $('#chat-message');
-                var msg = $chatInput.val();
-                if (!msg) return;
-                sendMessage($chatInput.val());
-                $chatInput.val('')
-            });
-
             setupChatWebSocket();
         });
 
@@ -198,14 +162,13 @@
             }
         }
 
-        // this will flash the title of the window
+        // stop flashing once window is in focus
         $(window).on("blur focus", function(e) {
             var prevType = $(this).data("prevType");
 
             if (prevType != e.type) {   //  reduce double fire issues
                 switch (e.type) {
                     case "blur":
-                        flash();
                         break;
                     case "focus":
                         isNewMessage = false;
