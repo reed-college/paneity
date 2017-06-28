@@ -24,6 +24,15 @@
             No students have messaged you yet.
         </div> 
     </div>
+    <div id="new-message-template" class="hidden">
+        <div class="alert alert-success" role="alert">
+            <b>Hey!</b> You got a new message from [username].
+            {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
+            <a href='{% url "dialogs" %}[username]' target="_blank" class="alert-link">
+                You can view the message and reply here.
+            </a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}
@@ -132,7 +141,8 @@
 
                     if (packet.type == "new-message") {
                         var username = packet['sender_name'];
-                        flash_user_button(username);
+                        var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
+                        $("#new-message-div").html(newm);
                         isNewMessage = true;
                         flash();
                     }
