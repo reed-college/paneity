@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 import tutor.models as models
 
 
@@ -23,7 +25,8 @@ def tutors(request, course_id):
     course = get_object_or_404(models.Course, pk=course_id)
     # course.tutors has the info of all of the users who are marked
     # as tutors for this course
-    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')).order_by('-null_login', '-user__last_login')
+    tutors = course.tutors.all().annotate(null_login=Count('user__last_login')
+                                          ).order_by('-null_login', '-user__last_login')
     context = {
         "tutors": tutors,
         "course_name": course,
@@ -42,5 +45,31 @@ def tutors(request, course_id):
 def startstop(request):
     return render(request, 'tutor/startstop.html')
 
+
 def dropin(request):
     return render(request, 'tutor/dropin.html')
+
+
+@login_required
+def tutorchat(request):
+    """
+    Page for tutors to get messaged
+    """
+    # you need to be a tutor to access this page
+    if request.user.is_superuser:
+        pass
+    elif not getattr(request.user, 'student', False):
+        return render(request, 'error/403.html', status=403)
+    elif not request.user.student.tutor:
+        return render(request, 'error/403.html', status=403)
+
+    # Get websocket server
+    context = {}
+    context['ws_server_path'] = 'ws://{}:{}/'.format(
+        settings.CHAT_WS_SERVER_HOST,
+        settings.CHAT_WS_SERVER_PORT,
+    )
+    # Get list of students
+    context["students"] = models.Student.objects.all()
+
+    return render(request, 'tutor/tutorchat.html', context)

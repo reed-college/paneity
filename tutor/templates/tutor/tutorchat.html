@@ -1,0 +1,186 @@
+{# This template is here just to demonstrate how to customize the default one. #}
+{# It has none to very few changes #}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title%} 
+    You are a Tutor
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Tutoring page</h1>
+        <p>
+        If you receive a message from a student, you will be alerted here:
+        </p>
+        <div id="new-message-div">
+            
+
+        </div>
+    </div>
+    <div id="no-messages-template" class="hidden">
+        <div class="alert alert-danger" role="alert">
+            No students have messaged you yet.
+        </div> 
+    </div>
+    <div id="new-message-template" class="hidden">
+        <div class="alert alert-success" role="alert">
+            <b>Hey!</b> You got a new message from [username].
+            {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
+            <a href='{% url "dialogs" %}[username]' target="_blank" class="alert-link">
+                You can view the message and reply here.
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        var base_ws_server_path = "{{ ws_server_path }}";
+        $(document).ready(function () {
+
+            // tell user they have no messages
+            $("#new-message-div").html($("#no-messages-template").html());
+
+            var websocket = null;
+
+            function getOpponnentUsername() {
+                return "{{ opponent_username }}";
+            }
+
+            // TODO: Use for adding new dialog
+            function addNewUser(packet) {
+                $('#user-list').html('');
+                packet.value.forEach(function (userInfo) {
+                    if (userInfo.username == getUsername()) return;
+                    var tmpl = Handlebars.compile($('#user-list-item-template').html());
+                    $('#user-list').append(tmpl(userInfo))
+                });
+            }
+
+            function generateMessage(context) {
+                var tmpl = Handlebars.compile($('#chat-message-template').html());
+                return tmpl({msg: context})
+            }
+
+            function setUserOnlineOffline(username, online) {
+                var elem = $("#user-" + username);
+                if (online) {
+                    elem.attr("class", "btn btn-success");
+                } else {
+                    elem.attr("class", "btn btn-danger");
+                }
+            }
+
+            function gone_online() {
+                $("#offline-status").hide();
+                $("#online-status").show();
+            }
+
+            function gone_offline() {
+                $("#online-status").hide();
+                $("#offline-status").show();
+            }
+            function flash_user_button(username){
+                var btn = $("#user-"+username);
+                btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
+            }
+            function flash_title(username){
+                var title = $("title");
+            }
+            function setupChatWebSocket() {
+                var opponent_username = getOpponnentUsername();
+                websocket = new WebSocket(base_ws_server_path + '{{ request.session.session_key }}/' + opponent_username);
+
+                websocket.onopen = function (event) {
+                    var opponent_username = getOpponnentUsername();
+
+                    var onOnlineCheckPacket = JSON.stringify({
+                        type: "check-online",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username
+                        {#                      Sending username because the user needs to know if his opponent is online #}
+                    });
+                    var onConnectPacket = JSON.stringify({
+                        type: "online",
+                        session_key: '{{ request.session.session_key }}'
+
+                    });
+
+                    console.log('connected, sending:', onConnectPacket);
+                    websocket.send(onConnectPacket);
+                    console.log('checking online opponents with:', onOnlineCheckPacket);
+                    websocket.send(onOnlineCheckPacket);
+                };
+
+
+                window.onbeforeunload = function () {
+
+                    var onClosePacket = JSON.stringify({
+                        type: "offline",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username,
+                        {# Sending username because to let opponnent know that the user went offline #}
+                    });
+                    console.log('unloading, sending:', onClosePacket);
+                    websocket.send(onClosePacket);
+                    websocket.close();
+                };
+
+
+                websocket.onmessage = function (event) {
+                    var packet;
+
+                    try {
+                        packet = JSON.parse(event.data);
+                        console.log(packet)
+                    } catch (e) {
+                        console.log(e);
+                    }
+
+                    if (packet.type == "new-message") {
+                        var username = packet['sender_name'];
+                        var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
+                        $("#new-message-div").html(newm);
+                        isNewMessage = true;
+                        flash();
+                    }
+                }
+            }
+
+            setupChatWebSocket();
+        });
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // flashes the title once there is a new message
+        async function flash() {
+            var oldtitle = document.title;
+            while (isNewMessage) {
+                await sleep(1000);
+                document.title="New Message";
+                await sleep(1000);
+                document.title=oldtitle;
+            }
+        }
+
+        // stop flashing once window is in focus
+        $(window).on("blur focus", function(e) {
+            var prevType = $(this).data("prevType");
+
+            if (prevType != e.type) {   //  reduce double fire issues
+                switch (e.type) {
+                    case "blur":
+                        break;
+                    case "focus":
+                        isNewMessage = false;
+                        break;
+                }
+            }
+            $(this).data("prevType", e.type);
+        })
+    </script>
+{% endblock %}

@@ -77,3 +77,66 @@ class DialogsTestCase(TestCase):
         # Assert that its not an error code
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
+
+
+class TutorChatTestCase(TestCase):
+
+    def test_redirects_if_not_logged_in(self):
+        """
+        The page should redirect you if you're not logged in
+        """
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_normal_user_cant_access_page(self):
+        """
+        Makes sure that non-tutors get a 403
+        """
+        bob = User.objects.create_user("bob", password="bar")
+        bob.save()
+        self.client.login(username="bob", password="bar")
+        # bob doesn't have the right permissions
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertEqual(response.status_code, 403)
+        bob.delete()
+
+    def test_student_cant_access_page(self):
+        """
+        This just checks that if you are a use with a student object,
+        you still can't access the page
+        """
+        johnny = User.objects.create_user("johnny", password="foo")
+        johnny.save()
+        models.Student.objects.create(user=johnny)
+        self.client.login(username="johnny", password="foo")
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertEqual(response.status_code, 403)
+        johnny.delete()
+
+    def test_tutor_can_access_page(self):
+        """
+        Tutors should be able to access the page
+        """
+        mark = User.objects.create_user("mark", password="ohhai")
+        mark.save()
+        stu = models.Student.objects.create(user=mark)
+        stu.tutor = True
+        stu.save()
+        self.client.login(username="mark", password="ohhai")
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertTrue(response.status_code < 400)
+        self.assertTrue(response.status_code >= 200)
+        mark.delete()
+
+    def test_superuser_can_access_page(self):
+        """
+        Super Users should be able to access the page
+        """
+        lisa = User.objects.create_user("lisa", password="tear")
+        lisa.is_superuser = True
+        lisa.save()
+        self.client.login(username="lisa", password="tear")
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertTrue(response.status_code < 400)
+        self.assertTrue(response.status_code >= 200)
+        lisa.delete()
