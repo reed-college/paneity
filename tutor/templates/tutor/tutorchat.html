@@ -138,6 +138,8 @@
                     if (packet.type == "new-message") {
                         var username = packet['sender_name'];
                         flash_user_button(username);
+                        isNewMessage = true;
+                        flash();
                     }
                 }
             }
@@ -185,11 +187,11 @@
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        // flashes the title once
+        // flashes the title once there is a new message
         async function flash() {
-            for (;;) {
+            var oldtitle = document.title;
+            while (isNewMessage) {
                 await sleep(1000);
-                var oldtitle = $(document).title;
                 document.title="New Message";
                 await sleep(1000);
                 document.title=oldtitle;
@@ -206,6 +208,7 @@
                         flash();
                         break;
                     case "focus":
+                        isNewMessage = false;
                         break;
                 }
             }
