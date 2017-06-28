@@ -4,6 +4,10 @@
 {% load static %}
 {% load i18n %}
 
+{% block title%} 
+    You are a Tutor
+{% endblock %}
+
 {% block content %}
     <input id="owner_username" type="hidden" value="{{ request.user.username }}">
     <div class="container">
@@ -102,6 +106,9 @@
                 var btn = $("#user-"+username);
                 btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
             }
+            function flash_title(username){
+                var title = $("title");
+            }
             function setupChatWebSocket() {
                 var opponent_username = getOpponnentUsername();
                 websocket = new WebSocket(base_ws_server_path + '{{ request.session.session_key }}/' + opponent_username);
@@ -196,7 +203,6 @@
             });
 
             setupChatWebSocket();
-            scrollToLastMessage();
         });
 
     </script>
