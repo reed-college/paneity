@@ -55,30 +55,6 @@
                 });
             }
 
-            function addNewMessage(packet) {
-                var msg_class = "";
-                if (packet['sender_name'] == $("#owner_username").val()) {
-                    msg_class = "pull-left";
-                } else {
-                    msg_class = "pull-right";
-                }
-                var msgElem =
-                    $('<div class="row">' +
-                        '<p class="' + msg_class + '">' +
-                        '<span class="username">' + packet['sender_name'] + ': </span>' +
-                        packet['message'] +
-                        ' <span class="timestamp">&ndash; <span data-livestamp="' + packet['created'] + '"> ' + packet['created'] + '</span></span> ' +
-                        '</p> ' +
-                        '</div>');
-                $('#messages').append(msgElem);
-                scrollToLastMessage()
-            }
-
-            function scrollToLastMessage() {
-                var $msgs = $('#messages');
-                $msgs.animate({"scrollTop": $msgs.prop('scrollHeight')})
-            }
-
             function generateMessage(context) {
                 var tmpl = Handlebars.compile($('#chat-message-template').html());
                 return tmpl({msg: context})
@@ -205,5 +181,35 @@
             setupChatWebSocket();
         });
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // flashes the title once
+        async function flash() {
+            for (;;) {
+                await sleep(1000);
+                var oldtitle = $(document).title;
+                document.title="New Message";
+                await sleep(1000);
+                document.title=oldtitle;
+            }
+        }
+
+        // this will flash the title of the window
+        $(window).on("blur focus", function(e) {
+            var prevType = $(this).data("prevType");
+
+            if (prevType != e.type) {   //  reduce double fire issues
+                switch (e.type) {
+                    case "blur":
+                        flash();
+                        break;
+                    case "focus":
+                        break;
+                }
+            }
+            $(this).data("prevType", e.type);
+        })
     </script>
 {% endblock %}
