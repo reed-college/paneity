@@ -77,3 +77,25 @@ class DialogsTestCase(TestCase):
         # Assert that its not an error code
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
+
+
+class TutorChatTestCase(TestCase):
+
+    def test_redirects_if_not_logged_in(self):
+        """
+        The page should redirect you if you're not logged in
+        """
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertEqual(response.status_code, 302)
+
+    def test_normal_user_cant_access_page(self):
+        """
+        Makes sure that non-tutors get a 403
+        """
+        bob = User.objects.create_user("bob", password="bar")
+        bob.save()
+        self.client.login(username="bob", password="bar")
+        # bob doesn't have the right permissions
+        response = self.client.get(reverse('tutor:tutorchat'))
+        self.assertEqual(response.status_code, 403)
+        bob.delete()
