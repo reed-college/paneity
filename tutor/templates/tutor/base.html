@@ -34,10 +34,19 @@ Paneity | {% block title %}{% endblock %}
 </head>
 <body>
     <div class="banner">
-        <div id="bannerdiv">
-    		<a href="{% url 'tutor:index' %}">
-    			<h1 id="bannertext">REED COLLEGE</h1>
-    	</div>
+        <div class="row">
+            <div class="col-lg-2 pull-right">
+                <small>
+                    <a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
+                <small>
+            </div>
+            <div class="col-lg-3">
+                <div id="bannerdiv">
+                        <a href="{% url 'tutor:index' %}">
+                                <h1 id="bannertext">REED COLLEGE</h1>
+                </div>
+            </div>
+        </div>
         <div class="topnav" id="myTopnav">
             <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
             <a href="{% url "spirit:index" %}">FORUM</a>
@@ -46,5 +55,7 @@ Paneity | {% block title %}{% endblock %}
     {% block content %}
 
     {% endblock %}
+
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

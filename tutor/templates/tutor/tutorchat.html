@@ -1,8 +1,7 @@
-{# This template is here just to demonstrate how to customize the default one. #}
-{# It has none to very few changes #}
-{% extends "base.html" %}
+{% extends "tutor/base.html" %}
 {% load static %}
 {% load i18n %}
+{% load tutor_extras %}
 
 {% block title%} 
     You are a Tutor
@@ -10,7 +9,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>Tutoring page</h1>
+        <h2>Tutoring page</h2>
         <p>
         If you receive a message from a student, you will be alerted here:
         </p>
@@ -18,14 +17,29 @@
             
 
         </div>
+        <div id="old-message-div">
+            {% for dialog in dialogs %}
+                {# this part figures out if the current user is the opponent, #}
+                {# or the owner of the dialog #}
+                {% with username=dialog|other_username:request.user.username %}
+                    <div id="{{username}}-alert" class="alert alert-info" role="alert">
+                        Continue Your conversation with <b>{{username}}</b>
+                        <a href='{% url "dialogs_detail" username %}' target="_blank" class="alert-link">
+                            Click Here!
+                        </a>
+                    </div>
+            
+                    {% endwith %}
+            {% endfor %}
+        </div>
     </div>
     <div id="no-messages-template" class="hidden">
-        <div class="alert alert-danger" role="alert">
+        <div id="no-messages-alert" class="alert alert-danger" role="alert">
             No students have messaged you yet.
         </div> 
     </div>
     <div id="new-message-template" class="hidden">
-        <div class="alert alert-success" role="alert">
+        <div id="[username]-alert" class="alert alert-success" role="alert">
             <b>Hey!</b> You got a new message from [username].
             {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
             <a href='{% url "dialogs" %}[username]' target="_blank" class="alert-link">
@@ -41,7 +55,9 @@
         $(document).ready(function () {
 
             // tell user they have no messages
-            $("#new-message-div").html($("#no-messages-template").html());
+            if ($("#old-message-div").html().replace(/\s/g,'') == ""){
+                $("#new-message-div").html($("#no-messages-template").html());
+            }
 
             var websocket = null;
 
@@ -141,7 +157,12 @@
 
                     if (packet.type == "new-message") {
                         var username = packet['sender_name'];
+                        // remove no message div and any message div with the same username
+                        $("#no-messages-alert").remove()
+                        $("#"+username+"-alert").remove()
+                        // add new message to new message div
                         var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
+                        newm = newm + $("#new-message-div").html();
                         $("#new-message-div").html(newm);
                         isNewMessage = true;
                         flash();
