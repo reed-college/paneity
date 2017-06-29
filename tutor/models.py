@@ -66,6 +66,9 @@ class Course(models.Model):
     title = models.CharField(
         max_length=100,
         help_text="(i.e. Ancient Mediterranean, or Intro to Economic Analysis)")
+    office_hours = models.CharField(max_length = 1000, help_text = "(i.e. Eliot 314 M 15:00-17:00, WTh 11:00-11:30)", blank=True)
+    drop_in_hrs = models.CharField(max_length = 1000, help_text = "(i.e. Lib 389 MTWThF 19:00-21:00)", blank = True)
+
 
     def __str__(self):
         return "{} {}".format(self.subject.abbreviation, self.number)
