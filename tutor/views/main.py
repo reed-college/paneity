@@ -3,7 +3,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.contrib.auth.decorators import login_required
 import tutor.models as models
 
@@ -75,8 +75,26 @@ def tutorchat(request):
     # This is gonna get weird because the tutor may be the
     # 'owner' of a conversation or the 'opponent' of a
     # conversation.
-    diags = request.user.selfDialogs.all()
-    alldialogs = request.user.dialog_set.all().union(diags)
-    context['dialogs'] = alldialogs
+
+    # These are the dialogs that the user owns
+    ownerds = request.user.selfDialogs.annotate(
+        lastm=Max("messages__modified"), null_m=Count("messages__dialog_id", distinct=True))
+    # These are the dialogs that the user is in but does not own
+    opponentds = request.user.dialog_set.annotate(
+        lastm=Max("messages__modified"), null_m=Count("messages__dialog_id", distinct=True))
+    # Note how the operations are the same for both of the above
+    # querysets. 'lastm' will be returns the timestamp of the
+    # most recent message in the conversation
+    # 'null_m' will be how many distinct dialog_ids each message has
+    # (Which will be either 0 or 1 since we are only looking at the
+    #  messages from one dialog). This will be used to tell if the
+    # dialog has messages or not
+
+    dialogs = ownerds.union(opponentds).order_by("-null_m", "-lastm")
+    # The above line combines the two querysets and orders them
+    # first by whether or not they have messages and then by their
+    # most recent message
+
+    context['dialogs'] = dialogs
 
     return render(request, 'tutor/tutorchat.html', context)
