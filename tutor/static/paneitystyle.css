@@ -163,6 +163,12 @@ padding: 15px;
 
 }
 
+#hours{
+    text-align: center;
+    vertical-align: middle;
+
+}
+
 .table {
   font-family: "Crimson Text", sans-serif;
   padding: 10px;
