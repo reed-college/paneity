@@ -270,8 +270,9 @@ td .tutorlink:hover {
 }
 
 #myUL li a:hover:not(.header) {
-  color: white;
-}
+  color: black; /*changed from white, so the course name is still visible on hover*/
+  text-shadow: 2px 2px 3px #85070A;
+
 
 #myUL li a.subheader {
     color: black;
