@@ -64,3 +64,40 @@ class DatetimeGeTestCase(TestCase):
         dt1 = datetime(1980, 1, 1)
         dt2 = datetime(1990, 1, 1)
         self.assertTrue(tutor_extras.datetime_ge(dt2, dt1))
+
+
+class mock_dialog:
+
+    def __init__(self, owner, opponent):
+        self.owner = owner
+        self.opponent = opponent
+
+
+class mock_user:
+
+    def __init__(self, username):
+        self.username = username
+
+
+class OtherUsernameTestCase(TestCase):
+
+    def test_basic_functionality(self):
+        """
+        tests if it will return the opposite username
+        """
+        j = mock_user("johnny")
+        m = mock_user("mark")
+        d = mock_dialog(m, j)
+        self.assertEqual(tutor_extras.other_username(d, j.username), m.username)
+        self.assertEqual(tutor_extras.other_username(d, m.username), j.username)
+
+    def test_throws_error_when_given_invalid_username(self):
+        """
+        if the passed username is not a memeber of the passed dialog,
+        then the function should throw an error
+        """
+        j = mock_user("johnny")
+        m = mock_user("mark")
+        d = mock_dialog(m, j)
+        with self.assertRaisesMessage(RuntimeError, "Username lisa not present in dialog"):
+            tutor_extras.other_username(d, "lisa")
