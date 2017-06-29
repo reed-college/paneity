@@ -13,20 +13,25 @@ Homepage
 		<h3> To find a tutor, please select a course from the list below: </h3>
 			<div class="courselisting">
 				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="SEARCH FOR COURSES..." title="Type in a course or subject name">
-				<ul id="myUL">
-					{% for subject in Subjects %}
-						<li>
-						<a href="#" class="header">{{subject}}</a>
-						</li>
-						{% for classes in subject.course_set.all %}
-							<li><a href = "{{classes.id}}/tutors" class="subheader">{{classes}}</a></li>
+                    <ul id="myUL">
+                        <li><a href="#" class="header">Enrolled Courses</a></li>
+                        {% for course in request.user.student.enrolled_classes.all %}
+                            <li><a href = "{{course.id}}/tutors" class="subheader">{{course}}</a></li>
+                        {% endfor %}
+                    </ul>
 
-						{% endfor %}
-					{% endfor %}
-				</ul>
+                    <ul id="myUL">
+    					{% for subject in Subjects %}
+    						<li><a href="#" class="header">{{subject}}</a></li>
+    						{% for classes in subject.course_set.all %}
+    							<li><a href = "{{classes.id}}/tutors" class="subheader">{{classes}}</a></li>
+
+    						{% endfor %}
+    					{% endfor %}
+    				</ul>
 			</div>
 	</div>
-	
+
 
 	<script>
 	function myFunction() {
