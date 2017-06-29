@@ -18,9 +18,7 @@ Homepage
                         {% for course in request.user.student.enrolled_classes.all %}
                             <li><a href = "{{course.id}}/tutors" class="subheader">{{course}}</a></li>
                         {% endfor %}
-                    </ul>
-
-                    <ul id="myUL">
+                    
     					{% for subject in Subjects %}
     						<li><a href="#" class="header">{{subject}}</a></li>
     						{% for classes in subject.course_set.all %}
