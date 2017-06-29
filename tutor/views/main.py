@@ -69,7 +69,14 @@ def tutorchat(request):
         settings.CHAT_WS_SERVER_HOST,
         settings.CHAT_WS_SERVER_PORT,
     )
-    # Get list of students
-    context["students"] = models.Student.objects.all()
+
+    # I am getting all of the conversations the tutor is
+    # involved in.
+    # This is gonna get weird because the tutor may be the
+    # 'owner' of a conversation or the 'opponent' of a
+    # conversation.
+    diags = request.user.selfDialogs.all()
+    alldialogs = request.user.dialog_set.all().union(diags)
+    context['dialogs'] = alldialogs
 
     return render(request, 'tutor/tutorchat.html', context)

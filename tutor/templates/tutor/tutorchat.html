@@ -3,6 +3,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% load tutor_extras %}
 
 {% block title%} 
     You are a Tutor
@@ -17,6 +18,21 @@
         <div id="new-message-div">
             
 
+        </div>
+        <div id="old-message-div">
+            {% for dialog in dialogs %}
+                {# this part figures out if the current user is the opponent, #}
+                {# or the owner of the dialog #}
+                {% with username=dialog|other_username:request.user.username %}
+                    <div class="alert alert-info" role="alert">
+                        <b>Hey!</b> You got a new message from {{username}}
+                        <a href='{% url "dialogs_detail" username %}' target="_blank" class="alert-link">
+                            You can view the message and reply here.
+                        </a>
+                    </div>
+            
+                    {% endwith %}
+            {% endfor %}
         </div>
     </div>
     <div id="no-messages-template" class="hidden">

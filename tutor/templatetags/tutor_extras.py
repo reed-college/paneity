@@ -32,3 +32,19 @@ def get_vc_link(username1, username2):
     if h1 < h2:
         return "{}{}-{}".format(VC_LINK_BASE, h1, h2)
     return "{}{}-{}".format(VC_LINK_BASE, h2, h1)
+
+
+@register.filter
+def other_username(dialog, username):
+    """
+    This takes a django-private-chat dialog and a username and
+    returns the username of the memeber of this dialog that doesnt
+    match the variable, 'username'
+    """
+    if dialog.opponent.username == username:
+        return dialog.owner.username
+    elif dialog.owner.username == username:
+        return dialog.opponent.username
+    else:
+        errortext = "Username {} not present in dialog".format(username)
+        raise RuntimeError(errortext)
