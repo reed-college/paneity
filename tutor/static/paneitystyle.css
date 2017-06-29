@@ -65,11 +65,11 @@ h3 {
 }
 
 ul {
-	overflow: hidden;
-	line-height: 1.7;
-	text-align: center;
-	list-style-position: inside;
-	list-style-type: none;
+    overflow: hidden;
+    line-height: 1.7;
+    text-align: center;
+    list-style-position: inside;
+    list-style-type: none;
   color: black;
   margin: 10px 50px 20px 50px;
 }
@@ -207,7 +207,7 @@ td .tutorlink:hover {
     font-size: 12px;
 	font-family: 'Myriad', sans-serif;
     letter-spacing: 1px;
-    
+
 }
 
 /* Change the color of links on hover */
@@ -228,7 +228,7 @@ td .tutorlink:hover {
 
 .courselisting {
   text-align: center;
-  
+
 }
 
 
@@ -246,7 +246,7 @@ td .tutorlink:hover {
 
 #myUL {
   list-style-type: none;
-  padding: 40px 80px 20px 80px;
+  padding: 0px 80px 20px 80px;
 }
 
 #myUL li a {
@@ -270,8 +270,9 @@ td .tutorlink:hover {
 }
 
 #myUL li a:hover:not(.header) {
-  color: white;
-}
+  color: black; /*changed from white, so the course name is still visible on hover*/
+  text-shadow: 2px 2px 3px #85070A;
+
 
 #myUL li a.subheader {
     color: black;
@@ -292,7 +293,7 @@ td .tutorlink:hover {
 /* styling for drop-in tutoring + office hrs page */
 
 #dropindiv {
-	float: left; 
+	float: left;
 	height: 700px;
 	width: 49%;
 	background-color: white;
