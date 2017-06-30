@@ -34,12 +34,12 @@ Paneity | {% block title %}{% endblock %}
 </head>
 <body>
     <div class="banner">
-        <div class="row">
+         <div class="row">
             <div class="col-lg-2 pull-right">
-                <small>
+                <!-- <small>
                     <a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
-                <small>
-            </div>
+                <small>  -->
+            </div> 
             <div class="col-lg-3">
                 <div id="bannerdiv">
                         <a href="{% url 'tutor:index' %}">
@@ -48,8 +48,9 @@ Paneity | {% block title %}{% endblock %}
             </div>
         </div>
         <div class="topnav" id="myTopnav">
-            <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
-            <a href="{% url "spirit:index" %}">FORUM</a>
+            <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE </a>
+            <a href="{% url "spirit:index" %}">FORUM </a>
+            <a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN </a>
         </div>
     </div>
     {% block content %}
