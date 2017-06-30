@@ -9,7 +9,7 @@ Homepage
 
 {% block content %}
     <div class="homepage">
-		<h2> Welcome. </h2>
+		<h2> Welcome, {{request.user.username}} </h2>
 		<h3> To find a tutor, please select a course from the list below: </h3>
 			<div class="courselisting">
 				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="SEARCH FOR COURSES..." title="Type in a course or subject name">
@@ -18,7 +18,7 @@ Homepage
                         {% for course in request.user.student.enrolled_classes.all %}
                             <li><a href = "{{course.id}}/tutors" class="subheader">{{course}}</a></li>
                         {% endfor %}
-                    
+
     					{% for subject in Subjects %}
     						<li><a href="#" class="header">{{subject}}</a></li>
     						{% for classes in subject.course_set.all %}
