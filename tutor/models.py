@@ -9,8 +9,6 @@ class Student(models.Model):
     Right now it just stores whether or not a user is a tutor
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user.first_name = models.CharField(max_length=100, blank=False, null = False)
-    user.last_name = models.CharField(max_length=100, blank=False, null = False)
     tutor = models.BooleanField(default=False)
     tutoring_classes = models.ManyToManyField(
         'Course',
