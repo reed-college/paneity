@@ -8,6 +8,8 @@ class Student(models.Model):
     Profile model for additional info about students
     Right now it just stores whether or not a user is a tutor
     """
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     tutor = models.BooleanField(default=False)
     tutoring_classes = models.ManyToManyField(
