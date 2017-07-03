@@ -41,7 +41,7 @@
                     <a class="tutorlink" href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
                 </td>
                 <td>
-                    <a class="tutorlink" href="mailto:{{tutor.user.email}}">Email me!</a>
+                    <a class="tutorlink" href="mailto:{{tutor.user.email}}">{{tutor.user.email}}</a>
                 </td>
                 <td class="last-log">
                     <small>
