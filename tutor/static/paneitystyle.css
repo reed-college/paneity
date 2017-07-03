@@ -336,19 +336,4 @@ td .tutorlink:hover {
 	list-style-type: disc;
 }
 
-.dropinlink {
-	text-align: center;
-	font-family: 'Nunito';
-  font-size: 15px;
-	padding-top: 40px;
-  color: black;
-}
 
-.dropinlink a:visited {
-  color: black;
-}
-
-.dropinlink a:hover {
-  color: #85070A;
-
-}
