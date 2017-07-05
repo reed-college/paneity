@@ -264,23 +264,23 @@ td .tutorlink:hover {
 
 #myInput {
   background-image: url('search-icon.png');
-  background-position: 2px 0px;
-  background-size: 30px 30px;
+  background-position: 0.1rem 0rem; /*2px 0px; */
+  background-size: 1.5rem 1.5rem;/* 30px 30px; */
   background-repeat: no-repeat;
   width: 50%;
-  font-size: 14px;
-  padding: 5px 20px 5px 40px;
-  border: 1px solid #787562;
-  margin-top: 10px;
+  font-size:  14px;
+  padding:  0.25rem 1rem 0.25rem 2rem;/*5px 20px 5px 40px;*/
+  border: 0.05rem solid #787562; /*1px*/
+  margin-top:  0.5rem; /*10px;*/
 }
 
 #myUL {
   list-style-type: none;
-  padding: 0px 80px 20px 80px;
+  padding: 0rem 4rem 1rem 4rem ;/* 0px 80px 20px 80px; */
 }
 
 #myUL li a {
-  padding: 12px;
+  padding: 0.6rem; /* 12px */
   text-decoration: none;
   font-size: 17px;
   color: black;
@@ -318,7 +318,6 @@ td .tutorlink:hover {
 @-moz-document url-prefix() {
     fieldset { display: table-cell; }
     }
-
 
 
 /* styling for drop-in tutoring + office hrs page */
