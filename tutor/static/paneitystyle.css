@@ -3,7 +3,9 @@
 }
 
 		/* governs banner across all pages */
-
+html {
+    font-size: 20px;
+}
 body {
   background-image: url('Studyingbooks.jpg');
   background-attachment: fixed;
@@ -29,7 +31,7 @@ body {
 #bannertext {
 	padding-top: 20px;
 	margin: auto;
-	font-size: 30px;
+	font-size: 1.5rem;
 	color: white;
 	font-family: times, serif;
 }
@@ -43,7 +45,7 @@ h1 {
 h2 {
   color: black;
   font-family: 'Nunito', serif;
-  font-size: 40px;
+  font-size: 2rem;
   text-align: center;
   padding-top: 25px;
 }
@@ -51,14 +53,14 @@ h2 {
 h3 {
 	font-family: 'Nunito', serif;
 	color: black;
-  font-size: 20px;
+  font-size: 1rem;
   padding-top: 10px;
   padding-bottom: 25px;
   text-align: center;
 }
 
 #tutortitle {
-  font-size: 25px;
+  font-size: 1.25rem;
   margin-top: 60px;
   margin-bottom: 27px;
   font-weight: bold;
@@ -97,7 +99,7 @@ a:hover {
 text-align: center;
 font-family: times, serif;
 font-style: italic;
-font-size: 16px;
+font-size: 0.8rem;
 padding: 15px;
 }
 
@@ -109,7 +111,7 @@ padding: 15px;
 
 .beginbutton {
   padding: 25px 25px;
-  font-size: 28px;
+  font-size: 1.4rem;
   text-align: center;
   cursor: pointer;
   outline: None;
@@ -130,7 +132,7 @@ padding: 15px;
 
 .endbutton {
   padding: 25px 25px;
-  font-size: 28px;
+  font-size: 1.4rem;
   text-align: center;
   cursor: pointer;
   outline: None;
@@ -175,6 +177,20 @@ padding: 15px;
   padding-right: 20px;
 }
 
+@media screen only and (max-width: 480px) {
+    #tutorsdiv {
+        padding: 0px;
+        width: 100%;
+    }
+    .table {
+        padding: 0px;
+    }
+    .topnav a {
+        display: block;
+        float: left;
+    }
+}
+
 th {
   text-align: center;
   border: none !important;
@@ -213,7 +229,6 @@ td .tutorlink:hover {
     font-size: 12px;
 	font-family: 'Myriad', sans-serif;
     letter-spacing: 1px;
-
 }
 
 /* Change the color of links on hover */
@@ -335,5 +350,3 @@ td .tutorlink:hover {
 #officehrsdiv li, #dropindiv li {
 	list-style-type: disc;
 }
-
-
