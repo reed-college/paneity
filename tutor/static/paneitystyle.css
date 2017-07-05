@@ -3,9 +3,7 @@
 }
 
 		/* governs banner across all pages */
-html {
-    font-size: 20px;
-}
+
 body {
   background-image: url('Studyingbooks.jpg');
   background-attachment: fixed;
@@ -31,7 +29,7 @@ body {
 #bannertext {
 	padding-top: 20px;
 	margin: auto;
-	font-size: 1.5rem;
+	font-size: 30px;
 	color: white;
 	font-family: times, serif;
 }
@@ -45,7 +43,7 @@ h1 {
 h2 {
   color: black;
   font-family: 'Nunito', serif;
-  font-size: 2rem;
+  font-size: 40px;
   text-align: center;
   padding-top: 25px;
 }
@@ -53,14 +51,14 @@ h2 {
 h3 {
 	font-family: 'Nunito', serif;
 	color: black;
-  font-size: 1rem;
+  font-size: 20px;
   padding-top: 10px;
   padding-bottom: 25px;
   text-align: center;
 }
 
 #tutortitle {
-  font-size: 1.25rem;
+  font-size: 25px;
   margin-top: 60px;
   margin-bottom: 27px;
   font-weight: bold;
@@ -99,7 +97,7 @@ a:hover {
 text-align: center;
 font-family: times, serif;
 font-style: italic;
-font-size: 0.8rem;
+font-size: 16px;
 padding: 15px;
 }
 
@@ -111,7 +109,7 @@ padding: 15px;
 
 .beginbutton {
   padding: 25px 25px;
-  font-size: 1.4rem;
+  font-size: 28px;
   text-align: center;
   cursor: pointer;
   outline: None;
@@ -132,7 +130,7 @@ padding: 15px;
 
 .endbutton {
   padding: 25px 25px;
-  font-size: 1.4rem;
+  font-size: 28px;
   text-align: center;
   cursor: pointer;
   outline: None;
@@ -153,6 +151,8 @@ padding: 15px;
   transform: translateY(4px);
 }
 
+/* styling for tutor page + drop in/office hrs */
+
 #tutorsdiv {
 	margin: 10px 170px 20px 170px;
 	color: black;
@@ -168,27 +168,20 @@ padding: 15px;
 #hours{
     text-align: center;
     vertical-align: middle;
-
+    margin: 10px 275px 20px 275px;
+    color: black;
+    background-color: rgba(225, 225, 225, 0.2);
+    border: 2px solid white;
+    border-radius: 2px;
+    padding: 20px;
+    text-align: center;
+    overflow: scroll;
 }
 
 .table {
   font-family: "Crimson Text", sans-serif;
   padding: 10px;
   padding-right: 20px;
-}
-
-@media screen only and (max-width: 480px) {
-    #tutorsdiv {
-        padding: 0px;
-        width: 100%;
-    }
-    .table {
-        padding: 0px;
-    }
-    .topnav a {
-        display: block;
-        float: left;
-    }
 }
 
 th {
@@ -229,6 +222,7 @@ td .tutorlink:hover {
     font-size: 12px;
 	font-family: 'Myriad', sans-serif;
     letter-spacing: 1px;
+
 }
 
 /* Change the color of links on hover */
@@ -309,44 +303,3 @@ td .tutorlink:hover {
 @-moz-document url-prefix() {
     fieldset { display: table-cell; }
     }
-
-
-/* styling for drop-in tutoring + office hrs page */
-
-#dropindiv {
-	float: left;
-	height: 700px;
-	width: 49%;
-	background-color: white;
-	border: 10px solid maroon;
-	border-radius: 10px;
-	box-shadow: 0px 0px 0px 1px black;
-	font-family: times;
-	color: black;
-	text-align: center;
-	list-style-type: disc;
-}
-
-#dropinheader, #officehrsheader {
-	text-align: center;
-	font-family: times;
-	color: maroon;
-}
-
-#officehrsdiv {
-	float:right;
-	height: 700px;
-	width: 49%;
-	background-color: white;
-	border: 10px solid maroon;
-	border-radius: 10px;
-	box-shadow: 0px 0px 0px 1px black;
-	font-family: times;
-	color: black;
-	text-align: center;
-	list-style-type: disc;
-}
-
-#officehrsdiv li, #dropindiv li {
-	list-style-type: disc;
-}
