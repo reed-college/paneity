@@ -1,0 +1,71 @@
+ul {
+    overflow: hidden;
+    line-height: 1.7rem;
+    text-align: center;
+    list-style-position: inside;
+    list-style-type: none;
+  color: black;
+  margin: 0.5rem 2.5rem 1rem 2.5rem; /*10px 50px 20px 50px;*/
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+}
+a:hover {
+	color: black;
+}
+.courselisting {
+  text-align: center;
+
+}
+
+
+#myInput {
+  background-image: url('search-icon.png');
+  background-position: 0.1rem 0rem; /*2px 0px; */
+  background-size: 1.5rem 1.5rem;/* 30px 30px; */
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size:  0.7rem; /*14px;*/
+  padding:  0.25rem 1rem 0.25rem 2rem;/*5px 20px 5px 40px;*/
+  border: 0.05rem solid #787562; /*1px*/
+  margin-top:  0.5rem; /*10px;*/
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0rem 4rem 1rem 4rem ;/* 0px 80px 20px 80px; */
+}
+
+#myUL li a {
+  padding: 0.6rem; /* 12px */
+  text-decoration: none;
+  font-size: 0.85rem; /*17px;*/
+  color: black;
+  font-family: 'Lato', sans-serif;
+  display: block;
+  text-align: left;
+}
+
+#myUL li a.header {
+  color: #85070A;
+  cursor: default;
+  font-weight: bold;
+  border-bottom: 0.05rem solid #787562; /*1px*/
+  text-align: left;
+  padding-left: 0.15rem; /*3px;*/
+
+}
+
+#myUL li a:hover:not(.header) {
+  color: black; /*changed from white, so the course name is still visible on hover*/
+  text-shadow: 0.1rem 0.1rem 015rem #85070A; /*2px 2px 3px*/
+}
+
+#myUL li a.subheader {
+    color: black;
+}
