@@ -1,0 +1,68 @@
+#tutortitle {
+  font-size: 1.25rem;
+  margin-top: 2rem; /*60px;*/
+  margin-bottom: 1.35rem;/*27px;*/
+  font-weight: bold;
+}
+#tutorsdiv {
+	margin: 0.5rem 8.5rem 1rem 8.5rem; /*10px 170px 20px 170px;*/
+	color: black;
+	background-color: rgba(225, 225, 225, 0.2);
+  border: 0.1rem solid white; /*2px*/
+  border-radius: 0.1rem; /*2px;*/
+	padding: 1rem; /*20px;*/
+	text-align: center;
+  overflow: scroll;
+
+}
+
+#hours{
+    text-align: center;
+    vertical-align: middle;
+    margin: 0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
+    color: black;
+    background-color: rgba(225, 225, 225, 0.2);
+    border: 0.1rem solid white; /*2px*/
+    border-radius: 0.1rem; /*2px;*/
+  	padding: 1rem; /*20px;*/
+    text-align: center;
+    overflow: scroll;
+}
+
+.table {
+  font-family: "Crimson Text", sans-serif;
+  padding: 0.5rem; /*10px;*/
+  padding-right: 1rem; /*20px;*/
+}
+th {
+  text-align: center;
+  border: none !important;
+  font-size: 0.9rem; /*18px;*/
+  text-decoration: underline;
+}
+
+td {
+  border: none !important;
+  font-size: 0.9rem; /*18px;*/
+}
+
+td .tutorlink {
+  color: black;
+}
+
+td .tutorlink:hover {
+  color: #85070A;
+}
+
+
+/* search function styling */
+
+
+
+/* last login element */
+.last-log {
+    text-align: center;
+}
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
+    }
