@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<link rel="icon" href="../../static/REEDGRIFFIN.png"> 
+<link rel="icon" href="../../static/REEDGRIFFIN.png">
 <title>
 Paneity | {% block title %}{% endblock %}
 </title>
@@ -24,7 +24,7 @@ Paneity | {% block title %}{% endblock %}
 
 {# main stylsheet #}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'paneitystyle.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
 {# stuff to make mobile friendly #}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,7 +39,7 @@ Paneity | {% block title %}{% endblock %}
                 <!-- <small>
                     <a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
                 <small>  -->
-            </div> 
+            </div>
             <div class="col-lg-3">
                 <div id="bannerdiv">
                         <a href="{% url 'tutor:index' %}">

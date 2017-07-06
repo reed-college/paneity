@@ -1,10 +1,10 @@
 {% extends "tutor/base.html" %}
-
+{% load static %}
 {% block title %}
 Homepage
 {% endblock %}
 {% block head %}
-<script src="dropdown.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
 {% endblock %}
 
 {% block content %}

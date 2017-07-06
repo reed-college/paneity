@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+    font-size: 20px; /* this specifies that 1rem = 20px, so keep that in mind */
+}
+
+body {
+  background-image: url('Studyingbooks.jpg');
+  background-attachment: fixed;
+  padding: 0;
+}
+
+.banner {
+    background-color: #85070A;
+    background-image: url("REEDGRIFFIN.png");
+    background-repeat: no-repeat;
+    background-size: 7rem 7.5rem; /*140px 150px; */
+    text-align: left;
+    padding-left: 4.25rem; /*85px;*/
+    padding-bottom: 1rem; /*20px; */
+
+}
+
+.bannerdiv {
+	white-space: nowrap;
+		overflow: hidden;
+}
+
+#bannertext {
+	padding-top: 1rem; /*20px;*/
+	margin: auto;
+	font-size: 1.5rem;
+	color: white;
+	font-family: times, serif;
+}
+
+h1 {
+	color: white;
+	font-family: times;
+	letter-spacing: 0.1rem; /*2px;*/
+}
+
+h2 {
+  color: black;
+  font-family: 'Nunito', serif;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 1.25rem /*25px;*/
+}
+
+h3 {
+	font-family: 'Nunito', serif;
+	color: black;
+  font-size: 1rem;
+  padding-top: 0.5rem; /*10px;*/
+  padding-bottom: 1.25rem; /*25px;*/
+  text-align: center;
+}
+
+.topnav {
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	overflow: hidden;
+    display: inline-block;
+    padding: 0.3rem; /*6px;*/
+    padding-left: 0;
+    padding-top: 0.375rem; /*7.5px;*/
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 0.6rem; /*12px;*/
+	font-family: 'Myriad', sans-serif;
+    letter-spacing: 0.05rem; /*1px;*/
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  color: #787562;
+	transition-delay: .15s; /* delays for .15 seconds */
+	-webkit-transition-delay: .15s; /* ^for Safari & Chrome */
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
