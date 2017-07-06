@@ -89,3 +89,20 @@ h3 {
     background-color: #4CAF50;
     color: white;
 }
+
+/*MOBILE STYLING */
+/*@media only screen and (max-width: 840px) {
+.banner {
+    height: 3.5rem;
+    background-image: none;
+
+    }
+#bannertext {
+    font-size: 1rem;
+    float: left;
+    padding-left: 0rem;
+    margin: 0;
+    }
+
+
+}*/
