@@ -38,7 +38,7 @@ a:hover {
 
 #myUL {
   list-style-type: none;
-  padding: 0% 10% 10% 10% ;/* 0px 80px 20px 80px; */
+  padding: 0; /*0% 10% 10% 10% ;/* 0px 80px 20px 80px; */
 }
 
 #myUL li a {

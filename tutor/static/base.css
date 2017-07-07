@@ -10,6 +10,7 @@ body {
   background-image: url('Studyingbooks.jpg');
   background-attachment: fixed;
   padding: 0;
+  width: 100%;
 }
 
 .banner {
@@ -18,7 +19,7 @@ body {
     background-repeat: no-repeat;
     background-size: 7rem 7.5rem; /*140px 150px; */
     text-align: left;
-    padding-left: 4.25rem; /*85px;*/
+    padding-left: 40px; /*4.25rem; /*85px; */
     padding-bottom: 1rem; /*20px; */
 
 }
@@ -67,7 +68,7 @@ h3 {
 .topnav a {
 	overflow: hidden;
     display: inline-block;
-    padding: 0.3rem; /*6px;*/
+    /*padding: 0.3rem; /*6px;*/
     padding-left: 0;
     padding-top: 0.375rem; /*7.5px;*/
     color: #f2f2f2;
@@ -94,13 +95,21 @@ h3 {
 @media screen and (max-width: 840px) {
 .banner {
     background-image: none;
+    height: 70px;
 
     }
+
+.topnav a {
+    font-size: 0.7rem;
+}
 #bannertext {
     font-size: 1rem;
     float: left;
     padding-left: 0rem;
     margin: 0;
+    position: relative;
+    left: -30px;
+    top: -10px;
     }
 .burger-nav {
     display: block;
@@ -109,5 +118,19 @@ h3 {
     float: right;
     margin: 10px;
     cursor: pointer;
+    }
+    .topnav {
+        overflow: hidden;
+        position: relative;
+        left: -35px;
+        bottom: 10px;
+    }
+    .topnav a {
+        margin-right: 7px;
+
+    }
+    .topnav .menu-element.open {
+        height:auto
+
     }
 }

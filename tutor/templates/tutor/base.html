@@ -43,10 +43,10 @@ Paneity | {% block title %}{% endblock %}
             </div>
         </div>
         <div class="topnav" id="myTopnav">
-            <a class="burger-nav"><img src="../static/burger-nav.png"></img></a>
-                <a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
-                <a href="{% url "spirit:index" %}">FORUM</a>
-                <a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
+            <!-- <a class="burger-nav"><img src="../static/burger-nav.png"></img></a> -->
+                <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
+                <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
+                <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
         </div>
     </div>
     {% block content %}
@@ -56,5 +56,5 @@ Paneity | {% block title %}{% endblock %}
     {% block extra_js %}{% endblock %}
 </body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="menu.js"></script>
+<!-- <script src="menu.js"></script> -->
 </html>
