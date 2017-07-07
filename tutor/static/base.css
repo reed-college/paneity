@@ -91,9 +91,8 @@ h3 {
 }
 
 /*MOBILE STYLING */
-/*@media only screen and (max-width: 840px) {
+@media screen and (max-width: 840px) {
 .banner {
-    height: 3.5rem;
     background-image: none;
 
     }
@@ -103,6 +102,12 @@ h3 {
     padding-left: 0rem;
     margin: 0;
     }
-
-
-}*/
+.burger-nav {
+    display: block;
+    height: 100px;
+    width:  100px;
+    float: right;
+    margin: 10px;
+    cursor: pointer;
+    }
+}
