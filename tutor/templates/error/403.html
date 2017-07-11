@@ -1,12 +1,14 @@
 {% extends "tutor/base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/error403.css' %}" />
+{% endblock %}
+
 {% block content %}
-<h1> 403 forbidden </h1>
-<p>
-    Hey you're not authorized to visit this page.
-    <small><small>
-        Could you please not do that?
-        <small><small>Thanks</small></small>
-    </small></small>
-        
-<p>
+<h1 id="error"> Access Forbidden </h1>
+<p>You are attempting to reach a page that you are not authorized to view.</p>
+
+
+<img src="http://8020.photos.jpgmag.com/2661205_161909_c81789f6d5_p.jpg"></img>
 {% endblock %}
