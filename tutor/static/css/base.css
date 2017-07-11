@@ -91,10 +91,11 @@ h3 {
     color: white;
 }
 
-.banner #username {
-    float: left;
+#username {
+    float: right;
     font-size: 12px;
-    color: white;
+    color: black;
+    margin: 10px 10px 0px 0px;
 }
 
 /*MOBILE STYLING */

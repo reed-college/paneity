@@ -51,13 +51,14 @@ Paneity | {% block title %}{% endblock %}
                 <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
 
         </div>
-        <div id="username">
-            {% if user.username %}
-            <p>You are currently logged in as: {{user.username}}</p>
-            {% else %}
-            <p>You are not logged in.</p>
-            {% endif %}
-        </div>
+
+    </div>
+    <div id="username">
+        {% if user.username %}
+        <p>You are currently logged in as: {{user.username}}</p>
+        {% else %}
+        <p>You are not logged in.</p>
+        {% endif %}
     </div>
     {% block content %}
 
