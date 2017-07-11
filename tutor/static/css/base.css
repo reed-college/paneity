@@ -91,6 +91,10 @@ h3 {
     color: white;
 }
 
+#username {
+    float: right;
+}
+
 /*MOBILE STYLING */
 @media screen and (max-width: 840px) {
 .banner {

@@ -40,6 +40,15 @@ Paneity | {% block title %}{% endblock %}
                         <a href="{% url 'tutor:index' %}">
                                 <h1 id="bannertext">REED COLLEGE</h1>
                 </div>
+
+                <div id="username">
+                    {% if user.username %}
+                    <p>You are currently logged in as: {{user.username}}</p>
+                    {% else %}
+                    <p>You are not logged in.</p>
+                    {% endif %}
+                </div>
+
             </div>
         </div>
         <div class="topnav" id="myTopnav">
