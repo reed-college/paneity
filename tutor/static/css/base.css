@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background-image: url('Studyingbooks.jpg');
+  background-image: url('../images/Studyingbooks.jpg');
   background-attachment: fixed;
   padding: 0;
   width: 100%;
@@ -15,7 +15,7 @@ body {
 
 .banner {
     background-color: #85070A;
-    background-image: url("REEDGRIFFIN.png");
+    background-image: url("../images/REEDGRIFFIN.png");
     background-repeat: no-repeat;
     background-size: 7rem 7.5rem; /*140px 150px; */
     text-align: left;
