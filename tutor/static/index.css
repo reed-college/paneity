@@ -38,7 +38,7 @@ a:hover {
 
 #myUL {
   list-style-type: none;
-  padding: 0rem 4rem 1rem 4rem ;/* 0px 80px 20px 80px; */
+  padding: 0; /*0% 10% 10% 10% ;/* 0px 80px 20px 80px; */
 }
 
 #myUL li a {
@@ -68,4 +68,27 @@ a:hover {
 
 #myUL li a.subheader {
     color: black;
+}
+
+/*MOBILE STYLING */
+@media screen and (max-width: 740px) {
+#myInput {
+    width: 70%;
+    }
+h2 {
+    font-size: 1.7rem;
+    margin: 5%;
+    }
+h3 {
+    margin: 0% 7% 0% 7%;
+}
+#myUL {
+  padding: 0% 5% 5% 5% ;/* 0px 80px 20px 80px; */
+}
+#myUL li a.header {
+    font-size: 1rem;
+}
+#myUL li a {
+    font-size: 1rem;
+}
 }

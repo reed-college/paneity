@@ -51,7 +51,7 @@ class SubjectTestCase(TestCase):
     def test_subject_delete_deletes_category_as_well(self):
         """
         This tests that when you delete a subject it deletes the
-        category associated with that subject
+        spirit category associated with that subject
         """
         lit = models.Subject.objects.create(
             abbreviation="LIT", name="Literature")
@@ -63,6 +63,7 @@ class SubjectTestCase(TestCase):
         """
         Same as the above test but does a queryset delete. This is
         important because the admin interface uses queryset deletes
+        when you delete objects from the list page
         """
         lit = models.Subject.objects.create(
             abbreviation="LIT", name="Literature")

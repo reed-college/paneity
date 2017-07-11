@@ -1,3 +1,17 @@
+
+#hours{
+    text-align: center;
+    vertical-align: middle;
+    margin: 5% 20% 5% 20%;/*0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
+    color: black;
+    background-color: rgba(225, 225, 225, 0.2);
+    border: 0.1rem solid white; /*2px*/
+    border-radius: 0.1rem; /*2px;*/
+  	padding: 2%; /*1rem; /*20px;*/
+    text-align: center;
+    border: 1rem;
+    /*overflow: scroll;*/
+}
 #tutortitle {
   font-size: 1.25rem;
   margin-top: 2rem; /*60px;*/
@@ -5,29 +19,18 @@
   font-weight: bold;
 }
 #tutorsdiv {
-	margin: 0.5rem 8.5rem 1rem 8.5rem; /*10px 170px 20px 170px;*/
+	margin: 5% 5% 5% 5%; /*0.5rem 8.5rem 1rem 8.5rem; /*10px 170px 20px 170px;*/
 	color: black;
 	background-color: rgba(225, 225, 225, 0.2);
   border: 0.1rem solid white; /*2px*/
   border-radius: 0.1rem; /*2px;*/
-	padding: 1rem; /*20px;*/
+	padding: 5%; /*20px;*/
 	text-align: center;
   overflow: scroll;
+  border: 1rem;
 
 }
 
-#hours{
-    text-align: center;
-    vertical-align: middle;
-    margin: 0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
-    color: black;
-    background-color: rgba(225, 225, 225, 0.2);
-    border: 0.1rem solid white; /*2px*/
-    border-radius: 0.1rem; /*2px;*/
-  	padding: 1rem; /*20px;*/
-    text-align: center;
-    overflow: scroll;
-}
 
 .table {
   font-family: "Crimson Text", sans-serif;
@@ -54,11 +57,6 @@ td .tutorlink:hover {
   color: #85070A;
 }
 
-
-/* search function styling */
-
-
-
 /* last login element */
 .last-log {
     text-align: center;
@@ -66,3 +64,26 @@ td .tutorlink:hover {
 @-moz-document url-prefix() {
     fieldset { display: table-cell; }
     }
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 740px) {
+#hours{
+    margin: 5% 5% 5% 5%;
+    font-size: 0.85rem;
+}
+.table {
+    font-family: sans-serif;
+    font-size: 0.85rem;
+
+}
+th {
+    text-align: left;
+    text-decoration: none;
+}
+td {
+    font-size: 0.85rem;
+}
+#tutorsdiv {
+    padding: 0;
+}
+}
