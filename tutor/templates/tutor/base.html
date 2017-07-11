@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<link rel="icon" href="../../static/REEDGRIFFIN.png">
+{% load static %}
+<link rel="icon" href="{% static 'images/REEDGRIFFIN.png' %}">
 <title>
 Paneity | {% block title %}{% endblock %}
 </title>
@@ -23,8 +24,7 @@ Paneity | {% block title %}{% endblock %}
 {% endblock %}
 
 {# main stylsheet #}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 {# stuff to make mobile friendly #}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +43,6 @@ Paneity | {% block title %}{% endblock %}
             </div>
         </div>
         <div class="topnav" id="myTopnav">
-            <!-- <a class="burger-nav"><img src="../static/burger-nav.png"></img></a> -->
                 <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
                 <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
                 <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
@@ -56,5 +55,4 @@ Paneity | {% block title %}{% endblock %}
     {% block extra_js %}{% endblock %}
 </body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- <script src="menu.js"></script> -->
 </html>
