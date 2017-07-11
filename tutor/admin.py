@@ -32,7 +32,7 @@ class StudentChangeForm(UserChangeForm):
 
 # Define a new User admin
 class UserAdmin(BaseUserAdmin):
-    form = (StudentChangeForm, )
+    form = StudentChangeForm
     inlines = (StudentInline, )
 
 
