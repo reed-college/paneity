@@ -49,6 +49,8 @@ def startstop(request):
 def dropin(request):
     return render(request, 'tutor/dropin.html')
 
+def about(request):
+    return render(request, 'tutor/about.html')
 
 @login_required
 def tutorchat(request):
