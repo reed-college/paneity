@@ -52,6 +52,9 @@ def dropin(request):
 def about(request):
     return render(request, 'tutor/about.html')
 
+def error404(request):
+    return render(request, '404.html')
+
 @login_required
 def tutorchat(request):
     """
