@@ -1,0 +1,16 @@
+#about_us {
+    text-align: center;
+    color: black;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 5%
+
+
+}
+#about_text {
+    width: 50%;
+    margin: 0 25% 0 25%;
+    padding-top: 1%;
+    color: black;
+}
