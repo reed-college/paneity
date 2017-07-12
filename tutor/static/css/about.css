@@ -4,7 +4,10 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    padding-top: 5%
+    padding-top: 5%;
+    font-family: 'Nunito', serif;
+    font-size: 2rem;
+    text-align: center;
 
 
 }
@@ -13,4 +16,17 @@
     margin: 0 25% 0 25%;
     padding-top: 1%;
     color: black;
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+}
+img {
+    width: 50%;
+    height: auto;
+    margin: 0 25% 0 25%;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 5%;
 }
