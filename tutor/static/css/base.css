@@ -11,6 +11,7 @@ body {
   background-attachment: fixed;
   padding: 0;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .banner {
@@ -26,7 +27,7 @@ body {
 
 .bannerdiv {
 	white-space: nowrap;
-		overflow: hidden;
+	overflow: hidden;
 }
 
 #bannertext {
@@ -54,10 +55,10 @@ h2 {
 h3 {
 	font-family: 'Nunito', serif;
 	color: black;
-  font-size: 1rem;
-  padding-top: 0.5rem; /*10px;*/
-  padding-bottom: 1.25rem; /*25px;*/
-  text-align: center;
+    font-size: 1rem;
+    padding-top: 0.5rem; /*10px;*/
+    padding-bottom: 1.25rem; /*25px;*/
+    text-align: center;
 }
 
 .topnav {
