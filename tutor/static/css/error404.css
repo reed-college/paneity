@@ -1,0 +1,16 @@
+#error {
+    text-align: center;
+}
+p {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+img {
+    height: 300px;
+    width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
