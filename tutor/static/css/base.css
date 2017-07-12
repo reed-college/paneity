@@ -91,6 +91,18 @@ h3 {
     color: white;
 }
 
+
+.menu-element {
+  padding-right: 0.45rem;
+}
+
+#username {
+    float: right;
+    font-size: 12px;
+    color: black;
+    margin: 10px 10px 0px 0px;
+}
+
 /*MOBILE STYLING */
 @media screen and (max-width: 840px) {
 .banner {
