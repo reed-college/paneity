@@ -91,6 +91,11 @@ h3 {
     color: white;
 }
 
+
+.menu-element {
+  padding-right: 0.45rem;
+}
+
 #username {
     float: right;
     font-size: 12px;
