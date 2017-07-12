@@ -1,5 +1,7 @@
 /*
  * Gives the tutorchat page it's functionality
+ * This code relies on the base_ws_server_path and session_key
+ * variables being set before this file is loaded 
  */
 $(document).ready(function () {
     // tell user they have no messages
