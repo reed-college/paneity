@@ -2,7 +2,6 @@
  * Gives the tutorchat page it's functionality
  */
 $(document).ready(function () {
-
     // tell user they have no messages
     if ($("#old-message-div").html().replace(/\s/g,'') == ""){
         $("#new-message-div").html($("#no-messages-template").html());
@@ -52,7 +51,7 @@ $(document).ready(function () {
     }
     function setupChatWebSocket() {
         var opponent_username = getOpponnentUsername();
-        websocket = new WebSocket(base_ws_server_path + session_key + opponent_username);
+        websocket = new WebSocket(base_ws_server_path + session_key + "/" + opponent_username);
 
         websocket.onopen = function (event) {
             var opponent_username = getOpponnentUsername();
