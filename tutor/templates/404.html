@@ -1,0 +1,19 @@
+{% extends "tutor/base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/error404.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h1 id="error">404 Page Not Found</h1>
+<p id="errorp">You are looking for a page that doesn't exist! Here are some helpful links:</p>
+<ul>
+    <li><a href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a></li>
+    <li><a href="{% url "spirit:index" %}">FORUM</a></li>
+    <li><a href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a></li>
+</ul>
+
+
+<img src="http://www.aisboerk.com/wp-content/uploads/2014/02/404-not-found01.jpg"></img>
+{% endblock %}
