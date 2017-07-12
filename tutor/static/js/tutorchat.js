@@ -11,58 +11,14 @@ $(document).ready(function () {
 
     var websocket = null;
 
-    // TODO: Use for adding new dialog
-    function addNewUser(packet) {
-        $('#user-list').html('');
-        packet.value.forEach(function (userInfo) {
-            if (userInfo.username == getUsername()) return;
-            var tmpl = Handlebars.compile($('#user-list-item-template').html());
-            $('#user-list').append(tmpl(userInfo))
-        });
-    }
-
-    function generateMessage(context) {
-        var tmpl = Handlebars.compile($('#chat-message-template').html());
-        return tmpl({msg: context})
-    }
-
-    function setUserOnlineOffline(username, online) {
-        var elem = $("#user-" + username);
-        if (online) {
-            elem.attr("class", "btn btn-success");
-        } else {
-            elem.attr("class", "btn btn-danger");
-        }
-    }
-
-    function gone_online() {
-        $("#offline-status").hide();
-        $("#online-status").show();
-    }
-
-    function gone_offline() {
-        $("#online-status").hide();
-        $("#offline-status").show();
-    }
-    function flash_user_button(username){
-        var btn = $("#user-"+username);
-        btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
-    }
-    function flash_title(username){
-        var title = $("title");
-    }
     function setupChatWebSocket() {
-        var opponent_username = getOpponnentUsername();
-        websocket = new WebSocket(base_ws_server_path + session_key + "/" + opponent_username);
+        websocket = new WebSocket(base_ws_server_path + session_key + "/");
 
         websocket.onopen = function (event) {
-            var opponent_username = getOpponnentUsername();
 
             var onOnlineCheckPacket = JSON.stringify({
                 type: "check-online",
                 session_key: session_key,
-                username: opponent_username
-                // Sending username because the user needs to know if his opponent is online
             });
             var onConnectPacket = JSON.stringify({
                 type: "online",
@@ -82,8 +38,6 @@ $(document).ready(function () {
             var onClosePacket = JSON.stringify({
                 type: "offline",
                 session_key: session_key,
-                username: opponent_username,
-                // Sending username because to let opponnent know that the user went offline
             });
             console.log('unloading, sending:', onClosePacket);
             websocket.send(onClosePacket);

@@ -52,12 +52,7 @@
 {% block extra_js %}
     <script>
         var base_ws_server_path = "{{ ws_server_path }}";
-
         var session_key = '{{ request.session.session_key }}'
-
-        function getOpponnentUsername() {
-            return "{{ opponent_username }}";
-        }
     </script>
     <script src="{% static 'js/tutorchat.js' %}"
 {% endblock %}
