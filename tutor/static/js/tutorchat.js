@@ -48,15 +48,11 @@ $(document).ready(function () {
         var btn = $("#user-"+username);
         btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
     }
-    function flash_title(username){
-        var title = $("title");
-    }
+
     function setupChatWebSocket() {
-        var opponent_username = getOpponnentUsername();
-        websocket = new WebSocket(base_ws_server_path + session_key + "/" + opponent_username);
+        websocket = new WebSocket(base_ws_server_path + session_key + "/");
 
         websocket.onopen = function (event) {
-            var opponent_username = getOpponnentUsername();
 
             var onOnlineCheckPacket = JSON.stringify({
                 type: "check-online",
@@ -80,8 +76,6 @@ $(document).ready(function () {
             var onClosePacket = JSON.stringify({
                 type: "offline",
                 session_key: session_key,
-                username: opponent_username,
-                // Sending username because to let opponnent know that the user went offline
             });
             console.log('unloading, sending:', onClosePacket);
             websocket.send(onClosePacket);
