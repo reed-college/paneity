@@ -59,12 +59,17 @@ Paneity | {% block title %}{% endblock %}
         {% else %}
         <p>You are not logged in.</p>
         {% endif %}
+        <div id="about">
+            <a href="{% url "tutor:about" %}" >About This Page</a>
+        </div>
     </div>
+
     {% block content %}
 
     {% endblock %}
 
     {% block extra_js %}{% endblock %}
+
 </body>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </html>

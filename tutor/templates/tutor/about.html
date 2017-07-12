@@ -1,0 +1,29 @@
+{% extends "tutor/base.html" %}
+{% load static %}
+{% block title %}
+About Us
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h1 id="about_us">About Us!</h1>
+<div id="about_text">
+    <p>
+        This web application was created by four Reed students as part of the <a href="http://www.reed.edu/sds/">Reed College
+    Software Design Studio</a>. We worked tirelessly during Summer 2017 to bring this spectactular
+    content to you. The Internet is really complicated, okay. Check out our code <a href="https://github.com/reed-college/paneity">here</a>.</p>
+<div id="names">
+    <ul>
+        <li>Miriam Bern '19 Alternative Biology</li>
+        <li>Alex Grant '18 Mathematics/Computer Science</li>
+        <li>Marika Swanberg '19 Mathematics</li>
+        <li>Corbin Buff '19 English</li>
+    </ul>
+</div>
+
+</div>
+<img src="https://www.colourbox.com/preview/1053640-4-business-people-celebrating-an-achieved-aim.jpg"></img>
+{% endblock %}

@@ -14,4 +14,5 @@ urlpatterns = [
     # ex: /dropin/  ------- Page listing drop-in and office hours
     url(r'^dropin/$', views.dropin, name='dropin'),
     url(r'^tutor/$', views.tutorchat, name='tutorchat'),
+    url(r'^about/$', views.about, name='about'),
 ]
