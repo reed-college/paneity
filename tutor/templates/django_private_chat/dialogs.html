@@ -27,7 +27,9 @@
                         <div class="row">
                             <p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
                                 <span class="username">{{ msg.sender.username }}:</span>
-                                {{ msg.text }}
+                                {% autoescape off %}
+                                    {{ msg.text}}
+                                {% endautoescape %}
                                 <span class="timestamp">&ndash; <span
                                         data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
                             </p>

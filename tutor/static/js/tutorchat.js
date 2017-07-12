@@ -61,8 +61,6 @@ $(document).ready(function () {
             var onOnlineCheckPacket = JSON.stringify({
                 type: "check-online",
                 session_key: session_key,
-                username: opponent_username
-                // Sending username because the user needs to know if his opponent is online
             });
             var onConnectPacket = JSON.stringify({
                 type: "online",
