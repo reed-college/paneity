@@ -46,9 +46,24 @@ Paneity | {% block title %}{% endblock %}
             </div>
         </div>
         <div class="topnav" id="myTopnav">
-                <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
-                <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
-                <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
+                <a class="menu-element" href="{% url "tutor:index" %}">
+                    <span class="visible-xs-inline visible-sm-inline" style="font-size: 2em;">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </span>
+                    <span class="hidden-xs hidden-sm">TUTORING HOMEPAGE</span>
+                </a>
+                <a class="menu-element" href="{% url "spirit:index" %}">
+                    <span class="visible-xs-inline visible-sm-inline" style="font-size: 2em;">
+                        <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                    </span>
+                    <span class="hidden-xs hidden-sm">FORUM</span>
+                </a>
+                <a class="menu-element" href="{% url "tutor:tutorchat" %}">
+                    <span class="visible-xs-inline visible-sm-inline" style="font-size: 2em;">
+                        <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                    </span>
+                    <span class="hidden-xs hidden-sm">TUTOR LOGIN</span>
+                </a>
 
         </div>
 
