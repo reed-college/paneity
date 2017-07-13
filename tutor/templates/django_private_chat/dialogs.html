@@ -4,10 +4,43 @@
 {% load tutor_extras %}
 {% block css %}
     {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
     <link href="{% static "django_private_chat/css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endblock css %}
 
 {% block content %}
+<div class="banner">
+     <div class="row">
+        <div class="col-lg-3">
+            <div id="bannerdiv">
+                    <a href="{% url 'tutor:index' %}">
+                            <h1 id="bannertext">REED COLLEGE</h1>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="topnav" id="myTopnav">
+            <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
+            <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
+            <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
+
+    </div>
+
+</div>
+<div id="username">
+    {% if user.username %}
+    <p>You are currently logged in as: {{user.username}}</p>
+    {% else %}
+    <p>You are not logged in.</p>
+    {% endif %}
+    <div id="about">
+        <a href="{% url "tutor:about" %}" >About This Page</a>
+    </div>
+</div>
+
     <input id="owner_username" type="hidden" value="{{ request.user.username }}">
     <div class="container">
         <div class="row">
@@ -17,7 +50,7 @@
                 </span>
             </div>
             <p>
-            {{ dialog|get_name:opponent_username }}
+            You are chatting with {{ dialog|get_name:opponent_username }}
             </p>
             <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
             <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
