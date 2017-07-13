@@ -52,6 +52,7 @@ def dropin(request):
 def about(request):
     return render(request, 'tutor/about.html')
 
+
 @login_required
 def tutorchat(request):
     """
