@@ -1,23 +1,3 @@
-ul {
-    overflow: hidden;
-    line-height: 1.7rem;
-    text-align: center;
-    list-style-position: inside;
-    list-style-type: none;
-  color: black;
-  margin: 0.5rem 2.5rem 1rem 2.5rem; /*10px 50px 20px 50px;*/
-}
-
-a:link {
-	color: white;
-	text-decoration: none;
-}
-a:visited {
-	color: white;
-}
-a:hover {
-	color: black;
-}
 .courselisting {
   text-align: center;
 
@@ -36,12 +16,19 @@ a:hover {
   margin-top:  0.5rem; /*10px;*/
 }
 
-#myUL {
+.myUL {
   list-style-type: none;
   padding: 0; /*0% 10% 10% 10% ;/* 0px 80px 20px 80px; */
+  overflow: hidden;
+  line-height: 1.7rem;
+  text-align: center;
+  list-style-position: inside;
+  list-style-type: none;
+  color: black;
+  margin: 0.5rem 2.5rem 1rem 2.5rem; /*10px 50px 20px 50px;*/
 }
 
-#myUL li a {
+.myUL li a {
   padding: 0.6rem; /* 12px */
   text-decoration: none;
   font-size: 0.85rem; /*17px;*/
@@ -51,7 +38,7 @@ a:hover {
   text-align: left;
 }
 
-#myUL li a.header {
+.myUL li a.header {
   color: #85070A;
   cursor: default;
   font-weight: bold;
@@ -61,12 +48,12 @@ a:hover {
 
 }
 
-#myUL li a:hover:not(.header) {
+.myUL li a:hover:not(.header) {
   color: black; /*changed from white, so the course name is still visible on hover*/
   text-shadow: 0.1rem 0.1rem 015rem #85070A; /*2px 2px 3px*/
 }
 
-#myUL li a.subheader {
+.myUL li a.subheader {
     color: black;
 }
 
@@ -82,13 +69,13 @@ h2 {
 h3 {
     margin: 0% 7% 0% 7%;
 }
-#myUL {
+.myUL {
   padding: 0% 5% 5% 5% ;/* 0px 80px 20px 80px; */
 }
-#myUL li a.header {
+.myUL li a.header {
     font-size: 1rem;
 }
-#myUL li a {
+.myUL li a {
     font-size: 1rem;
 }
 }

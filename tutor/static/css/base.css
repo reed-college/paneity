@@ -115,13 +115,36 @@ h3 {
     color: black;
 }
 
+.mobile-nav {
+    width: 100%;
+}
+
+.mobile-nav * li {
+    width: 32%;
+    text-align: center;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+}
+a:hover {
+	color: black;
+}
+
 /*MOBILE STYLING */
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 768px) {
 .banner {
     background-image: none;
-    height: 70px;
+    /*height: 70px;*/
+    padding-left:0rem;
+    padding-bottom: 0rem;
 
-    }
+}
+
 
 .topnav a {
     font-size: 0.7rem;
@@ -129,12 +152,12 @@ h3 {
 #bannertext {
     font-size: 1rem;
     float: left;
-    padding-left: 0rem;
+    padding-left: 2rem;
     margin: 0;
     position: relative;
     left: -30px;
     top: -10px;
-    }
+}
 .burger-nav {
     display: block;
     height: 100px;
