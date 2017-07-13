@@ -120,7 +120,19 @@ h3 {
 }
 
 .mobile-nav * li {
-    width: auto;
+    width: 32%;
+    text-align: center;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+}
+a:hover {
+	color: black;
 }
 
 /*MOBILE STYLING */
@@ -132,6 +144,7 @@ h3 {
     padding-bottom: 0rem;
 
 }
+
 
 .topnav a {
     font-size: 0.7rem;
