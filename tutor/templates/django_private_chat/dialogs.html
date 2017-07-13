@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% load tutor_extras %}
 {% block css %}
     {{ block.super }}
     <link href="{% static "django_private_chat/css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
@@ -12,11 +13,11 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-9">
                 <span class="pull-right" hidden id="typing-text">
-                    <strong>{{ opponent_username }} {% trans "is typing..." %}</strong>
+                    <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
                 </span>
             </div>
             <p>
-                {{ opponent_username }}
+            {{ dialog|get_name:opponent_username }}
             </p>
             <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
             <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
@@ -26,7 +27,11 @@
                     {% for msg in active_dialog.messages.all %}
                         <div class="row">
                             <p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
-                                <span class="username">{{ msg.sender.username }}:</span>
+                                {% if msg.sender.first_name %}
+                                    <span class="username">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
+                                {% else %}
+                                    <span class="username">{{ msg.sender.username }}:</span>
+                                {% endif %}
                                 {% autoescape off %}
                                     {{ msg.text}}
                                 {% endautoescape %}
@@ -47,8 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-1">
-                        {% load tutor_extras %}
-                        <a id="btn-video-call" target="_blank" class="btn btn-success" href="{{ request.user.username|get_vc_link:opponent_username}}"> 
+                        <a id="btn-video-call" target="_blank" class="btn btn-success" href="{{ request.user.username|get_vc_link:opponent_username}}">
                             Start Video Call
                         </a>
                     </div>
