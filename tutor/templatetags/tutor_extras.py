@@ -1,5 +1,5 @@
 from django import template
-
+from django.contrib.auth.models import User
 register = template.Library()
 
 
@@ -48,3 +48,12 @@ def other_username(dialog, username):
     else:
         errortext = "Username {} not present in dialog".format(username)
         raise RuntimeError(errortext)
+
+@register.filter
+def get_name(dialog, user_name):
+    """
+    This takes a user's username as input and returns their first and last name.
+    This is mainly for the django chat.
+    """
+    user = User.objects.get(username=user_name)
+    return str(user.first_name) + " " + str(user.last_name)
