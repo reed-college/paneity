@@ -4,19 +4,9 @@
 {% load tutor_extras %}
 {% block css %}
     {{ block.super }}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
-    <link href="{% static "django_private_chat/css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-=======
     <link href="{% static "css/base.css" %}" rel="stylesheet" type="text/css" media="all">
     <link href="{% static "css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
->>>>>>> Stashed changes
-=======
-    <link href="{% static "css/base.css" %}" rel="stylesheet" type="text/css" media="all">
-    <link href="{% static "css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
->>>>>>> Stashed changes
+
 {% endblock css %}
 
 {% block content %}
@@ -59,15 +49,7 @@
                     <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
                 </span>
             </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <p>
-=======
             <p id="chatting_with">
->>>>>>> Stashed changes
-=======
-            <p id="chatting_with">
->>>>>>> Stashed changes
             You are chatting with {{ dialog|get_name:opponent_username }}
             </p>
             <p class="text-success" id="online-status" style="display: none">{{ dialog|get_name:opponent_username }} is {% trans "Online" %}</p>
