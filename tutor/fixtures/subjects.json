@@ -1,11 +1,43 @@
 [
     {
+        "model": "spirit_category.category",
+        "pk": 1,
+        "fields": {
+            "parent": null,
+            "title": "Humanities",
+            "slug": "humanities",
+            "description": "",
+            "color": "",
+            "reindex_at": "2017-07-11T16:39:48.111Z",
+            "is_global": true,
+            "is_closed": false,
+            "is_removed": false,
+            "is_private": false
+        }
+    },
+    {
+        "model": "spirit_category.category",
+        "pk": 2,
+        "fields": {
+            "parent": null,
+            "title": "Chemistry",
+            "slug": "chemistry",
+            "description": "",
+            "color": "",
+            "reindex_at": "2017-07-11T16:39:48.111Z",
+            "is_global": true,
+            "is_closed": false,
+            "is_removed": false,
+            "is_private": false
+        }
+    },
+    {
         "model": "tutor.subject",
         "pk": 1,
         "fields": {
             "abbreviation": "HUM",
             "name": "Humanities",
-            "category": null
+            "category": 1
         }
     },
     {
@@ -14,7 +46,7 @@
         "fields": {
             "abbreviation": "CHEM",
             "name": "Chemistry",
-            "category": null
+            "category": 2
         }
     }
 ]
