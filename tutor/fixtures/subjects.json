@@ -1,0 +1,20 @@
+[
+    {
+        "model": "tutor.subject",
+        "pk": 1,
+        "fields": {
+            "abbreviation": "HUM",
+            "name": "Humanities",
+            "category": null
+        }
+    },
+    {
+        "model": "tutor.subject",
+        "pk": 2,
+        "fields": {
+            "abbreviation": "CHEM",
+            "name": "Chemistry",
+            "category": null
+        }
+    }
+]
