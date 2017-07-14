@@ -58,12 +58,12 @@
             <div class="messages-container">
                 <div id="messages" class="messages">
                     {% for msg in active_dialog.messages.all %}
-                        <div class="row">
+                        <div class="row msg">
                             <p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
                                 {% if msg.sender.first_name %}
-                                    <span class="username">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
+                                    <span class="username them">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
                                 {% else %}
-                                    <span class="username">{{ msg.sender.username }}:</span>
+                                    <span class="username them">{{ msg.sender.username }}:</span>
                                 {% endif %}
                                 {% autoescape off %}
                                     {{ msg.text}}
