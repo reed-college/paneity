@@ -19,20 +19,14 @@ $(document).ready(function () {
     }
 
     function addNewMessage(packet) {
-        var msg_class = "";
+        var msgElem = "";
         if (packet['sender_name'] == $("#owner_username").val()) {
-            msg_class = "pull-left";
+            msgElem = $("#message-template-owner").html();
         } else {
-            msg_class = "pull-right";
+            msgElem = $("#message-template-opponent").html();
         }
-        var msgElem =
-            $('<div class="row">' +
-                '<p class="' + msg_class + '">' +
-                '<span class="username">' + packet['sender_name'] + ': </span>' +
-                packet['message'] +
-                ' <span class="timestamp">&ndash; <span data-livestamp="' + packet['created'] + '"> ' + packet['created'] + '</span></span> ' +
-                '</p> ' +
-                '</div>');
+        msgElem = msgElem.replace(/\[message\]/g, packet['message']);
+        msgElem = msgElem.replace(/\[timestamp\]/g, packet['created']);
         $('#messages').append(msgElem);
         scrollToLastMessage()
     }

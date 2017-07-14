@@ -8,6 +8,9 @@
     <link href="{% static "css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
 
 {% endblock %}
+{% block title %}
+    Chatting with {{ dialog|get_name:opponent_username }} 
+{% endblock %}
 
 {% block content %}
 </div>
@@ -22,6 +25,7 @@
             <div class="messages-container">
                 <div id="messages" class="messages">
                     {% for msg in active_dialog.messages.all %}
+                        {# this controls how a message looks when the page is loaded. Edit messsage-template-owner and message-template-opponent below to control how the messages sent after the page is loaded look #}
                         <div class="row msg">
                             <p class="{% if msg.sender == request.user %}pull-right{% else %}pull-left{% endif %}">
                                 {% if msg.sender.first_name %}
@@ -70,6 +74,39 @@
     {# This is the template for the message that gets sent out when a user starts a video call #}
     <div id="vc-link-message-template" class="hidden">
         I started a video call. You can access it <a target='_blank' href='{{ request.user.username|get_vc_link:opponent_username }}'>here</a>
+    </div>
+    {# these are the templates that will get duplicated when someone sends a message #}
+    <div id="message-template-owner" class="hidden">
+        <div class="row msg">
+            <p class="pull-right">
+            {% with request.user as user %}
+                {% if user.first_name and user.last_name %}
+                    <span class="username them">{{ user.first_name }} {{user.last_name}}:</span>
+                {% else %}
+                    <span class="username them">{{ user.username }}:</span>
+                {% endif %}
+                [message]
+                <span class="timestamp">&ndash; <span
+                        data-livestamp="[timestamp]">[timestamp]</span></span>
+            {% endwith %}
+            </p>
+        </div>
+    </div>
+    <div id="message-template-opponent" class="hidden">
+        <div class="row msg">
+            <p class="pull-left">
+            {% with opponent_username|get_user as user %}
+                {% if user.first_name and user.last_name %}
+                    <span class="username them">{{ user.first_name }} {{user.last_name}}:</span>
+                {% else %}
+                    <span class="username them">{{ user.username }}:</span>
+                {% endif %}
+                [message]
+                <span class="timestamp">&ndash; <span
+                        data-livestamp="[timestamp]">[timestamp]</span></span>
+            {% endwith %}
+            </p>
+        </div>
     </div>
 {% endblock %}
 
