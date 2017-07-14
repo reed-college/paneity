@@ -44,26 +44,19 @@
     <input id="owner_username" type="hidden" value="{{ request.user.username }}">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-md-offset-9">
-                <span class="pull-right" hidden id="typing-text">
-                    <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
-                </span>
-            </div>
-            <p id="chatting_with">
-            You are chatting with {{ dialog|get_name:opponent_username }}
-            </p>
-            <p class="text-success" id="online-status" style="display: none">{{ dialog|get_name:opponent_username }} is {% trans "Online" %}</p>
-            <p class="text-danger" id="offline-status" style="display: none">{{ dialog|get_name:opponent_username }} is {% trans "Offline" %}</p>
+            <p class= "opponent_username">{{ dialog|get_name:opponent_username }}: </p>
+            <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
+            <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
 
             <div class="messages-container">
                 <div id="messages" class="messages">
                     {% for msg in active_dialog.messages.all %}
-                        <div class="row">
-                            <p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
+                        <div class="row msg">
+                            <p class="{% if msg.sender == request.user %}pull-right{% else %}pull-left{% endif %}">
                                 {% if msg.sender.first_name %}
-                                    <span class="username">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
+                                    <span class="username them">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
                                 {% else %}
-                                    <span class="username">{{ msg.sender.username }}:</span>
+                                    <span class="username them">{{ msg.sender.username }}:</span>
                                 {% endif %}
                                 {% autoescape off %}
                                     {{ msg.text}}
@@ -76,7 +69,11 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-md-3 col-md-offset-9">
+            <span class="pull-right" hidden id="typing-text">
+                <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
+            </span>
+        </div>
         <div class="row">
             <div class="add-message">
                 <div class="form-group">
