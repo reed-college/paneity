@@ -15,7 +15,7 @@ Homepage
     <h3> To find a tutor, please select a course from the list below: </h3>
     <div class="courselisting">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="SEARCH FOR COURSES..." title="Type in a course or subject name">
-        <ul class="myUL">
+        <ul id="myUL" class="myUL">
             {% if request.user.student.enrolled_classes.all %}
                 <li><a href="#" class="header">Enrolled Courses</a></li>
                 {% for course in request.user.student.enrolled_classes.all %}
