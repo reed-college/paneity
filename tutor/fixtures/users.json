@@ -1,0 +1,290 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$EXl8uHwUbNNL$ZuuknrdB7/GB2fKRHtUbBGJXVaEhgyQLwmkWEII2tYw=",
+            "last_login": "2017-07-12T18:28:14.920Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-22T20:42:13.103Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "johnsmith",
+            "first_name": "John",
+            "last_name": "Smith",
+            "email": "johnsmith@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "harker",
+            "first_name": "Jonathan",
+            "last_name": "Harker",
+            "email": "harker@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "helsing",
+            "first_name": "Abraham",
+            "last_name": "Van Helsing",
+            "email": "helsing@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "lucy",
+            "first_name": "Lucy",
+            "last_name": "Westrena",
+            "email": "lucy@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "mina",
+            "first_name": "Mina",
+            "last_name": "Harker",
+            "email": "mina@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "dracula",
+            "first_name": "Vlad",
+            "last_name": "Dracula",
+            "email": "dracula@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "quincey",
+            "first_name": "Quincey",
+            "last_name": "Morris",
+            "email": "quincey@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "art",
+            "first_name": "Arthur",
+            "last_name": "Holmwood",
+            "email": "art@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$CmyvSyJoYJgE$HRSrs+8DiavXFnKTgYtTV9FViPgqTR+4gafF7LWwUn8=",
+            "last_login": "2017-06-20T12:00:00Z",
+            "is_superuser": false,
+            "username": "jack",
+            "first_name": "John",
+            "last_name": "Seward",
+            "email": "jack@reed.edu",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-05-23T21:01:03Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "tutor": false,
+            "tutoring_classes": [],
+            "enrolled_classes": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "tutor": false,
+            "tutoring_classes": [
+                1, 2, 3, 4, 5
+            ],
+            "enrolled_classes": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "tutor": false,
+            "tutoring_classes": [
+                1
+            ],
+            "enrolled_classes": [
+                2, 4
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 4,
+        "fields": {
+            "user": 6,
+            "tutor": false,
+            "tutoring_classes": [
+                1, 4
+            ],
+            "enrolled_classes": [
+                3, 5
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 5,
+        "fields": {
+            "user": 7,
+            "tutor": false,
+            "tutoring_classes": [
+                1, 2, 3
+            ],
+            "enrolled_classes": [
+                4, 5
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 6,
+        "fields": {
+            "user": 8,
+            "tutor": false,
+            "tutoring_classes": [],
+            "enrolled_classes": [
+                1, 4
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 7,
+        "fields": {
+            "user": 9,
+            "tutor": false,
+            "tutoring_classes": [
+                1, 2  
+            ],
+            "enrolled_classes": [
+                3, 4
+            ]
+        }
+    },
+    {
+        "model": "tutor.student",
+        "pk": 8,
+        "fields": {
+            "user": 10,
+            "tutor": false,
+            "tutoring_classes": [
+                4, 5  
+            ],
+            "enrolled_classes": [
+                1, 2
+            ]
+        }
+    }
+]

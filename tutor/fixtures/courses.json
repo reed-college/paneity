@@ -1,0 +1,57 @@
+[
+    {
+        "model": "tutor.course",
+        "pk": 1,
+        "fields": {
+            "subject": 1,
+            "number": 110,
+            "title": "Ancient Mediterranean",
+            "office_hours": "M 3-5pm Tu 11-12pm Thu 5-6pm",
+            "drop_in_hrs": "Sun-Thu 4-8pm"
+        }
+    },
+    {
+        "model": "tutor.course",
+        "pk": 2,
+        "fields": {
+            "subject": 1,
+            "number": 211,
+            "title": "The Renaissance World and the Birth of Modernity I",
+            "office_hours": "M 3-5pm Fri 5-6pm",
+            "drop_in_hrs": ""
+        }
+    },
+    {
+        "model": "tutor.course",
+        "pk": 3,
+        "fields": {
+            "subject": 1,
+            "number": 220,
+            "title": "Modern European Humanities",
+            "office_hours": "",
+            "drop_in_hrs": ""
+        }
+    },
+    {
+        "model": "tutor.course",
+        "pk": 4,
+        "fields": {
+            "subject": 2,
+            "number": 101,
+            "title": "Molecular Structure & Properties",
+            "office_hours": "M 3-5pm Fri 5-6pm",
+            "drop_in_hrs": "Su-Thu 7-9pm"
+        }
+    },
+    {
+        "model": "tutor.course",
+        "pk": 5,
+        "fields": {
+            "subject": 2,
+            "number": 201,
+            "title": "Organic Chemistry I",
+            "office_hours": "MWF 3-5pm",
+            "drop_in_hrs": "Su-Thu 7-9pm"
+        }
+    }
+]
