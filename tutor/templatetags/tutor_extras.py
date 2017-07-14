@@ -51,7 +51,7 @@ def other_username(dialog, username):
 
 
 @register.filter
-def get_name(dialog, user_name):
+def get_name(user_name):
     """
     This takes a user's username and django-private-chat dialog as input and returns their first and last name.
     This is mainly for the django chat.
