@@ -7,7 +7,7 @@
 
 .messages {
     box-sizing: border-box;
-    padding: 10%;
+    padding: 20px;
     overflow: auto;
     height: 300px;
     background-color: rgba(245,243,238, 0.3);
@@ -35,12 +35,10 @@
 .msg .pull-left {
     /*background-color: orange;*/
     width: 100%;
-    color: white;
+    color: black;
 }
 .msg .pull-right {
-    float: left;
-    /*background-color: purple;*/
-    color: white;
+    color: black;
 }
 
 .msg {
@@ -50,11 +48,11 @@
 }
 .msg .pull-right .username {
     font-weight: bold;
-    color: #C63D0F;
+    color: #686561;
 }
 .msg .pull-left .username {
     font-weight: bold;
-    color: #7E8F7C;
+    color: #c1171b;
 }
 
 .timestamp {
@@ -77,8 +75,11 @@
     text-align: center;
     padding-top: 10px;
     margin: 0;
+    font-family: helvetica;
 }
 #online-status {
+    color: green;
+    font-weight: bold;
     font-size: 17px;
     text-shadow: 1px 1px 3px white;
 }

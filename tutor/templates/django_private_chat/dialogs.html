@@ -52,14 +52,15 @@
             <p id="chatting_with">
             You are chatting with {{ dialog|get_name:opponent_username }}
             </p>
-            <p class="text-success" id="online-status" style="display: none">{{ dialog|get_name:opponent_username }} is {% trans "Online" %}</p>
-            <p class="text-danger" id="offline-status" style="display: none">{{ dialog|get_name:opponent_username }} is {% trans "Offline" %}</p>
+            <p>{{ dialog|get_name:opponent_username }}: </p>
+            <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
+            <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
 
             <div class="messages-container">
                 <div id="messages" class="messages">
                     {% for msg in active_dialog.messages.all %}
                         <div class="row msg">
-                            <p class="{% if msg.sender == request.user %}pull-left{% else %}pull-right{% endif %}">
+                            <p class="{% if msg.sender == request.user %}pull-right{% else %}pull-left{% endif %}">
                                 {% if msg.sender.first_name %}
                                     <span class="username them">{{ msg.sender.first_name }} {{msg.sender.last_name}}:</span>
                                 {% else %}
