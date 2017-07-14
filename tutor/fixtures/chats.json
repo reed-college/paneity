@@ -1,0 +1,190 @@
+[
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 1,
+        "fields": {
+            "created": "2017-07-14T15:50:03.803Z",
+            "modified": "2017-07-14T15:50:03.803Z",
+            "owner": 3,
+            "opponent": 4
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 2,
+        "fields": {
+            "created": "2017-07-14T15:50:18.118Z",
+            "modified": "2017-07-14T15:50:18.118Z",
+            "owner": 3,
+            "opponent": 5
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 3,
+        "fields": {
+            "created": "2017-07-14T15:50:35.310Z",
+            "modified": "2017-07-14T15:50:35.311Z",
+            "owner": 3,
+            "opponent": 6
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 4,
+        "fields": {
+            "created": "2017-07-14T15:50:48.409Z",
+            "modified": "2017-07-14T15:50:48.410Z",
+            "owner": 3,
+            "opponent": 7
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 5,
+        "fields": {
+            "created": "2017-07-14T15:51:00.050Z",
+            "modified": "2017-07-14T15:51:00.050Z",
+            "owner": 3,
+            "opponent": 9
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 6,
+        "fields": {
+            "created": "2017-07-14T15:54:13.558Z",
+            "modified": "2017-07-14T15:54:13.559Z",
+            "owner": 3,
+            "opponent": 10
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 7,
+        "fields": {
+            "created": "2017-07-14T15:56:16.158Z",
+            "modified": "2017-07-14T15:56:16.159Z",
+            "owner": 8,
+            "opponent": 4
+        }
+    },
+    {
+        "model": "django_private_chat.dialog",
+        "pk": 8,
+        "fields": {
+            "created": "2017-07-14T15:57:03.144Z",
+            "modified": "2017-07-14T15:57:03.145Z",
+            "owner": 10,
+            "opponent": 4
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 1,
+        "fields": {
+            "created": "2017-07-14T15:50:14.476Z",
+            "modified": "2017-07-14T15:50:14.477Z",
+            "is_removed": false,
+            "dialog": 1,
+            "sender": 3,
+            "text": "Hey can you help me with this thing?"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 2,
+        "fields": {
+            "created": "2017-07-14T15:50:31.287Z",
+            "modified": "2017-07-14T15:50:31.287Z",
+            "is_removed": false,
+            "dialog": 2,
+            "sender": 3,
+            "text": "Oh man I'm really struggling with this!"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 3,
+        "fields": {
+            "created": "2017-07-14T15:50:44.175Z",
+            "modified": "2017-07-14T15:50:44.175Z",
+            "is_removed": false,
+            "dialog": 3,
+            "sender": 3,
+            "text": "Hey how's it going?"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 4,
+        "fields": {
+            "created": "2017-07-14T15:50:52.402Z",
+            "modified": "2017-07-14T15:50:52.402Z",
+            "is_removed": false,
+            "dialog": 4,
+            "sender": 3,
+            "text": "Fuck you"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 5,
+        "fields": {
+            "created": "2017-07-14T15:51:10.566Z",
+            "modified": "2017-07-14T15:51:10.566Z",
+            "is_removed": false,
+            "dialog": 5,
+            "sender": 3,
+            "text": "How do I do things?"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 6,
+        "fields": {
+            "created": "2017-07-14T15:54:21.832Z",
+            "modified": "2017-07-14T15:54:21.832Z",
+            "is_removed": false,
+            "dialog": 6,
+            "sender": 3,
+            "text": "Oh garsh I really need help!"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 7,
+        "fields": {
+            "created": "2017-07-14T15:56:39.931Z",
+            "modified": "2017-07-14T15:56:39.931Z",
+            "is_removed": false,
+            "dialog": 7,
+            "sender": 8,
+            "text": "Helpppppp!!!"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 8,
+        "fields": {
+            "created": "2017-07-14T15:59:03.478Z",
+            "modified": "2017-07-14T15:59:03.478Z",
+            "is_removed": false,
+            "dialog": 8,
+            "sender": 10,
+            "text": "Hey, one of my friends is very sick and I don't know why. Can you come to England and help me?"
+        }
+    },
+    {
+        "model": "django_private_chat.message",
+        "pk": 9,
+        "fields": {
+            "created": "2017-07-14T16:00:01.119Z",
+            "modified": "2017-07-14T16:00:01.119Z",
+            "is_removed": false,
+            "dialog": 8,
+            "sender": 4,
+            "text": "Sure thing! I'll get the next boat from Amsterdam!"
+        }
+    }
+]
