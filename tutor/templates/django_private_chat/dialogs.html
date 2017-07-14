@@ -44,15 +44,7 @@
     <input id="owner_username" type="hidden" value="{{ request.user.username }}">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-md-offset-9">
-                <span class="pull-right" hidden id="typing-text">
-                    <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
-                </span>
-            </div>
-            <p id="chatting_with">
-            You are chatting with {{ dialog|get_name:opponent_username }}
-            </p>
-            <p>{{ dialog|get_name:opponent_username }}: </p>
+            <p class= "opponent_username">{{ dialog|get_name:opponent_username }}: </p>
             <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
             <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
 
@@ -77,7 +69,11 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-md-3 col-md-offset-9">
+            <span class="pull-right" hidden id="typing-text">
+                <strong>{{ dialog|get_name:opponent_username }} {% trans "is typing..." %}</strong>
+            </span>
+        </div>
         <div class="row">
             <div class="add-message">
                 <div class="form-group">
