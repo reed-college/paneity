@@ -8,28 +8,30 @@ Homepage
 {% endblock %}
 
 {% block content %}
-<div class="homepage">
-    <!-- the header below checks if the user logged in has a first name, a username, or if they aren't logged in, and it then
-    displays the appropriate greeting. It's all in one line because the formatting on the page got weird otherwise. -->
-    <h2>Welcome{% if user.first_name %}, {{user.first_name}}{% elif user.username %}, {{user.username}}{% endif %}!</h2>
-    <h3> To find a tutor, please select a course from the list below: </h3>
-    <div class="courselisting">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="SEARCH FOR COURSES..." title="Type in a course or subject name">
-        <ul id="myUL" class="myUL">
-            {% if request.user.student.enrolled_classes.all %}
-                <li><a href="#" class="header">Enrolled Courses</a></li>
-                {% for course in request.user.student.enrolled_classes.all %}
-                    <li><a href = "{{course.id}}/tutors" class="subheader">{{course}}</a></li>
-                {% endfor %}
-            {% endif %}
+<div class="row">
+    <div class="homepage">
+        <!-- the header below checks if the user logged in has a first name, a username, or if they aren't logged in, and it then
+        displays the appropriate greeting. It's all in one line because the formatting on the page got weird otherwise. -->
+        <h2>Welcome{% if user.first_name %}, {{user.first_name}}{% elif user.username %}, {{user.username}}{% endif %}!</h2>
+        <h3> To find a tutor, please select a course from the list below: </h3>
+        <div class="courselisting">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="SEARCH FOR COURSES..." title="Type in a course or subject name">
+            <ul id="myUL" class="myUL">
+                {% if request.user.student.enrolled_classes.all %}
+                    <li><a href="#" class="header">Enrolled Courses</a></li>
+                    {% for course in request.user.student.enrolled_classes.all %}
+                        <li><a href = "{{course.id}}/tutors" class="subheader">{{course}}</a></li>
+                    {% endfor %}
+                {% endif %}
 
-            {% for subject in Subjects %}
-                <li><a href="#" class="header">{{subject}}</a></li>
-                {% for classes in subject.course_set.all %}
-                    <li><a href = "{{classes.id}}/tutors" class="subheader">{{classes}}</a></li>
+                {% for subject in Subjects %}
+                    <li><a href="#" class="header">{{subject}}</a></li>
+                    {% for classes in subject.course_set.all %}
+                        <li><a href = "{{classes.id}}/tutors" class="subheader">{{classes}}</a></li>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        </ul>
+            </ul>
+        </div>
     </div>
 </div>
 

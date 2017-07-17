@@ -33,60 +33,68 @@ Paneity | {% block title %}{% endblock %}
 {% endblock %}
 </head>
 <body>
-    <div class="banner">
-         <div class="row">
-            <div class="col-lg-3">
-                <div id="bannerdiv">
-                        <a href="{% url 'tutor:index' %}">
-                                <h1 id="bannertext">REED COLLEGE</h1>
-                        </a>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="banner">
+                 <div class="row">
+                    <div class="col-lg-3">
+                        <div id="bannerdiv">
+                                <a href="{% url 'tutor:index' %}">
+                                        <h1 id="bannertext">REED COLLEGE</h1>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden-xs">
+                    <div class="topnav" id="myTopnav">
+                        <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
+                        <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
+                        <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
+                    </div>
+                </div>
+                <div class="mobile-nav visible-xs-inline-block">
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a href="{% url "tutor:index" %}">
+                                <span style="font-size: 2em;">
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url "spirit:index" %}">
+                                <span style="font-size: 2em;">
+                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="menu-element" href="{% url "tutor:tutorchat" %}">
+                                <span style="font-size: 2em;">
+                                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="username">
+                {% if user.username %}
+                <p>You are currently logged in as: {{user.username}}</p>
+                {% else %}
+                <p>You are not logged in.</p>
+                {% endif %}
+                <div id="about">
+                    <a href="{% url "tutor:about" %}" >About This Page</a>
                 </div>
             </div>
-        </div>
-
-        <div class="hidden-xs">
-            <div class="topnav" id="myTopnav">
-                <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
-                <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
-                <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
-            </div>
-        </div>
-        <div class="mobile-nav visible-xs-inline-block">
-            <ul class="nav nav-pills">
-                <li>
-                    <a href="{% url "tutor:index" %}">
-                        <span style="font-size: 2em;">
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url "spirit:index" %}">
-                        <span style="font-size: 2em;">
-                            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a class="menu-element" href="{% url "tutor:tutorchat" %}">
-                        <span style="font-size: 2em;">
-                            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-    <div id="username">
-        {% if user.username %}
-        <p>You are currently logged in as: {{user.username}}</p>
-        {% else %}
-        <p>You are not logged in.</p>
-        {% endif %}
-        <div id="about">
-            <a href="{% url "tutor:about" %}" >About This Page</a>
         </div>
     </div>
 

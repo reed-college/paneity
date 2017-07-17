@@ -49,11 +49,20 @@ def other_username(dialog, username):
         errortext = "Username {} not present in dialog".format(username)
         raise RuntimeError(errortext)
 
+
 @register.filter
-def get_name(dialog, user_name):
+def get_name(user_name):
     """
     This takes a user's username and django-private-chat dialog as input and returns their first and last name.
     This is mainly for the django chat.
     """
     user = User.objects.get(username=user_name)
     return str(user.first_name) + " " + str(user.last_name)
+
+
+@register.filter
+def get_user(user_name):
+    """
+    Takes a username and returns a user
+    """
+    return User.objects.get(username=user_name)
