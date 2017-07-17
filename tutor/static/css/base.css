@@ -4,6 +4,7 @@
 
 html {
     font-size: 20px; /* this specifies that 1rem = 20px, so keep that in mind */
+    overflow-x: hidden;
 }
 
 body {
