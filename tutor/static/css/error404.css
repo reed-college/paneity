@@ -1,9 +1,9 @@
-#error {
+.error {
     text-align: center;
     color: black;
     padding-top: 40px;
 }
-#errorp {
+.errorp {
     text-align: center;
     color: black;
     font-size: 22px;
