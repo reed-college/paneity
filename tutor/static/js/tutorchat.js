@@ -9,6 +9,12 @@ $(document).ready(function () {
         $("#new-message-div").html($("#no-messages-template").html());
     }
 
+    // This will make it so that when you click on a row,
+    // it takes you to that conversation
+    $(".clickable-row").click(function() {
+        window.open($(this).data("href"), '_blank');
+    });
+
     var websocket = null;
 
     function setupChatWebSocket() {

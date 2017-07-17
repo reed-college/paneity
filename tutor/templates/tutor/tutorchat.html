@@ -22,8 +22,7 @@
                     {# this part figures out if the current user is the opponent, #}
                     {# or the owner of the dialog #}
                     {% with username=dialog|other_username:request.user.username %}
-                    <a href='{% url "dialogs_detail" username %}' target="_blank">
-                        <tr id="{{username}}-element">
+                        <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
                             <td><b>{{username}}</b></td>
                             <td>
                             {% with dialog|most_recent_message as message %}
@@ -31,8 +30,6 @@
                             {% endwith %}
                             </td>
                         </tr>
-                    </a>
-                
                         {% endwith %}
                 {% endfor %}
             </div>
