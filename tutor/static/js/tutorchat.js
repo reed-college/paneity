@@ -58,8 +58,8 @@ $(document).ready(function () {
             if (packet.type == "new-message") {
                 var username = packet['sender_name'];
                 // remove no message div and any message div with the same username
-                $("#no-messages-alert").remove()
-                $("#"+username+"-alert").remove()
+                $("#no-messages-element").remove()
+                $("#"+username+"-element").remove()
                 // add new message to new message div
                 var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
                 newm = newm + $("#new-message-div").html();

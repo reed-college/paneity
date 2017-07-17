@@ -13,42 +13,46 @@
         <p>
         If you receive a message from a student, you will be alerted here:
         </p>
-        <div id="new-message-div">
-            
-
-        </div>
-        <div id="old-message-div">
-            {% for dialog in dialogs %}
-                {# this part figures out if the current user is the opponent, #}
-                {# or the owner of the dialog #}
-                {% with username=dialog|other_username:request.user.username %}
-                    <div id="{{username}}-alert" class="alert alert-info" role="alert">
-                        Continue Your conversation with <b>{{username}}</b>
-                        <a href='{% url "dialogs_detail" username %}' target="_blank" class="alert-link">
-                            Click Here!
-                        </a>
-                        {% with dialog|most_recent_message as message %}
-                            {{ message.text }}
+        <table class="table">
+            <div id="new-message-div">
+                
+            </div>
+            <div id="old-message-div">
+                {% for dialog in dialogs %}
+                    {# this part figures out if the current user is the opponent, #}
+                    {# or the owner of the dialog #}
+                    {% with username=dialog|other_username:request.user.username %}
+                    <a href='{% url "dialogs_detail" username %}' target="_blank">
+                        <tr id="{{username}}-element">
+                            <td><b>{{username}}</b></td>
+                            <td>
+                            {% with dialog|most_recent_message as message %}
+                                {{ message.text }}
+                            {% endwith %}
+                            </td>
+                        </tr>
+                    </a>
+                
                         {% endwith %}
-                    </div>
-            
-                    {% endwith %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        </table>
     </div>
     <div id="no-messages-template" class="hidden">
-        <div id="no-messages-alert" class="alert alert-danger" role="alert">
+        <tr id="no-messages-element">
             No students have messaged you yet.
-        </div> 
+        </tr> 
     </div>
     <div id="new-message-template" class="hidden">
-        <div id="[username]-alert" class="alert alert-success" role="alert">
-            <b>Hey!</b> You got a new message from [username].
+        <tr id="[username]-element">
+            <td>[username]</td>
             {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
-            <a href='{% url "dialogs" %}[username]' target="_blank" class="alert-link">
+            <td>
+            <a href='{% url "dialogs" %}[username]' target="_blank">
                 You can view the message and reply here.
             </a>
-        </div>
+            </td>
+        </tr>
     </div>
 {% endblock %}
 
