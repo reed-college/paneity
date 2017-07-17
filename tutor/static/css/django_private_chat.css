@@ -70,7 +70,7 @@
     font-weight: normal;
 }
 
-.text-success {
+.online-text {
     color: green;
     font-weight: bold;
     font-size: 17px;
@@ -78,7 +78,7 @@
     width: 100%;
 }
 
-.text-danger {
+.offline-text {
     font-size: 17px;
     color: #85070A;
     font-weight: bold;
