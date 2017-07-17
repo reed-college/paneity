@@ -12,15 +12,15 @@
     {% load tutor_extras %}
     <div class="row">
         <div class="col-xs-12">
-            <h3 id="tutortitle"> {{course_name}} Tutors</h3>
-            <div id="hours">
+            <h3 class="tutortitle"> {{course_name}} Tutors</h3>
+            <div class="hours">
                 <h4 id="office_hours">Office Hours:</h4>
                     <p id="office/dropin">{{course_name.office_hours}}</p>
                 <h4 id="dropin_hours">Drop-in Tutoring Hours:</h4>
                     <p id = "office_dropin">{{course_name.drop_in_hrs}}</p>
             </div>
 
-            <div id="tutorsdiv">
+            <div class="tutorsdiv">
             {# prints the first and last name of each tutor #}
                 <table class="table">
                     <tr>

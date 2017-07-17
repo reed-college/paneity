@@ -4,6 +4,7 @@
 
 html {
     font-size: 20px; /* this specifies that 1rem = 20px, so keep that in mind */
+    overflow-x: hidden;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
 	overflow: hidden;
 }
 
-#bannertext {
+.bannertext {
 	padding-top: 1rem; /*20px;*/
 	margin: auto;
 	font-size: 1.5rem;
@@ -97,13 +98,13 @@ h3 {
   padding-right: 0.45rem;
 }
 
-#username {
+.username_login {
     float: right;
     font-size: 12px;
     color: black;
     margin: 10px 10px 0px 0px;
 }
-#username #about {
+.username_login .about {
     float: right;
     color: black;
     padding: 0;
@@ -111,7 +112,7 @@ h3 {
     bottom: 7px;
     width: 90px;
 }
-#username #about a {
+.username_login .about a {
     color: black;
 }
 
@@ -149,7 +150,7 @@ a:hover {
 .topnav a {
     font-size: 0.7rem;
 }
-#bannertext {
+.bannertext {
     font-size: 1rem;
     float: left;
     padding-left: 2rem;
