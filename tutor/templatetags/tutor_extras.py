@@ -66,3 +66,12 @@ def get_user(user_name):
     Takes a username and returns a user
     """
     return User.objects.get(username=user_name)
+
+
+@register.filter
+def most_recent_message(dialog):
+    """
+    Takes a dialog and returns the most recent message in that
+    dialog
+    """
+    return dialog.messages.order_by("-created").first()
