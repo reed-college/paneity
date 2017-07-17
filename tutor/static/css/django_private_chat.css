@@ -70,17 +70,20 @@
     font-weight: normal;
 }
 
-.online-status {
+.text-success {
     color: green;
     font-weight: bold;
     font-size: 17px;
     text-shadow: 1px 1px 3px white;
+    width: 100%;
 }
 
-.offline-status {
+.text-danger {
     font-size: 17px;
     color: #85070A;
+    font-weight: bold;
     text-shadow: 1px 1px 3px white;
+    width: 100%;
 }
 
 .opponent_username {
