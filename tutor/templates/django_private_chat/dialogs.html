@@ -37,7 +37,7 @@
                                     {{ msg.text}}
                                 {% endautoescape %}
                                 <span class="timestamp">&ndash; <span
-                                        data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
+                                        data-livestamp="{{ msg.created }}">{{ msg.created }}</span></span>
                             </p>
                         </div>
                     {% endfor %}
