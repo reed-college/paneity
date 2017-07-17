@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
@@ -8,11 +8,11 @@ html {
 }
 
 body {
-  background-image: url('../images/Studyingbooks.jpg');
-  background-attachment: fixed;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
+    background-image: url('../images/Studyingbooks.jpg');
+    background-attachment: fixed;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .banner {
@@ -23,11 +23,10 @@ body {
     text-align: left;
     padding-left: 40px; /*4.25rem; /*85px; */
     padding-bottom: 1rem; /*20px; */
-
 }
 
 .bannerdiv {
-	white-space: nowrap;
+    white-space: nowrap;
 	overflow: hidden;
 }
 
@@ -46,11 +45,11 @@ h1 {
 }
 
 h2 {
-  color: black;
-  font-family: 'Nunito', serif;
-  font-size: 2rem;
-  text-align: center;
-  padding-top: 1.7rem; /*25px; */
+    color: black;
+    font-family: 'Nunito', serif;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 1.7rem; /*25px; */
 }
 
 h3 {
@@ -66,7 +65,7 @@ h3 {
     overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
+
 .topnav a {
 	overflow: hidden;
     display: inline-block;
@@ -80,22 +79,19 @@ h3 {
     letter-spacing: 0.05rem; /*1px;*/
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
-  color: #787562;
+    color: #787562;
 	transition-delay: .15s; /* delays for .15 seconds */
 	-webkit-transition-delay: .15s; /* ^for Safari & Chrome */
 }
 
-/* Add a color to the active/current link */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
 }
 
-
 .menu-element {
-  padding-right: 0.45rem;
+    padding-right: 0.45rem;
 }
 
 .username_login {
@@ -104,6 +100,7 @@ h3 {
     color: black;
     margin: 10px 10px 0px 0px;
 }
+
 .username_login .about {
     float: right;
     color: black;
@@ -112,6 +109,7 @@ h3 {
     bottom: 7px;
     width: 90px;
 }
+
 .username_login .about a {
     color: black;
 }
@@ -129,56 +127,50 @@ a:link {
 	color: white;
 	text-decoration: none;
 }
+
 a:visited {
 	color: white;
 }
+
 a:hover {
 	color: black;
 }
 
 /*MOBILE STYLING */
 @media screen and (max-width: 768px) {
-.banner {
-    background-image: none;
-    /*height: 70px;*/
-    padding-left:0rem;
-    padding-bottom: 0rem;
-
-}
-
-
-.topnav a {
-    font-size: 0.7rem;
-}
-.bannertext {
-    font-size: 1rem;
-    float: left;
-    padding-left: 2rem;
-    margin: 0;
-    position: relative;
-    left: -30px;
-    top: -10px;
-}
-.burger-nav {
-    display: block;
-    height: 100px;
-    width:  100px;
-    float: right;
-    margin: 10px;
-    cursor: pointer;
+    .banner {
+        background-image: none;
+        padding-left:0rem;
+        padding-bottom: 0rem;
     }
+
+    .topnav a {
+        font-size: 0.7rem;
+    }
+
+    .bannertext {
+        font-size: 1rem;
+        float: left;
+        padding-left: 2rem;
+        margin: 0;
+        position: relative;
+        left: -30px;
+        top: -10px;
+    }
+
     .topnav {
         overflow: hidden;
         position: relative;
         left: -35px;
         bottom: 10px;
     }
+
     .topnav a {
         margin-right: 7px;
-
     }
+
     .topnav .menu-element.open {
         height:auto
-
     }
+    
 }

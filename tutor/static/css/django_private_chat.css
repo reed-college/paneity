@@ -1,8 +1,6 @@
-
 .messages-container {
     height: 300px;
     position: relative;
-
 }
 
 .messages {
@@ -11,7 +9,6 @@
     overflow: auto;
     height: 300px;
     background-color: rgba(245,243,238, 0.3);
-
 }
 
 .user-list {
@@ -32,11 +29,12 @@
     color: orange;
     font-weight: bold;
 }
+
 .msg .pull-left {
-    /*background-color: orange;*/
     width: 100%;
     color: black;
 }
+
 .msg .pull-right {
     color: black;
 }
@@ -46,10 +44,12 @@
     width: 100%;
     font-family: arial;
 }
+
 .msg .pull-right .username {
     font-weight: bold;
     color: #686561;
 }
+
 .msg .pull-left .username {
     font-weight: bold;
     color: #c1171b;
@@ -76,11 +76,13 @@
     font-size: 17px;
     text-shadow: 1px 1px 3px white;
 }
+
 .offline-status {
     font-size: 17px;
     color: #85070A;
     text-shadow: 1px 1px 3px white;
 }
+
 .opponent_username {
     font-size: 17px;
     color: black;
@@ -88,13 +90,13 @@
     padding: 0;
     margin: 0;
     text-shadow: 2px 2px 5px white;
-
 }
+
 .col-md-3 .pull-right {
     width: 100%;
     color: #c1171b
-
 }
+
 /*MOBILE STYLING*/
 @media screen and (max-width:500px) {
     /*.html{
