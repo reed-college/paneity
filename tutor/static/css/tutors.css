@@ -1,5 +1,5 @@
 
-#hours{
+.hours{
     text-align: center;
     vertical-align: middle;
     margin: 5% 20% 5% 20%;/*0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
@@ -12,13 +12,13 @@
     border: 1rem;
     /*overflow: scroll;*/
 }
-#tutortitle {
+.tutortitle {
   font-size: 1.25rem;
   margin-top: 2rem; /*60px;*/
   margin-bottom: 1.35rem;/*27px;*/
   font-weight: bold;
 }
-#tutorsdiv {
+.tutorsdiv {
   margin: 5% 5% 5% 5%; /*0.5rem 8.5rem 1rem 8.5rem; /*10px 170px 20px 170px;*/
   color: black;
   background-color: rgba(225, 225, 225, 0.2);
@@ -66,7 +66,7 @@ td .tutorlink:hover {
 
 /* RESPONSIVE DESIGN */
 @media screen and (max-width: 740px) {
-#hours{
+.hours{
     margin: 5% 5% 5% 5%;
     font-size: 0.85rem;
 }
@@ -82,7 +82,7 @@ th {
 td {
     font-size: 0.85rem;
 }
-#tutorsdiv {
+.tutorsdiv {
     padding: 0;
 }
 }

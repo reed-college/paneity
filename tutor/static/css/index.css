@@ -4,7 +4,7 @@
 }
 
 
-#myInput {
+.input {
   background-image: url('../images/search-icon.png');
   background-position: 0.1rem 0rem; /*2px 0px; */
   background-size: 1.5rem 1.5rem;/* 30px 30px; */
@@ -59,7 +59,7 @@
 
 /*MOBILE STYLING */
 @media screen and (max-width: 740px) {
-#myInput {
+.input {
     width: 70%;
     }
 h2 {
