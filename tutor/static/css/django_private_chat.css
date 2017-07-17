@@ -103,3 +103,13 @@
     color: #c1171b
 
 }
+/*MOBILE STYLING*/
+@media screen and (max-width:500px) {
+    /*.html{
+        height: 100%;
+    }
+    .messages-container {
+        height: 500px;
+
+    }*/
+}
