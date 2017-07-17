@@ -1,6 +1,7 @@
 .error {
     text-align: center;
 }
+
 p {
     text-align: center;
     color: white;
@@ -10,7 +11,7 @@ p {
 img {
     height: 300px;
     width: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

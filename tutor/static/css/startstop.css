@@ -5,12 +5,12 @@
 }
 
 .startstopwarning {
-        color: white;
-text-align: center;
-font-family: times, serif;
-font-style: italic;
-font-size: 0.8rem;
-padding: 0.75rem; /*15px; */
+	color: white;
+	text-align: center;
+	font-family: times, serif;
+	font-style: italic;
+	font-size: 0.8rem;
+	padding: 0.75rem; /*15px; */
 }
 
 
@@ -20,45 +20,47 @@ padding: 0.75rem; /*15px; */
 }
 
 .beginbutton {
-  padding: 1.25rem 1.25rem /*25px 25px;*/
-  font-size: 1.4rem;
-  text-align: center;
-  cursor: pointer;
-  outline: None;
-  color: #fff;
-  background-color: #4CAF50;
-  border: 0.1rem solid black; /*2px*/
-  border-radius: 2.5rem; /*50px;*/
-  box-shadow: 0rem 0.45rem black; /*9px*/
+	padding: 1.25rem 1.25rem /*25px 25px;*/
+	font-size: 1.4rem;
+	text-align: center;
+	cursor: pointer;
+	outline: None;
+	color: #fff;
+	background-color: #4CAF50;
+	border: 0.1rem solid black; /*2px*/
+	border-radius: 2.5rem; /*50px;*/
+	box-shadow: 0rem 0.45rem black; /*9px*/
 }
 
-.beginbutton:hover {background-color: #3e8e41}
+.beginbutton:hover {
+	background-color: #3e8e41
+}
 
 .beginbutton:active {
-  background-color: #3e8e41;
-  box-shadow: 0 0.25rem black; /*5px*/
-  transform: translateY(0.2rem); /*4px*/
+	background-color: #3e8e41;
+	box-shadow: 0 0.25rem black; /*5px*/
+	transform: translateY(0.2rem); /*4px*/
 }
 
 .endbutton {
-  padding: 1.25rem 1.25rem /*25px 25px;*/
-  font-size: 1.4rem;
-  text-align: center;
-  cursor: pointer;
-  outline: None;
-  color: #fff;
-  background-color: #ff0000;
-  border: 0.1rem solid black; /*2px*/
-  border-radius: 2.5rem; /*50px;*/
-  box-shadow: 0rem 0.45rem black; /*9px*/
+	padding: 1.25rem 1.25rem /*25px 25px;*/
+	font-size: 1.4rem;
+	text-align: center;
+	cursor: pointer;
+	outline: None;
+	color: #fff;
+	background-color: #ff0000;
+	border: 0.1rem solid black; /*2px*/
+	border-radius: 2.5rem; /*50px;*/
+	box-shadow: 0rem 0.45rem black; /*9px*/
 }
 
 .endbutton:hover {
-  background-color: #cc0000;
+ 	background-color: #cc0000;
 }
 
 .endbutton:active {
-  background-color: #cc0000;
-  box-shadow: 0 0.25rem black; /*5px*/
-  transform: translateY(0.2rem); /*4px*/
+	background-color: #cc0000;
+	box-shadow: 0 0.25rem black; /*5px*/
+	transform: translateY(0.2rem); /*4px*/
 }

@@ -3,6 +3,7 @@
     color: black;
     padding-top: 40px;
 }
+
 .errorp {
     text-align: center;
     color: black;
@@ -12,10 +13,10 @@
 img {
     width: 30%;
     height: auto;
-  display: block;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul {
@@ -23,8 +24,8 @@ ul {
     width: 100%;
     padding: 0 25% 0 25%;
     text-align: center;
-
 }
+
 ul a {
     color: black;
     font-family: sans-serif;
