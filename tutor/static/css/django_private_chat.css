@@ -69,22 +69,14 @@
     font-style: italic;
     font-weight: normal;
 }
-#chatting_with {
-    font-size: 20px;
-    color: black;
-    text-align: center;
-    padding-top: 10px;
-    margin: 0;
-    font-family: helvetica;
 
-}
-#online-status {
+.online-status {
     color: green;
     font-weight: bold;
     font-size: 17px;
     text-shadow: 1px 1px 3px white;
 }
-#offline-status {
+.offline-status {
     font-size: 17px;
     color: #85070A;
     text-shadow: 1px 1px 3px white;

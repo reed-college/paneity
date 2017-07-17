@@ -6,11 +6,10 @@
     {{ block.super }}
     <link href="{% static "css/base.css" %}" rel="stylesheet" type="text/css" media="all">
     <link href="{% static "css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% endblock %}
 {% block title %}
-    Chatting with {{ opponent_username|get_name }} 
+    Chatting with {{ opponent_username|get_name }}
 {% endblock %}
 
 {% block content %}
@@ -20,8 +19,8 @@
     <div class="container">
         <div class="row">
             <p class= "opponent_username">{{ opponent_username|get_name }}: </p>
-            <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
-            <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
+            <p class="text-success" class="online-status" style="display: none">{% trans "Online" %}</p>
+            <p class="text-danger" class="offline-status" style="display: none">{% trans "Offline" %}</p>
 
             <div class="messages-container">
                 <div id="messages" class="messages">
@@ -115,9 +114,7 @@
     {{ block.super }}
     <script>
         var base_ws_server_path = "{{ ws_server_path }}";
-
         var session_key = '{{ request.session.session_key }}'
-
         function getOpponnentUsername() {
             return "{{ opponent_username }}";
         }
