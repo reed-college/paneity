@@ -19,8 +19,8 @@
     <div class="container">
         <div class="row">
             <p class= "opponent_username">{{ opponent_username|get_name }}: </p>
-            <p class="text-success" class="online-status" style="display: none">{% trans "Online" %}</p>
-            <p class="text-danger" class="offline-status" style="display: none">{% trans "Offline" %}</p>
+            <p class="online-text" id="online-status" style="display: none">{% trans "Online" %}</p>
+            <p class="offline-text" id="offline-status" style="display: none">{% trans "Offline" %}</p>
 
             <div class="messages-container">
                 <div id="messages" class="messages">
@@ -37,7 +37,7 @@
                                     {{ msg.text}}
                                 {% endautoescape %}
                                 <span class="timestamp">&ndash; <span
-                                        data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
+                                        data-livestamp="{{ msg.created }}">{{ msg.created }}</span></span>
                             </p>
                         </div>
                     {% endfor %}
