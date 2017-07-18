@@ -1,7 +1,7 @@
 .hours{
     text-align: center;
     vertical-align: middle;
-    margin: 5% 20% 5% 20%;/*0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
+    margin: 0% 20% 0% 20%;/*0.5rem 13.75rem 1rem 13.75rem; /*10px 275px 20px 275px;*/
     color: black;
     background-color: rgba(225, 225, 225, 0.2);
     border: 0.1rem solid white; /*2px*/
@@ -14,7 +14,7 @@
 .tutortitle {
     font-size: 1.25rem;
     margin-top: 2rem; /*60px;*/
-    margin-bottom: 1.35rem;/*27px;*/
+    margin-bottom: 0.5rem;/*27px;*/
     font-weight: bold;
 }
 
