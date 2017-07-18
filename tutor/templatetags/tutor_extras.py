@@ -69,9 +69,16 @@ def get_user(user_name):
 
 
 @register.filter
-def most_recent_message(dialog):
+def most_recent_message(dialog, not_user_name=None):
     """
     Takes a dialog and returns the most recent message in that
     dialog
+    if not_user_name is set, then it looks for the most recent
+    message made by someone other than the user with the
+    given user name
     """
-    return dialog.messages.order_by("-created").first()
+    messages = dialog.messages
+    if not_user_name:
+        user = User.objects.get(username=not_user_name)
+        messages = messages.exclude(sender=user)
+    return messages.order_by("-created").first()

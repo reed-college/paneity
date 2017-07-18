@@ -27,7 +27,7 @@
                             <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
                                 <td class="name-cell"><b>{{username|get_name}}</b></td>
                                 <td class="message-cell">
-                                    {% with dialog|most_recent_message as message %}
+                                    {% with dialog|most_recent_message:request.user.username as message %}
                                         {{ message.text }}
                                     {% endwith %}
                                 </td>
