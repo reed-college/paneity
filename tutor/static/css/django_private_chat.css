@@ -44,6 +44,10 @@
     width: 100%;
     font-family: arial;
 }
+.msg p {
+    width: 100%;
+    word-wrap: break-word;
+}
 
 .msg .pull-right .username {
     font-weight: bold;
@@ -106,7 +110,7 @@
         padding-left: 2%;
         padding-right: 2%;
     }
-    
+
     .msg p{
         width: 100%;
         word-wrap: break-word;
