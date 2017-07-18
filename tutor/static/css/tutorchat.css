@@ -39,3 +39,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* mobile stuff */
+@media screen and (max-width: 740px) {
+    .messages-table {
+        font-size: 0.85rem;
+    }
+}
