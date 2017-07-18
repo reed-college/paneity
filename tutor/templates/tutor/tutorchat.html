@@ -15,7 +15,7 @@
     <div class="container">
         <h2>Tutoring page</h2>
         <div class="messages-div">
-            <table class="table table-hover messages-table">
+            <table class="messages-table table table-hover">
                 <tbody id="new-message-div">
                     
                 </tbody>
@@ -27,13 +27,14 @@
                             <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
                                 <td class="name-cell"><b>{{username|get_name}}</b></td>
                                 <td class="message-cell">
-                                    {% with dialog|most_recent_message as message %}
+                                    {% with dialog|most_recent_message:request.user.username as message %}
                                         {{ message.text }}
                                     {% endwith %}
                                 </td>
                             </tr>
                             {% endwith %}
                     {% endfor %}
+                    <tr></tr>
                 </tbody>
             </table>
         </div>

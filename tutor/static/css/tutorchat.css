@@ -8,7 +8,6 @@
     color: black;
     background-color: rgba(225, 225, 225, 0.2);
     border-radius: 0.1rem;
-    padding: 5% 0%;
     text-align: center;
     overflow: hidden;
     border: 1rem;
@@ -19,12 +18,16 @@
     text-align: left;
     width: 100%;
     table-layout:fixed;
+    margin-bottom: 0rem;
 }
 
 .messages-table tbody, tr {
     width: 100%;
 }
 
+.messages-table tbody, td {
+    border-top: 0px !important;
+}
 
 .name-cell {
     width: 8rem;
@@ -35,4 +38,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* mobile stuff */
+@media screen and (max-width: 740px) {
+    .messages-table {
+        font-size: 0.85rem;
+    }
 }
