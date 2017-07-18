@@ -40,7 +40,7 @@ Paneity | {% block title %}{% endblock %}
                     <div class="col-lg-3">
                         <div id="bannerdiv">
                                 <a href="{% url 'tutor:index' %}">
-                                        <h1 class="bannertext">REED COLLEGE</h1>
+                                    <h1 class="bannertext">REED COLLEGE</h1>
                                 </a>
                         </div>
                     </div>
@@ -92,8 +92,9 @@ Paneity | {% block title %}{% endblock %}
                 <p>You are not logged in.</p>
                 {% endif %}
                 <div class="about">
-                    <a href="{% url "tutor:about" %}" >About This Page</a>
+                    <a href="{% url "tutor:about" %}" >About Us</a>
                 </div>
+                <h6 class="login_logout">{% if user.username %}<a href= "{% url "admin:logout"%}">LOGOUT</a>{% else %}<a href="{% url "admin:index" %}">LOGIN</a>{% endif%}</h6>
             </div>
         </div>
     </div>

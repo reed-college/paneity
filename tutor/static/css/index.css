@@ -48,11 +48,12 @@
 .myUL li a:hover:not(.header) {
     color: white;
     background-color: #85070A;
-    text-shadow: 0.1rem 0.1rem 0.15rem black; 
+    text-shadow: 0.1rem 0.1rem 0.15rem black;
 }
 
 .myUL li a.subheader {
     color: black;
+    padding-left: 5%;
 }
 
 /*MOBILE STYLING */
