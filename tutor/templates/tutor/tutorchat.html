@@ -28,11 +28,11 @@
                         {# or the owner of the dialog #}
                         {% with username=dialog|other_username:request.user.username %}
                             <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
-                                <td><b>{{username}}</b></td>
-                                <td>
-                                {% with dialog|most_recent_message as message %}
-                                    {{ message.text }}
-                                {% endwith %}
+                                <td class="name-cell"><b>{{username}}</b></td>
+                                <td class="message-cell">
+                                    {% with dialog|most_recent_message as message %}
+                                        {{ message.text }}
+                                    {% endwith %}
                                 </td>
                             </tr>
                             {% endwith %}
@@ -53,7 +53,7 @@
             <tr id="[username]-element" class="success">
                 <td><b>[username]</b></td>
                 {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
-                <td>
+                <td class="message-cell">
                     [message]
                 </td>
             </tr>

@@ -10,10 +10,29 @@
     border-radius: 0.1rem;
     padding: 5% 0%;
     text-align: center;
-    overflow: auto;
+    overflow: hidden;
     border: 1rem;
+    width: auto;
 }
 
 .messages-table {
     text-align: left;
+    width: 100%;
+    table-layout:fixed;
+}
+
+.messages-table tbody, tr {
+    width: 100%;
+}
+
+
+.name-cell {
+    width: 5rem;
+}
+
+.message-cell {
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
