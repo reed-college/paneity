@@ -25,7 +25,7 @@
                         {# or the owner of the dialog #}
                         {% with username=dialog|other_username:request.user.username %}
                             <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
-                                <td class="name-cell"><b>{{username}}</b></td>
+                                <td class="name-cell"><b>{{username|get_name}}</b></td>
                                 <td class="message-cell">
                                     {% with dialog|most_recent_message as message %}
                                         {{ message.text }}
