@@ -94,7 +94,8 @@ Paneity | {% block title %}{% endblock %}
                 <div class="about">
                     <a href="{% url "tutor:about" %}" >About Us</a>
                 </div>
-                <h6 class="login_logout">{% if user.username %}<a href= "{% url "admin:logout"%}">LOGOUT</a>{% else %}<a href="{% url "admin:index" %}">LOGIN</a>{% endif%}</h6>
+                <h6 class="login_logout">{% if user.username %}<a class="myButton" href= "{% url "admin:logout"%}">LOG OUT</a>{% else %}<a class="myButton" href="{% url "admin:index" %}">LOG IN</a>{% endif%}</h6>
+
             </div>
         </div>
     </div>
