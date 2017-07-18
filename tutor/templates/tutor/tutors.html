@@ -40,7 +40,7 @@
                     {% endif %}
 
                         <td>
-                            <a class="tutorlink" href="{% url 'dialogs_detail' tutor.user.username %}">Chat with me!</a>
+                            <a class="tutorlink" href="{% url 'dialogs_detail' tutor.user.username %}">Get help from {{tutor.user.first_name}}!</a>
                         </td>
                         <td>
                             <a class="tutorlink" href="mailto:{{tutor.user.email}}">{{tutor.user.email}}</a>
