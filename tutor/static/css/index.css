@@ -16,14 +16,14 @@
 
 .myUL {
     list-style-type: none;
-    padding: 0; /*0% 10% 10% 10% ;/* 0px 80px 20px 80px; */
+    padding: 0 20% 10% 20%;
     overflow: hidden;
     line-height: 1.7rem;
     text-align: center;
     list-style-position: inside;
     list-style-type: none;
     color: black;
-    margin: 0.5rem 2.5rem 1rem 2.5rem; /*10px 50px 20px 50px;*/
+    margin: 0.5rem 2.5rem 1rem 2.5rem;
 }
 
 .myUL li a {
@@ -46,12 +46,14 @@
 }
 
 .myUL li a:hover:not(.header) {
-    color: black; /*changed from white, so the course name is still visible on hover*/
-    text-shadow: 0.1rem 0.1rem 015rem #85070A; /*2px 2px 3px*/
+    color: white;
+    background-color: #85070A;
+    text-shadow: 0.1rem 0.1rem 0.15rem black;
 }
 
 .myUL li a.subheader {
     color: black;
+    padding-left: 5%;
 }
 
 /*MOBILE STYLING */
@@ -72,7 +74,7 @@
     .myUL {
         padding: 0% 5% 5% 5% ;/* 0px 80px 20px 80px; */
     }
-    
+
     .myUL li a.header {
         font-size: 1rem;
     }
