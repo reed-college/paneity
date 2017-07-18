@@ -48,9 +48,9 @@
     </table>
     <table class="hidden">
         <tbody id="new-message-template">
-            <tr id="[username]-element" class="success">
-                <td class="name-cell"><b>[username]</b></td>
                 {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
+            <tr id="[username]-element" class="clickable-row success" data-href="{% url "dialogs" %}[username]">
+                <td class="name-cell"><b>[username]</b></td>
                 <td class="message-cell">
                     [message]
                 </td>

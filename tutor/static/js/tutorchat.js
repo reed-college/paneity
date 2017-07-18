@@ -71,6 +71,13 @@ $(document).ready(function () {
                 newm = newm.replace(/\[message\]/g, packet['message']);
                 newm = newm + $("#new-message-div").html();
                 $("#new-message-div").html(newm);
+                // need to add click function for new row
+                
+                $("#"+username+"-element").click(function() {
+                    window.open($(this).data("href"), '_blank');
+                });
+
+
                 isNewMessage = true;
                 flash();
             }
