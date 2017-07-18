@@ -102,11 +102,8 @@
 
 /*MOBILE STYLING*/
 @media screen and (max-width:500px) {
-    /*.html{
-        height: 100%;
+    .messages-container, .opponent_username, .online-text, .offline-text, .add-message {
+        padding-left: 2%;
+        padding-right: 2%;
     }
-    .messages-container {
-        height: 500px;
-
-    }*/
 }
