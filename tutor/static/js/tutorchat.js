@@ -68,6 +68,7 @@ $(document).ready(function () {
                 $("#"+username+"-element").remove()
                 // add new message to new message div
                 var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
+                console.log(newm);
                 newm = newm + $("#new-message-div").html();
                 $("#new-message-div").html(newm);
                 isNewMessage = true;
