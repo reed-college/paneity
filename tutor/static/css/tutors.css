@@ -6,7 +6,7 @@
     background-color: rgba(225, 225, 225, 0.2);
     border: 0.1rem solid white; /*2px*/
     border-radius: 0.1rem; /*2px;*/
-    	padding: 2%; /*1rem; /*20px;*/
+    padding: 2%; /*1rem; /*20px;*/
     text-align: center;
     border: 1rem;
 }
@@ -31,7 +31,7 @@
 }
 
 .table {
-    font-family: "Crimson Text", sans-serif;
+    font-family: Arial, Helvetica, "Crimson Text", sans-serif;
     padding: 0.5rem; /*10px;*/
     padding-right: 1rem; /*20px;*/
 }
@@ -45,7 +45,7 @@ th {
 
 td {
     border: none !important;
-    font-size: 0.9rem; /*18px;*/
+    font-size: 0.8rem; /*18px;*/
 }
 
 td .tutorlink {
