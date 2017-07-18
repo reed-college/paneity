@@ -9,6 +9,12 @@ $(document).ready(function () {
         $("#new-message-div").html($("#no-messages-template").html());
     }
 
+    // This will make it so that when you click on a row,
+    // it takes you to that conversation
+    $(".clickable-row").click(function() {
+        window.open($(this).data("href"), '_blank');
+    });
+
     var websocket = null;
 
     function setupChatWebSocket() {
@@ -58,10 +64,11 @@ $(document).ready(function () {
             if (packet.type == "new-message") {
                 var username = packet['sender_name'];
                 // remove no message div and any message div with the same username
-                $("#no-messages-alert").remove()
-                $("#"+username+"-alert").remove()
+                $("#no-messages-element").remove()
+                $("#"+username+"-element").remove()
                 // add new message to new message div
                 var newm = $("#new-message-template").html().replace(/\[username\]/g, username);
+                newm = newm.replace(/\[message\]/g, packet['message']);
                 newm = newm + $("#new-message-div").html();
                 $("#new-message-div").html(newm);
                 isNewMessage = true;

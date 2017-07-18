@@ -7,46 +7,55 @@
     Tutoring Page
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tutorchat.css' %}" />
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h2>Tutoring page</h2>
-        <p>
-        If you receive a message from a student, you will be alerted here:
-        </p>
-        <div id="new-message-div">
-            
-
-        </div>
-        <div id="old-message-div">
-            {% for dialog in dialogs %}
-                {# this part figures out if the current user is the opponent, #}
-                {# or the owner of the dialog #}
-                {% with username=dialog|other_username:request.user.username %}
-                    <div id="{{username}}-alert" class="alert alert-info" role="alert">
-                        Continue Your conversation with <b>{{username}}</b>
-                        <a href='{% url "dialogs_detail" username %}' target="_blank" class="alert-link">
-                            Click Here!
-                        </a>
-                    </div>
-            
-                    {% endwith %}
-            {% endfor %}
-        </div>
-    </div>
-    <div id="no-messages-template" class="hidden">
-        <div id="no-messages-alert" class="alert alert-danger" role="alert">
-            No students have messaged you yet.
-        </div> 
-    </div>
-    <div id="new-message-template" class="hidden">
-        <div id="[username]-alert" class="alert alert-success" role="alert">
-            <b>Hey!</b> You got a new message from [username].
-            {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
-            <a href='{% url "dialogs" %}[username]' target="_blank" class="alert-link">
-                You can view the message and reply here.
-            </a>
+        <div class="messages-div">
+            <table class="table table-hover messages-table">
+                <tbody id="new-message-div">
+                    
+                </tbody>
+                <tbody id="old-message-div">
+                    {% for dialog in dialogs %}
+                        {# this part figures out if the current user is the opponent, #}
+                        {# or the owner of the dialog #}
+                        {% with username=dialog|other_username:request.user.username %}
+                            <tr id="{{username}}-element" class="clickable-row" data-href='{% url "dialogs_detail" username %}'>
+                                <td class="name-cell"><b>{{username|get_name}}</b></td>
+                                <td class="message-cell">
+                                    {% with dialog|most_recent_message as message %}
+                                        {{ message.text }}
+                                    {% endwith %}
+                                </td>
+                            </tr>
+                            {% endwith %}
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+    <table class="hidden">
+        <tbody id="no-messages-template">
+            <tr id="no-messages-element" class="danger">
+                <td>No Messages</td>
+            </tr> 
+        </tbody>
+    </table>
+    <table class="hidden">
+        <tbody id="new-message-template">
+            <tr id="[username]-element" class="success">
+                <td class="name-cell"><b>[username]</b></td>
+                {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
+                <td class="message-cell">
+                    [message]
+                </td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block extra_js %}
