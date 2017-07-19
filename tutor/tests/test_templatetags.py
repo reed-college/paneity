@@ -4,6 +4,7 @@ from random import randint
 import tutor.templatetags.tutor_extras as tutor_extras
 from tutor.util import random_string
 from django.contrib.auth.models import User
+from django_private_chat.models import Dialog, Message
 
 
 class DatetimeGeTestCase(TestCase):
@@ -135,3 +136,40 @@ class GetUserTestCase(TestCase):
     def test_basic_functionality(self):
         user = tutor_extras.get_user(self.johnny.username)
         self.assertEqual(self.johnny, user)
+
+
+class MostRecentMessageTestCase(TestCase):
+
+    def setUp(self):
+        self.johnny = User.objects.create_user("johnny")
+        self.mark = User.objects.create_user("mark")
+        self.dialog = Dialog.objects.create(owner_id=self.johnny.pk, opponent_id=self.mark.pk)
+        self.johnny.save()
+        self.mark.save()
+        self.dialog.save()
+        self.m1 = Message.objects.create(dialog_id=self.dialog.pk,
+                                         sender_id=self.johnny.id)
+        self.m1.text = "I did naht hit her!"
+        self.m1.save()
+        self.m2 = Message.objects.create(dialog_id=self.dialog.pk,
+                                         sender_id=self.johnny.id)
+        self.m2.text = "Oh hi Mark"
+        self.m2.save()
+        self.m3 = Message.objects.create(dialog_id=self.dialog.pk,
+                                         sender_id=self.mark.id)
+        self.m3.text = "Hey johnny"
+        self.m3.save()
+
+    def tearDown(self):
+        self.dialog.delete()
+        self.mark.delete()
+        self.johnny.delete()
+
+    def test_second_message_gets_returned(self):
+        """
+        Makes sure that the function returns the second message
+        created by johnny (Oh hi Mark) and not the first (I did
+        naht hit her!)
+        """
+        message = tutor_extras.most_recent_message(self.dialog, self.mark.username)
+        self.assertEqual(self.m2, message)
