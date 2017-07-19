@@ -1,18 +1,19 @@
 /*
  * Gives the tutorchat page it's functionality
  * This code relies on the base_ws_server_path and session_key
- * variables being set before this file is loaded 
+ * variables being set before this file is loaded
  */
+
 $(document).ready(function () {
     // tell user they have no messages
     if ($("#old-message-div").html().replace(/\s/g,'') == ""){
         $("#new-message-div").html($("#no-messages-template").html());
     }
-
     // This will make it so that when you click on a row,
     // it takes you to that conversation
     $(".clickable-row").click(function() {
-        window.open($(this).data("href"), '_blank');
+        alert("hi");
+        window.open($(this).data("href"));
     });
 
     var websocket = null;
@@ -72,7 +73,7 @@ $(document).ready(function () {
                 newm = newm + $("#new-message-div").html();
                 $("#new-message-div").html(newm);
                 // need to add click function for new row
-                
+
                 $("#"+username+"-element").click(function() {
                     window.open($(this).data("href"), '_blank');
                 });
