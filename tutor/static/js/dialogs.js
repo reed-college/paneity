@@ -1,7 +1,7 @@
 /*
  * This is the js that makes the django_private_chat/dialogs.html page work
- * The variables base_ws_server_path and session_key and the function 
- * getOpponentUsername need to be set before this file is loaded in order 
+ * The variables base_ws_server_path and session_key and the function
+ * getOpponentUsername need to be set before this file is loaded in order
  * for this to work
  */
 $(document).ready(function () {
@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     function scrollToLastMessage() {
         var $msgs = $('#messages');
-        $msgs.animate({"scrollTop": $msgs.prop('scrollHeight')})
+        $msgs.scrollTop($msgs.prop('scrollHeight'))
     }
 
     function generateMessage(context) {
@@ -195,9 +195,9 @@ $(document).ready(function () {
         sendMessage($chatInput.val());
         $chatInput.val('')
     });
-    
+
     // sends a message when you click the videochat button
-    $('#btn-video-call').click(function (e) { 
+    $('#btn-video-call').click(function (e) {
         sendMessage($('#vc-link-message-template').html());
     });
 
