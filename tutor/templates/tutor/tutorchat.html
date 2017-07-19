@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load tutor_extras %}
 
-{% block title%} 
+{% block title%}
     Tutoring Page
 {% endblock %}
 
@@ -17,7 +17,7 @@
         <div class="messages-div">
             <table class="messages-table table table-hover">
                 <tbody id="new-message-div">
-                    
+
                 </tbody>
                 <tbody id="old-message-div">
                     {% for dialog in dialogs %}
@@ -34,7 +34,6 @@
                             </tr>
                             {% endwith %}
                     {% endfor %}
-                    <tr></tr>
                 </tbody>
             </table>
         </div>
@@ -43,14 +42,14 @@
         <tbody id="no-messages-template">
             <tr id="no-messages-element" class="danger">
                 <td>No Messages</td>
-            </tr> 
+            </tr>
         </tbody>
     </table>
     <table class="hidden">
         <tbody id="new-message-template">
-            <tr id="[username]-element" class="success">
-                <td class="name-cell"><b>[username]</b></td>
                 {# this assumes that the url for dialog_detail will be the same as dialogs, but with a username on the end #}
+            <tr id="[username]-element" class="clickable-row success" data-href="{% url "dialogs" %}[username]">
+                <td class="name-cell"><b>[username]</b></td>
                 <td class="message-cell">
                     [message]
                 </td>
@@ -64,5 +63,5 @@
         var base_ws_server_path = "{{ ws_server_path }}";
         var session_key = '{{ request.session.session_key }}'
     </script>
-    <script src="{% static 'js/tutorchat.js' %}"
+    <script src="{% static 'js/tutorchat.js' %}"></script>
 {% endblock %}

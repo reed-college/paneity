@@ -1,8 +1,10 @@
 /*
  * Gives the tutorchat page it's functionality
  * This code relies on the base_ws_server_path and session_key
- * variables being set before this file is loaded 
+ * variables being set before this file is loaded
  */
+
+
 $(document).ready(function () {
     // tell user they have no messages
     if ($("#old-message-div").html().replace(/\s/g,'') == ""){
@@ -71,6 +73,13 @@ $(document).ready(function () {
                 newm = newm.replace(/\[message\]/g, packet['message']);
                 newm = newm + $("#new-message-div").html();
                 $("#new-message-div").html(newm);
+                // need to add click function for new row
+
+                $("#"+username+"-element").click(function() {
+                    window.open($(this).data("href"), '_blank');
+                });
+
+
                 isNewMessage = true;
                 flash();
             }
