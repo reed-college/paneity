@@ -48,9 +48,9 @@ Paneity | {% block title %}{% endblock %}
 
                 <div class="hidden-xs">
                     <div class="topnav" id="myTopnav">
-                        <a class="menu-element" href="{% url "tutor:index" %}">TUTORING HOMEPAGE</a>
+                        <a class="menu-element" href="{% url "tutor:index" %}">HOMEPAGE</a>
+                        <a class="menu-element" href="{% url "tutor:tutorchat" %}">MESSAGES</a>
                         <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
-                        <a class="menu-element" href="{% url "tutor:tutorchat" %}">TUTOR LOGIN</a>
                     </div>
                 </div>
                 <div class="mobile-nav visible-xs-inline-block">
@@ -63,16 +63,16 @@ Paneity | {% block title %}{% endblock %}
                             </a>
                         </li>
                         <li>
-                            <a href="{% url "spirit:index" %}">
+                            <a class="menu-element" href="{% url "tutor:tutorchat" %}">
                                 <span style="font-size: 2em;">
-                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a class="menu-element" href="{% url "tutor:tutorchat" %}">
+                            <a href="{% url "spirit:index" %}">
                                 <span style="font-size: 2em;">
-                                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
                                 </span>
                             </a>
                         </li>
