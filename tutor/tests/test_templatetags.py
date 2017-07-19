@@ -3,6 +3,7 @@ from datetime import datetime
 from random import randint
 import tutor.templatetags.tutor_extras as tutor_extras
 from tutor.util import random_string
+from django.contrib.auth.models import User
 
 
 class DatetimeGeTestCase(TestCase):
@@ -101,3 +102,36 @@ class OtherUsernameTestCase(TestCase):
         d = _mock_dialog(m, j)
         with self.assertRaisesMessage(RuntimeError, "Username lisa not present in dialog"):
             tutor_extras.other_username(d, "lisa")
+
+
+class GetNameTestCase(TestCase):
+
+    def setUp(self):
+        self.johnny = User.objects.create_user("johnny")
+        self.johnny.first_name = "Johnny"
+        self.johnny.last_name = "Wiseau"
+        self.johnny.save()
+
+    def tearDown(self):
+        self.johnny.delete()
+
+    def test_basic_functionality(self):
+        name = tutor_extras.get_name(self.johnny.username)
+        self.assertTrue((self.johnny.first_name in name) or
+                        (self.johnny.last_name in name))
+
+
+class GetUserTestCase(TestCase):
+
+    def setUp(self):
+        self.johnny = User.objects.create_user("johnny")
+        self.johnny.first_name = "Johnny"
+        self.johnny.last_name = "Wiseau"
+        self.johnny.save()
+
+    def tearDown(self):
+        self.johnny.delete()
+
+    def test_basic_functionality(self):
+        user = tutor_extras.get_user(self.johnny.username)
+        self.assertEqual(self.johnny, user)
