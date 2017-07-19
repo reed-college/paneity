@@ -4,16 +4,17 @@
  * variables being set before this file is loaded
  */
 
+
 $(document).ready(function () {
     // tell user they have no messages
     if ($("#old-message-div").html().replace(/\s/g,'') == ""){
         $("#new-message-div").html($("#no-messages-template").html());
     }
+
     // This will make it so that when you click on a row,
     // it takes you to that conversation
     $(".clickable-row").click(function() {
-        alert("hi");
-        window.open($(this).data("href"));
+        window.open($(this).data("href"), '_blank');
     });
 
     var websocket = null;
