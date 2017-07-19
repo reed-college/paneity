@@ -5,6 +5,21 @@ import tutor.templatetags.tutor_extras as tutor_extras
 from tutor.util import random_string
 
 
+class DatetimeGeTestCase(TestCase):
+    """
+    tests on the datetime_ge function
+    """
+
+    def test_that_one_date_is_greater_than_other(self):
+        """
+        Pretty silly test, but it will make sure that the function
+        has basic functionaliy and doesn't get imported incorectly
+        """
+        dt1 = datetime(1980, 1, 1)
+        dt2 = datetime(1990, 1, 1)
+        self.assertTrue(tutor_extras.datetime_ge(dt2, dt1))
+
+
 class GetVcLinkTestCase(TestCase):
     """
     Tests for the get_vc_link function
@@ -51,29 +66,14 @@ class GetVcLinkTestCase(TestCase):
             username2 = username4
 
 
-class DatetimeGeTestCase(TestCase):
-    """
-    tests on the datetime_ge function
-    """
-
-    def test_that_one_date_is_greater_than_other(self):
-        """
-        Pretty silly test, but it will make sure that the function
-        has basic functionaliy and doesn't get imported incorectly
-        """
-        dt1 = datetime(1980, 1, 1)
-        dt2 = datetime(1990, 1, 1)
-        self.assertTrue(tutor_extras.datetime_ge(dt2, dt1))
-
-
-class mock_dialog:
+class _mock_dialog:
 
     def __init__(self, owner, opponent):
         self.owner = owner
         self.opponent = opponent
 
 
-class mock_user:
+class _mock_user:
 
     def __init__(self, username):
         self.username = username
@@ -85,9 +85,9 @@ class OtherUsernameTestCase(TestCase):
         """
         tests if it will return the opposite username
         """
-        j = mock_user("johnny")
-        m = mock_user("mark")
-        d = mock_dialog(m, j)
+        j = _mock_user("johnny")
+        m = _mock_user("mark")
+        d = _mock_dialog(m, j)
         self.assertEqual(tutor_extras.other_username(d, j.username), m.username)
         self.assertEqual(tutor_extras.other_username(d, m.username), j.username)
 
@@ -96,8 +96,8 @@ class OtherUsernameTestCase(TestCase):
         if the passed username is not a memeber of the passed dialog,
         then the function should throw an error
         """
-        j = mock_user("johnny")
-        m = mock_user("mark")
-        d = mock_dialog(m, j)
+        j = _mock_user("johnny")
+        m = _mock_user("mark")
+        d = _mock_dialog(m, j)
         with self.assertRaisesMessage(RuntimeError, "Username lisa not present in dialog"):
             tutor_extras.other_username(d, "lisa")
