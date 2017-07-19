@@ -181,3 +181,13 @@ class MostRecentMessageTestCase(TestCase):
         """
         message = tutor_extras.most_recent_message(self.dialog, self.mark.username)
         self.assertEqual(self.m2, message)
+
+    def test_does_not_return_message_from_given_user(self):
+        """
+        This makes sure that it does not return a message from
+        the user passed to the function
+        """
+        message = tutor_extras.most_recent_message(self.dialog, self.mark.username)
+        self.assertNotEqual(message.sender, self.mark)
+        message = tutor_extras.most_recent_message(self.dialog, self.johnny.username)
+        self.assertNotEqual(message.sender, self.johnny)
