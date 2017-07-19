@@ -8,11 +8,6 @@
 
 $(document).ready(function () {
     var websocket = null;
-    
-    // Gets rid of the am/pm stuff from a date string so that it
-    // can be parsed back in to a date object
-    // it adds 'GMT' to the strings since the websocket server 
-    // is in GMT
 
     // TODO: Use for adding new dialog
     function addNewUser(packet) {
