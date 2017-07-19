@@ -39,6 +39,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.title {
+    font-family: helvetica;
+}
 
 /* mobile stuff */
 @media screen and (max-width: 740px) {
