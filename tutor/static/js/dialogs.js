@@ -3,10 +3,11 @@
  * The variables base_ws_server_path and session_key and the function
  * getOpponentUsername need to be set before this file is loaded in order
  * for this to work
+ * also needs the moment.js library
  */
+
 $(document).ready(function () {
     var websocket = null;
-
 
     // TODO: Use for adding new dialog
     function addNewUser(packet) {
@@ -26,7 +27,12 @@ $(document).ready(function () {
             msgElem = $("#message-template-opponent").html();
         }
         msgElem = msgElem.replace(/\[message\]/g, packet['message']);
-        msgElem = msgElem.replace(/\[timestamp\]/g, packet['created']);
+        // convert to local time 
+        var created = moment().utc(packet['created'], "MMM D, YYYY, hh:mm a.\m.");
+        var crestr = created.format("MMMM D, YYYY, h:mm a");
+        // replaces am/pm with a.m./p.m.
+        crestr = crestr.replace(/([a,p])m$/g, "$1.m.");
+        msgElem = msgElem.replace(/\[timestamp\]/g, crestr);
         $('#messages').append(msgElem);
         scrollToLastMessage()
     }

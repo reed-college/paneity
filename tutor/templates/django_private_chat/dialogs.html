@@ -6,7 +6,8 @@
     {{ block.super }}
     <link href="{% static "css/base.css" %}" rel="stylesheet" type="text/css" media="all">
     <link href="{% static "css/django_private_chat.css" %}" rel="stylesheet" type="text/css" media="all">
-
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 {% endblock %}
 {% block title %}
     Chatting with {{ opponent_username|get_name }}
