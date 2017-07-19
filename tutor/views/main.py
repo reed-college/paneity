@@ -64,7 +64,7 @@ def tutorchat(request):
     elif not getattr(request.user, 'student', False):
         return render(request, 'error/403.html', status=403)
     elif not request.user.student.tutor:
-        return render(request, 'error/403.html', status=403)
+        pass
 
     # Get websocket server
     context = {}
