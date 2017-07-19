@@ -165,6 +165,14 @@ class MostRecentMessageTestCase(TestCase):
         self.mark.delete()
         self.johnny.delete()
 
+    def test_basic_functionality(self):
+        """
+        makes sure that when you don't pass a username, the
+        function returns message 3
+        """
+        message = tutor_extras.most_recent_message(self.dialog)
+        self.assertEqual(self.m3, message)
+
     def test_second_message_gets_returned(self):
         """
         Makes sure that the function returns the second message
