@@ -56,16 +56,8 @@ def about(request):
 @login_required
 def tutorchat(request):
     """
-    Page for tutors to get messaged
+    Message inbox for messaging tutors.
     """
-    # you need to be a tutor to access this page
-    if request.user.is_superuser:
-        pass
-    elif getattr(request.user, 'student', False):
-        pass
-    else:
-        return render(request, 'error/403.html', status=403)
-
     # Get websocket server
     context = {}
     context['ws_server_path'] = 'ws://{}:{}/'.format(
