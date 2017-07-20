@@ -5,12 +5,14 @@
  */
 
 // stops for the given number of miliseconds
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 let isNewMessage = false;
 
+/* eslint no-await-in-loop: "off" */
 // flashes the title once there is a new message
 async function flash() {
   const oldtitle = document.title;
@@ -60,11 +62,11 @@ $(document).ready(() => {
     websocket.onopen = function () {
       const onOnlineCheckPacket = JSON.stringify({
         type: 'check-online',
-        sessionKey,
+        session_key: sessionKey,
       });
       const onConnectPacket = JSON.stringify({
         type: 'online',
-        sessionKey,
+        session_key: sessionKey,
 
       });
 
@@ -78,7 +80,7 @@ $(document).ready(() => {
     window.onbeforeunload = function () {
       const onClosePacket = JSON.stringify({
         type: 'offline',
-        sessionKey,
+        session_key: sessionKey,
       });
       console.log('unloading, sending:', onClosePacket);
       websocket.send(onClosePacket);
@@ -121,4 +123,3 @@ $(document).ready(() => {
 
   setupChatWebSocket();
 });
-
