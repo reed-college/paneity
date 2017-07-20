@@ -169,7 +169,7 @@ a:hover {
 
 
 /*MOBILE STYLING */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 766px) {
     .banner {
         background-image: none;
         padding-left:0rem;

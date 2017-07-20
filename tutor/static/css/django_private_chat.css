@@ -31,12 +31,13 @@
 }
 
 .msg .pull-left {
-    width: 100%;
     color: black;
+    word-wrap: break-word;
 }
 
 .msg .pull-right {
     color: black;
+    word-wrap: break-word;
 }
 
 .msg {
@@ -44,9 +45,11 @@
     width: 100%;
     font-family: arial;
 }
+
 .msg p {
     word-wrap: break-word;
 }
+
 
 .msg .pull-right .username {
     font-weight: bold;
@@ -104,12 +107,28 @@
 }
 
 /*MOBILE STYLING*/
-@media screen and (max-width:500px) {
+@media screen and (max-width:770px) {
     .messages-container, .opponent_username, .online-text, .offline-text, .add-message {
-        padding-left: 2%;
-        padding-right: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
     }
+    .messages-container {
+        height: 200px;
+    }
+    .messages {
+        height: 200px;
+    }
+    .add-message {
+        margin-top: 2%;
+    }
+}
 
-
-
+@media screen and (orientation: landscape) {
+    .messages-container, .opponent_username, .online-text, .offline-text, .add-message {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .add-message {
+        margin-top: 4%;
+    }
 }
