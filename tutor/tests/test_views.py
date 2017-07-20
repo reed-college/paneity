@@ -88,29 +88,29 @@ class TutorChatTestCase(TestCase):
         response = self.client.get(reverse('tutor:tutorchat'))
         self.assertEqual(response.status_code, 302)
 
-    def test_normal_user_cant_access_page(self):
+    def test_normal_user_can_access_page(self):
         """
-        Makes sure that non-tutors get a 403
+        Makes sure that non-tutors can login
         """
         bob = User.objects.create_user("bob", password="bar")
         bob.save()
         self.client.login(username="bob", password="bar")
         # bob doesn't have the right permissions
         response = self.client.get(reverse('tutor:tutorchat'))
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 200)
         bob.delete()
 
-    def test_student_cant_access_page(self):
+    def test_student_can_access_page(self):
         """
         This just checks that if you are a use with a student object,
-        you still can't access the page
+        you can access the page
         """
         johnny = User.objects.create_user("johnny", password="foo")
         johnny.save()
         models.Student.objects.create(user=johnny)
         self.client.login(username="johnny", password="foo")
         response = self.client.get(reverse('tutor:tutorchat'))
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 200)
         johnny.delete()
 
     def test_tutor_can_access_page(self):
