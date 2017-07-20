@@ -109,7 +109,15 @@
         padding-left: 2%;
         padding-right: 2%;
     }
-
+.messages-container {
+    height: 200px;
+}
+.messages {
+    height: 200px;
+}
+.add-message {
+    margin-top: 2%;
+}
 
 
 }
