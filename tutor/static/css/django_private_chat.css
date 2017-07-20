@@ -47,6 +47,7 @@
 }
 
 .msg p {
+    width: auto;
     word-wrap: break-word;
 }
 
