@@ -31,12 +31,13 @@
 }
 
 .msg .pull-left {
-    width: 100%;
     color: black;
+    word-wrap: break-word;
 }
 
 .msg .pull-right {
     color: black;
+    word-wrap: break-word;
 }
 
 .msg {
@@ -44,9 +45,11 @@
     width: 100%;
     font-family: arial;
 }
+
 .msg p {
     word-wrap: break-word;
 }
+
 
 .msg .pull-right .username {
     font-weight: bold;
