@@ -1,11 +1,11 @@
 # Paneity [![Build Status](https://travis-ci.org/reed-college/paneity.svg?branch=master)](https://travis-ci.org/reed-college/paneity)
 ## Overview
 
-Paniety is a Python based [Django](https://www.djangoproject.com) project developed by the [Reed College Software Design Studio](http://www.reed.edu/sds/). This project is meant to provide online tutoring to Reed College students. Some of the features include: 
-* Instant messaging with tutors, 
-* Forum-style discussion pages, 
-* Search function for finding courses 
-* Elegant responsive design.
+Paniety is a Python based [Django](https://www.djangoproject.com) project developed by the [Reed College Software Design Studio](http://www.reed.edu/sds/). This web application is meant to provide online tutoring to Reed College students. Some of the features include: 
+* Instant messaging with tutors
+* Forum-style discussion pages
+* Search function for finding courses
+* Elegant responsive design
 
 Before we get into the setup process, let's talk about some of the Django apps that we used as part of our project.
 [Spirit](https://github.com/nitely/Spirit) is a modern Python based forum built on top of Django framework, which we used as a foundation for our forum application. [Django Private Chat](https://github.com/Bearle/django-private-chat) is a Django one-to-one Websocket-based Asyncio-handled chat, developed by Bearle team.
@@ -29,7 +29,7 @@ foldername
 
 ```
 5. install the packages. `cd` into the repo and type `pip install -r requirements.txt`
-6. Set up postgres. 
+6. Set up postgres.
     1. Open psql, or if you're in the postgres app click the '⛁' symbol that says 'postgres' below it.
     2. Type the commands on [this page](https://github.com/reed-college/paneity/wiki/Postgres-Set-Up)
 7. `python manage.py migrate`
@@ -43,5 +43,3 @@ foldername
 To run our test suite, use the `python manage.py test tutor` command in the root directory for Paneity.
 
 You should take a look at our [wiki](https://github.com/reed-college/paneity/wiki) for more information.
-
-
