@@ -65,13 +65,13 @@ $(document).ready(() => {
     websocket.onopen = function () {
       const onOnlineCheckPacket = JSON.stringify({
         type: 'check-online',
-        sessionKey,
+        session_key: sessionKey,
         username: opponentUsername,
                 // Sending username because the user needs to know if his opponent is online
       });
       const onConnectPacket = JSON.stringify({
         type: 'online',
-        sessionKey,
+        session_key: sessionKey,
 
       });
 
@@ -85,7 +85,7 @@ $(document).ready(() => {
     window.onbeforeunload = function () {
       const onClosePacket = JSON.stringify({
         type: 'offline',
-        sessionKey,
+        session_key: sessionKey,
         username: opponentUsername,
                 // Sending username because to let opponnent know that the user went offline
       });
@@ -156,7 +156,7 @@ $(document).ready(() => {
     const opponentUsername = getOpponnentUsername();
     const newMessagePacket = JSON.stringify({
       type: 'new-message',
-      sessionKey,
+      session_key: sessionKey,
       username: opponentUsername,
       message,
     });
@@ -172,7 +172,7 @@ $(document).ready(() => {
     const opponentUsername = getOpponnentUsername();
     const packet = JSON.stringify({
       type: 'is-typing',
-      sessionKey,
+      session_key: sessionKey,
       username: opponentUsername,
       typing: true,
     });
