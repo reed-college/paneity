@@ -61,10 +61,10 @@ def tutorchat(request):
     # you need to be a tutor to access this page
     if request.user.is_superuser:
         pass
-    elif not getattr(request.user, 'student', False):
-        return render(request, 'error/403.html', status=403)
-    elif not request.user.student.tutor:
+    elif getattr(request.user, 'student', False):
         pass
+    else:
+        return render(request, 'error/403.html', status=403)
 
     # Get websocket server
     context = {}
