@@ -111,3 +111,6 @@ client_secrets.json
 
 # Mac os .DS_Store Files
 .DS_Store
+
+# javascript 
+/node_modules/

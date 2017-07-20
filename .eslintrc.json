@@ -1,0 +1,13 @@
+{
+    "extends": "airbnb-base",
+    "env": { "browser": true }, 
+    "globals": {
+        "myFunction": true
+    },
+    "rules":{
+        "no-unused-vars": [
+            "error", 
+            { "varsIgnorePattern": ".*[E,e]xport" }
+        ] 
+    }
+}

@@ -1,6 +1,4 @@
-/* eslint-env browser */
-/* exported myFunction */
-function myFunction() {
+function myFunctionExport() {
   const input = document.getElementById('myInput');
   const filter = input.value.toUpperCase();
   const ul = document.getElementById('myUL');
