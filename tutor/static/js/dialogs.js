@@ -14,7 +14,6 @@
 /*global Handlebars*/
 /*global getOpponnentUsername, base_ws_server_path, session_key*/
 /*global WebSocket*/
-
 $(document).ready(function() {
     var websocket = null;
 

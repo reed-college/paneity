@@ -1,16 +1,16 @@
+/* eslint-env browser */
+/* exported myFunction */
 function myFunction() {
-    /*jslint browser:true */
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
+  const input = document.getElementById('myInput');
+  const filter = input.value.toUpperCase();
+  const ul = document.getElementById('myUL');
+  const li = ul.getElementsByTagName('li');
+  for (let i = 0; i < li.length; i += 1) {
+    const a = li[i].getElementsByTagName('a')[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = '';
+    } else {
+      li[i].style.display = 'none';
     }
+  }
 }
