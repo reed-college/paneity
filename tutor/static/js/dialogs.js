@@ -6,45 +6,46 @@
  * also needs the moment.js library
  */
 
-$(document).ready(function () {
+// This stuff is so jslint doesn't get mad about all of the stuff
+// from external packages
+/*jslint browser: true*/
+/*global $, jQuery*/
+/*global moment*/
+/*global Handlebars*/
+/*global getOpponnentUsername, base_ws_server_path, session_key*/
+/*global WebSocket*/
+
+$(document).ready(function() {
     var websocket = null;
 
-    // TODO: Use for adding new dialog
-    function addNewUser(packet) {
-        $('#user-list').html('');
-        packet.value.forEach(function (userInfo) {
-            if (userInfo.username == getUsername()) return;
-            var tmpl = Handlebars.compile($('#user-list-item-template').html());
-            $('#user-list').append(tmpl(userInfo))
-        });
+    function scrollToLastMessage() {
+        var $msgs = $('#messages');
+        $msgs.scrollTop($msgs.prop('scrollHeight'));
     }
 
     function addNewMessage(packet) {
         var msgElem = "";
-        if (packet['sender_name'] == $("#owner_username").val()) {
+        if (packet.sender_name === $("#owner_username").val()) {
             msgElem = $("#message-template-owner").html();
         } else {
             msgElem = $("#message-template-opponent").html();
         }
-        msgElem = msgElem.replace(/\[message\]/g, packet['message']);
+        msgElem = msgElem.replace(/\[message\]/g, packet.message);
         // convert to local time 
-        var created = moment().utc(packet['created'], "MMM D, YYYY, hh:mm a.\m.");
+        var created = moment().utc(packet.created, "MMM D, YYYY, hh:mm a.\m.");
         var crestr = created.format("MMMM D, YYYY, h:mm a");
         // replaces am/pm with a.m./p.m.
         crestr = crestr.replace(/([a,p])m$/g, "$1.m.");
         msgElem = msgElem.replace(/\[timestamp\]/g, crestr);
         $('#messages').append(msgElem);
-        scrollToLastMessage()
-    }
-
-    function scrollToLastMessage() {
-        var $msgs = $('#messages');
-        $msgs.scrollTop($msgs.prop('scrollHeight'))
+        scrollToLastMessage();
     }
 
     function generateMessage(context) {
         var tmpl = Handlebars.compile($('#chat-message-template').html());
-        return tmpl({msg: context})
+        return tmpl({
+            msg: context
+        });
     }
 
     function setUserOnlineOffline(username, online) {
@@ -65,16 +66,19 @@ $(document).ready(function () {
         $("#online-status").hide();
         $("#offline-status").show();
     }
-    function flash_user_button(username){
-        var btn = $("#user-"+username);
-        btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
+
+    function flash_user_button(username) {
+        var btn = $("#user-" + username);
+        btn.fadeTo(700, 0.1, function() {
+            $(this).fadeTo(800, 1.0);
+        });
     }
+
     function setupChatWebSocket() {
         var opponent_username = getOpponnentUsername();
         websocket = new WebSocket(base_ws_server_path + session_key + '/' + opponent_username);
 
-        websocket.onopen = function (event) {
-            var opponent_username = getOpponnentUsername();
+        websocket.onopen = function(event) {
 
             var onOnlineCheckPacket = JSON.stringify({
                 type: "check-online",
@@ -95,7 +99,7 @@ $(document).ready(function () {
         };
 
 
-        window.onbeforeunload = function () {
+        window.onbeforeunload = function() {
 
             var onClosePacket = JSON.stringify({
                 type: "offline",
@@ -109,7 +113,7 @@ $(document).ready(function () {
         };
 
 
-        websocket.onmessage = function (event) {
+        websocket.onmessage = function(event) {
             var packet;
 
             try {
@@ -143,7 +147,7 @@ $(document).ready(function () {
                     setUserOnlineOffline(packet.username, false);
                     break;
                 case "new-message":
-                    if (packet['sender_name'] == opponent_username || packet['sender_name'] == $("#owner_username").val()){
+                    if (packet['sender_name'] == opponent_username || packet['sender_name'] == $("#owner_username").val()) {
                         addNewMessage(packet);
                     } else {
                         flash_user_button(packet['sender_name']);
@@ -177,7 +181,7 @@ $(document).ready(function () {
         websocket.send(newMessagePacket)
     }
 
-    $('#chat-message').keypress(function (e) {
+    $('#chat-message').keypress(function(e) {
         if (e.which == 13 && this.value) {
             sendMessage(this.value);
             this.value = "";
@@ -194,7 +198,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btn-send-message').click(function (e) {
+    $('#btn-send-message').click(function(e) {
         var $chatInput = $('#chat-message');
         var msg = $chatInput.val();
         if (!msg) return;
@@ -203,7 +207,7 @@ $(document).ready(function () {
     });
 
     // sends a message when you click the videochat button
-    $('#btn-video-call').click(function (e) {
+    $('#btn-video-call').click(function(e) {
         sendMessage($('#vc-link-message-template').html());
     });
 

@@ -1,4 +1,5 @@
 function myFunction() {
+    /*jslint browser:true */
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -10,8 +11,6 @@ function myFunction() {
             li[i].style.display = "";
         } else {
             li[i].style.display = "none";
-
-
         }
     }
 }
