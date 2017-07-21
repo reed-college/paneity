@@ -1,0 +1,23 @@
+{
+    "extends": "airbnb-base",
+    "env": { "browser": true }, 
+    "globals": {
+        "$": false,
+        "jQuery": false,
+        "moment": false,
+        "Handlebars": false,
+        "getOpponnentUsername": true,
+        "baseWsServerPath": true, 
+        "sessionKey": true
+    },
+    "rules":{
+        "no-unused-vars": [
+            "error", 
+            { "varsIgnorePattern": ".*[E,e]xport" }
+        ], 
+        "func-names": [
+            1,
+            "as-needed"
+        ]
+    }
+}

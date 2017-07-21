@@ -114,8 +114,8 @@
 {% block extra_js %}
     {{ block.super }}
     <script>
-        var base_ws_server_path = "{{ ws_server_path }}";
-        var session_key = '{{ request.session.session_key }}'
+        var baseWsServerPath = "{{ ws_server_path }}";
+        var sessionKey = '{{ request.session.session_key }}'
         function getOpponnentUsername() {
             return "{{ opponent_username }}";
         }

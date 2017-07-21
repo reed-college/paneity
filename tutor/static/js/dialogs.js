@@ -1,212 +1,198 @@
 /*
  * This is the js that makes the django_private_chat/dialogs.html page work
- * The variables base_ws_server_path and session_key and the function
+ * The variables baseWsServerPath and sessionKey and the function
  * getOpponentUsername need to be set before this file is loaded in order
  * for this to work
  * also needs the moment.js library
  */
 
-$(document).ready(function () {
-    var websocket = null;
+$(document).ready(() => {
+  let websocket = null;
 
-    // TODO: Use for adding new dialog
-    function addNewUser(packet) {
-        $('#user-list').html('');
-        packet.value.forEach(function (userInfo) {
-            if (userInfo.username == getUsername()) return;
-            var tmpl = Handlebars.compile($('#user-list-item-template').html());
-            $('#user-list').append(tmpl(userInfo))
-        });
+  function scrollToLastMessage() {
+    const $msgs = $('#messages');
+    $msgs.scrollTop($msgs.prop('scrollHeight'));
+  }
+
+  function addNewMessage(packet) {
+    let msgElem = '';
+    if (packet.sender_name === $('#owner_username').val()) {
+      msgElem = $('#message-template-owner').html();
+    } else {
+      msgElem = $('#message-template-opponent').html();
     }
-
-    function addNewMessage(packet) {
-        var msgElem = "";
-        if (packet['sender_name'] == $("#owner_username").val()) {
-            msgElem = $("#message-template-owner").html();
-        } else {
-            msgElem = $("#message-template-opponent").html();
-        }
-        msgElem = msgElem.replace(/\[message\]/g, packet['message']);
-        // convert to local time 
-        var created = moment().utc(packet['created'], "MMM D, YYYY, hh:mm a.\m.");
-        var crestr = created.format("MMMM D, YYYY, h:mm a");
+    msgElem = msgElem.replace(/\[message\]/g, packet.message);
+        // convert to local time
+    const created = moment().utc(packet.created, 'MMM D, YYYY, hh:mm a');
+    let crestr = created.format('MMMM D, YYYY, h:mm a');
         // replaces am/pm with a.m./p.m.
-        crestr = crestr.replace(/([a,p])m$/g, "$1.m.");
-        msgElem = msgElem.replace(/\[timestamp\]/g, crestr);
-        $('#messages').append(msgElem);
-        scrollToLastMessage()
-    }
+    crestr = crestr.replace(/([a,p])m$/g, '$1.m.');
+    msgElem = msgElem.replace(/\[timestamp\]/g, crestr);
+    $('#messages').append(msgElem);
+    scrollToLastMessage();
+  }
 
-    function scrollToLastMessage() {
-        var $msgs = $('#messages');
-        $msgs.scrollTop($msgs.prop('scrollHeight'))
+  function setUserOnlineOffline(username, online) {
+    const elem = $(`#user-${username}`);
+    if (online) {
+      elem.attr('class', 'btn btn-success');
+    } else {
+      elem.attr('class', 'btn btn-danger');
     }
+  }
 
-    function generateMessage(context) {
-        var tmpl = Handlebars.compile($('#chat-message-template').html());
-        return tmpl({msg: context})
-    }
+  function goneOnline() {
+    $('#offline-status').hide();
+    $('#online-status').show();
+  }
 
-    function setUserOnlineOffline(username, online) {
-        var elem = $("#user-" + username);
-        if (online) {
-            elem.attr("class", "btn btn-success");
-        } else {
-            elem.attr("class", "btn btn-danger");
-        }
-    }
+  function goneOffline() {
+    $('#online-status').hide();
+    $('#offline-status').show();
+  }
 
-    function gone_online() {
-        $("#offline-status").hide();
-        $("#online-status").show();
-    }
+  function flashUserButton(username) {
+    const btn = $(`#user-${username}`);
+    btn.fadeTo(700, 0.1, function () {
+      $(this).fadeTo(800, 1.0);
+    });
+  }
 
-    function gone_offline() {
-        $("#online-status").hide();
-        $("#offline-status").show();
-    }
-    function flash_user_button(username){
-        var btn = $("#user-"+username);
-        btn.fadeTo(700, 0.1, function() { $(this).fadeTo(800, 1.0); });
-    }
-    function setupChatWebSocket() {
-        var opponent_username = getOpponnentUsername();
-        websocket = new WebSocket(base_ws_server_path + session_key + '/' + opponent_username);
+  function setupChatWebSocket() {
+    const opponentUsername = getOpponnentUsername();
+    websocket = new WebSocket(`${baseWsServerPath + sessionKey}/${opponentUsername}`);
 
-        websocket.onopen = function (event) {
-            var opponent_username = getOpponnentUsername();
-
-            var onOnlineCheckPacket = JSON.stringify({
-                type: "check-online",
-                session_key: session_key,
-                username: opponent_username
+    websocket.onopen = function () {
+      const onOnlineCheckPacket = JSON.stringify({
+        type: 'check-online',
+        session_key: sessionKey,
+        username: opponentUsername,
                 // Sending username because the user needs to know if his opponent is online
-            });
-            var onConnectPacket = JSON.stringify({
-                type: "online",
-                session_key: session_key
+      });
+      const onConnectPacket = JSON.stringify({
+        type: 'online',
+        session_key: sessionKey,
 
-            });
+      });
 
-            console.log('connected, sending:', onConnectPacket);
-            websocket.send(onConnectPacket);
-            console.log('checking online opponents with:', onOnlineCheckPacket);
-            websocket.send(onOnlineCheckPacket);
-        };
+      console.log('connected, sending:', onConnectPacket);
+      websocket.send(onConnectPacket);
+      console.log('checking online opponents with:', onOnlineCheckPacket);
+      websocket.send(onOnlineCheckPacket);
+    };
 
 
-        window.onbeforeunload = function () {
-
-            var onClosePacket = JSON.stringify({
-                type: "offline",
-                session_key: session_key,
-                username: opponent_username,
+    window.onbeforeunload = function () {
+      const onClosePacket = JSON.stringify({
+        type: 'offline',
+        session_key: sessionKey,
+        username: opponentUsername,
                 // Sending username because to let opponnent know that the user went offline
-            });
-            console.log('unloading, sending:', onClosePacket);
-            websocket.send(onClosePacket);
-            websocket.close();
-        };
+      });
+      console.log('unloading, sending:', onClosePacket);
+      websocket.send(onClosePacket);
+      websocket.close();
+    };
 
 
-        websocket.onmessage = function (event) {
-            var packet;
+    websocket.onmessage = function (event) {
+      let packet;
 
-            try {
-                packet = JSON.parse(event.data);
-                console.log(packet)
-            } catch (e) {
-                console.log(e);
-            }
+      try {
+        packet = JSON.parse(event.data);
+        console.log(packet);
+      } catch (e) {
+        console.log(e);
+      }
 
-            switch (packet.type) {
-                case "new-dialog":
+      switch (packet.type) {
+        case 'new-dialog':
                     // TODO: add new dialog to dialog_list
-                    break;
-                case "user-not-found":
+          break;
+        case 'user-not-found':
                     // TODO: dispay some kind of an error that the user is not found
-                    break;
-                case "gone-online":
-                    if (packet.usernames.indexOf(opponent_username) != -1) {
-                        gone_online();
-                    } else {
-                        gone_offline();
-                    }
-                    for (var i = 0; i < packet.usernames.length; ++i) {
-                        setUserOnlineOffline(packet.usernames[i], true);
-                    }
-                    break;
-                case "gone-offline":
-                    if (packet.username == opponent_username) {
-                        gone_offline();
-                    }
-                    setUserOnlineOffline(packet.username, false);
-                    break;
-                case "new-message":
-                    if (packet['sender_name'] == opponent_username || packet['sender_name'] == $("#owner_username").val()){
-                        addNewMessage(packet);
-                    } else {
-                        flash_user_button(packet['sender_name']);
-                    }
-                    break;
-                case "opponent-typing":
-                    var typing_elem = $('#typing-text');
-                    if (!typing_elem.is(":visible")) {
-                        typing_elem.fadeIn(500);
-                    } else {
-                        typing_elem.stop(true);
-                        typing_elem.fadeIn(0);
-                    }
-                    typing_elem.fadeOut(3000);
-                    break;
-
-                default:
-                    console.log('error: ', event)
-            }
+          break;
+        case 'gone-online':
+          if (packet.usernames.indexOf(opponentUsername) !== -1) {
+            goneOnline();
+          } else {
+            goneOffline();
+          }
+          for (let i = 0; i < packet.usernames.length; i += 1) {
+            setUserOnlineOffline(packet.usernames[i], true);
+          }
+          break;
+        case 'gone-offline':
+          if (packet.username === opponentUsername) {
+            goneOffline();
+          }
+          setUserOnlineOffline(packet.username, false);
+          break;
+        case 'new-message':
+          if (packet.sender_name === opponentUsername || packet.sender_name === $('#owner_username').val()) {
+            addNewMessage(packet);
+          } else {
+            flashUserButton(packet.sender_name);
+          }
+          break;
+        case 'opponent-typing': {
+          const typingElem = $('#typing-text');
+          if (!typingElem.is(':visible')) {
+            typingElem.fadeIn(500);
+          } else {
+            typingElem.stop(true);
+            typingElem.fadeIn(0);
+          }
+          typingElem.fadeOut(3000);
+          break;
         }
-    }
+        default:
+          console.log('error: ', event);
+      }
+    };
+  }
 
-    function sendMessage(message) {
-        var opponent_username = getOpponnentUsername();
-        var newMessagePacket = JSON.stringify({
-            type: 'new-message',
-            session_key: session_key,
-            username: opponent_username,
-            message: message
-        });
-        websocket.send(newMessagePacket)
-    }
-
-    $('#chat-message').keypress(function (e) {
-        if (e.which == 13 && this.value) {
-            sendMessage(this.value);
-            this.value = "";
-            return false
-        } else {
-            var opponent_username = getOpponnentUsername();
-            var packet = JSON.stringify({
-                type: 'is-typing',
-                session_key: session_key,
-                username: opponent_username,
-                typing: true
-            });
-            websocket.send(packet);
-        }
+  function sendMessage(message) {
+    const opponentUsername = getOpponnentUsername();
+    const newMessagePacket = JSON.stringify({
+      type: 'new-message',
+      session_key: sessionKey,
+      username: opponentUsername,
+      message,
     });
+    websocket.send(newMessagePacket);
+  }
 
-    $('#btn-send-message').click(function (e) {
-        var $chatInput = $('#chat-message');
-        var msg = $chatInput.val();
-        if (!msg) return;
-        sendMessage($chatInput.val());
-        $chatInput.val('')
+  $('#chat-message').keypress(function (e) {
+    if (e.which === 13 && this.value) {
+      sendMessage(this.value);
+      this.value = '';
+      return false;
+    }
+    const opponentUsername = getOpponnentUsername();
+    const packet = JSON.stringify({
+      type: 'is-typing',
+      session_key: sessionKey,
+      username: opponentUsername,
+      typing: true,
     });
+    websocket.send(packet);
+    return true;
+  });
+
+  $('#btn-send-message').click(() => {
+    const $chatInput = $('#chat-message');
+    const msg = $chatInput.val();
+    if (!msg) return;
+    sendMessage($chatInput.val());
+    $chatInput.val('');
+  });
 
     // sends a message when you click the videochat button
-    $('#btn-video-call').click(function (e) {
-        sendMessage($('#vc-link-message-template').html());
-    });
+  $('#btn-video-call').click(() => {
+    sendMessage($('#vc-link-message-template').html());
+  });
 
-    setupChatWebSocket();
-    scrollToLastMessage();
+  setupChatWebSocket();
+  scrollToLastMessage();
 });
