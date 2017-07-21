@@ -92,4 +92,4 @@ def inbox(request):
 
     context['dialogs'] = dialogs
 
-    return render(request, 'tutor/tutorchat.html', context)
+    return render(request, 'tutor/inbox.html', context)
