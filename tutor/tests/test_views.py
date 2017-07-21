@@ -85,7 +85,7 @@ class TutorChatTestCase(TestCase):
         """
         The page should redirect you if you're not logged in
         """
-        response = self.client.get(reverse('tutor:tutorchat'))
+        response = self.client.get(reverse('tutor:inbox'))
         self.assertEqual(response.status_code, 302)
 
     def test_normal_user_can_access_page(self):
@@ -96,7 +96,7 @@ class TutorChatTestCase(TestCase):
         bob.save()
         self.client.login(username="bob", password="bar")
         # bob doesn't have the right permissions
-        response = self.client.get(reverse('tutor:tutorchat'))
+        response = self.client.get(reverse('tutor:inbox'))
         self.assertEqual(response.status_code, 200)
         bob.delete()
 
@@ -109,7 +109,7 @@ class TutorChatTestCase(TestCase):
         johnny.save()
         models.Student.objects.create(user=johnny)
         self.client.login(username="johnny", password="foo")
-        response = self.client.get(reverse('tutor:tutorchat'))
+        response = self.client.get(reverse('tutor:inbox'))
         self.assertEqual(response.status_code, 200)
         johnny.delete()
 
@@ -123,7 +123,7 @@ class TutorChatTestCase(TestCase):
         stu.tutor = True
         stu.save()
         self.client.login(username="mark", password="ohhai")
-        response = self.client.get(reverse('tutor:tutorchat'))
+        response = self.client.get(reverse('tutor:inbox'))
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
         mark.delete()
@@ -136,7 +136,7 @@ class TutorChatTestCase(TestCase):
         lisa.is_superuser = True
         lisa.save()
         self.client.login(username="lisa", password="tear")
-        response = self.client.get(reverse('tutor:tutorchat'))
+        response = self.client.get(reverse('tutor:inbox'))
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
         lisa.delete()
