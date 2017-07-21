@@ -11,6 +11,6 @@ urlpatterns = [
 
     # ex: /startstop/  ------- Page with start and stop button to begin/end tutoring sessions
     url(r'^startstop/$', views.startstop, name='startstop'),
-    url(r'^messages/$', views.messages, name='messages'),
+    url(r'^inbox/$', views.inbox, name='inbox'),
     url(r'^about/$', views.about, name='about'),
 ]

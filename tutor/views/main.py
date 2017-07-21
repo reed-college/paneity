@@ -54,7 +54,7 @@ def about(request):
 
 
 @login_required
-def messages(request):
+def inbox(request):
     """
     Message inbox for messaging tutors.
     """
