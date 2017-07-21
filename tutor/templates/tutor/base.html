@@ -49,7 +49,7 @@ Paneity | {% block title %}{% endblock %}
                 <div class="hidden-xs">
                     <div class="topnav" id="myTopnav">
                         <a class="menu-element" href="{% url "tutor:index" %}">HOMEPAGE</a>
-                        <a class="menu-element" href="{% url "tutor:tutorchat" %}">MESSAGES</a>
+                        <a class="menu-element" href="{% url "tutor:messages" %}">MESSAGES</a>
                         <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ Paneity | {% block title %}{% endblock %}
                             </a>
                         </li>
                         <li>
-                            <a class="menu-element" href="{% url "tutor:tutorchat" %}">
+                            <a class="menu-element" href="{% url "tutor:messages" %}">
                                 <span style="font-size: 2em;">
                                     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                                 </span>
