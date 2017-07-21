@@ -35,25 +35,25 @@ body {
 	margin: auto;
 	font-size: 1.5rem;
 	color: white;
-	font-family: times, serif;
+	font-family: times, 'Times New Roman', Garamond, serif;
 }
 
 h1 {
 	color: white;
-	font-family: times;
+	font-family: times, 'Times New Roman', Garamond, serif;
 	letter-spacing: 0.1rem; /*2px;*/
 }
 
 h2 {
     color: black;
-    font-family: 'Nunito', serif;
+    font-family: 'Nunito', Times,'Times New Roman', Garamond, serif;
     font-size: 2rem;
     text-align: center;
     padding-top: 1.7rem; /*25px; */
 }
 
 h3 {
-	font-family: 'Nunito', serif;
+	font-family: 'Nunito', Times,'Times New Roman', Garamond, serif;
 	color: black;
     font-size: 1rem;
     padding-top: 0.5rem; /*10px;*/
@@ -82,7 +82,7 @@ h3 {
     color: #f2f2f2;
     text-decoration: none;
     font-size: 0.6rem; /*12px;*/
-	font-family: 'Myriad', sans-serif;
+	font-family: 'Myriad', Helvetica, Arial, Verdana, sans-serif;
     letter-spacing: 0.05rem; /*1px;*/
 }
 

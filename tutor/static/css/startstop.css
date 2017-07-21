@@ -1,13 +1,13 @@
 .startstopgreetings {
 	color: white;
-	font-family: times, serif;
+	font-family: times,'Times New Roman', Garamond, serif;
 	text-align: center;
 }
 
 .startstopwarning {
 	color: white;
 	text-align: center;
-	font-family: times, serif;
+	font-family: Times,'Times New Roman', Garamond, serif;
 	font-style: italic;
 	font-size: 0.8rem;
 	padding: 0.75rem; /*15px; */
@@ -24,7 +24,7 @@
 	font-size: 1.4rem;
 	text-align: center;
 	cursor: pointer;
-	outline: None;
+	outline: none;
 	color: #fff;
 	background-color: #4CAF50;
 	border: 0.1rem solid black; /*2px*/
@@ -43,7 +43,7 @@
 }
 
 .endbutton {
-	padding: 1.25rem 1.25rem /*25px 25px;*/
+	padding: 1.25rem 1.25rem; /*25px 25px;*/
 	font-size: 1.4rem;
 	text-align: center;
 	cursor: pointer;

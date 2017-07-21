@@ -43,10 +43,11 @@
 .msg {
     font-size: 17px;
     width: 100%;
-    font-family: arial;
+    font-family: arial, Helvetica, Verdana, sans-serif;
 }
 
 .msg p {
+    width: auto;
     word-wrap: break-word;
 }
 

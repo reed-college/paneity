@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/tutorchat.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/inbox.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -64,5 +64,5 @@
         var base_ws_server_path = "{{ ws_server_path }}";
         var session_key = '{{ request.session.session_key }}'
     </script>
-    <script src="{% static 'js/tutorchat.js' %}"></script>
+    <script src="{% static 'js/inbox.js' %}"></script>
 {% endblock %}

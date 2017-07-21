@@ -4,7 +4,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Nunito', serif;
+    font-family: 'Nunito', Times,'Times New Roman', Garamond, serif;
     font-size: 2rem;
 }
 
@@ -14,7 +14,7 @@
     padding-top: 1%;
     color: black;
     text-align: left;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', Helvetica, Arial, Verdana, sans-serif;
 }
 
 img {

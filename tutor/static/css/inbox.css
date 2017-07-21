@@ -41,7 +41,7 @@
 }
 
 .title {
-    font-family: helvetica;
+    font-family: helvetica, Arial, Verdana, sans-serif;
 }
 
 .helptext {
@@ -50,7 +50,7 @@
     padding-top: 10px;
     padding-bottom: 5px;
     font-size: 15px;
-    
+
 
 }
 

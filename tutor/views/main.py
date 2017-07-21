@@ -45,16 +45,12 @@ def tutors(request, course_id):
 def startstop(request):
     return render(request, 'tutor/startstop.html')
 
-
-def dropin(request):
-    return render(request, 'tutor/dropin.html')
-
 def about(request):
     return render(request, 'tutor/about.html')
 
 
 @login_required
-def tutorchat(request):
+def inbox(request):
     """
     Message inbox for messaging tutors.
     """
@@ -92,4 +88,4 @@ def tutorchat(request):
 
     context['dialogs'] = dialogs
 
-    return render(request, 'tutor/tutorchat.html', context)
+    return render(request, 'tutor/inbox.html', context)
