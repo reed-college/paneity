@@ -79,7 +79,7 @@ class DialogsTestCase(TestCase):
         self.assertTrue(response.status_code >= 200)
 
 
-class TutorChatTestCase(TestCase):
+class InboxTestCase(TestCase):
 
     def test_redirects_if_not_logged_in(self):
         """
