@@ -32,17 +32,19 @@
 
 .msg .pull-left {
     color: black;
+    width: 55%;
     word-wrap: break-word;
 }
 
 .msg .pull-right {
     color: black;
+    width: 55%;
     word-wrap: break-word;
 }
 
+
 .msg {
     font-size: 17px;
-    width: 100%;
     font-family: arial, Helvetica, Verdana, sans-serif;
 }
 

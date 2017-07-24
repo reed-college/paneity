@@ -82,9 +82,9 @@
             <p class="pull-right">
             {% with request.user as user %}
                 {% if user.first_name and user.last_name %}
-                    <span class="username them">{{ user.first_name }} {{user.last_name}}:</span>
+                    <span class="username you">{{ user.first_name }} {{user.last_name}}:</span>
                 {% else %}
-                    <span class="username them">{{ user.username }}:</span>
+                    <span class="username you">{{ user.username }}:</span>
                 {% endif %}
                 [message]
                 <span class="timestamp">&ndash; <span
