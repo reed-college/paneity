@@ -1,3 +1,6 @@
+//This code makes the search function on index.html work.
+//it filters the list elements by the input you give it and returns the
+//elements that match your input
 function myFunctionExport() {
   const input = document.getElementById('myInput');
   const filter = input.value.toUpperCase();

@@ -1,5 +1,5 @@
 /*
- * Gives the tutorchat page it's functionality
+ * Gives the tutorchat page its functionality
  * This code relies on the baseWsServerPath and sessionKey
  * variables being set before this file is loaded
  */
