@@ -1,11 +1,10 @@
 /*
- * Gives the tutorchat page it's functionality
+ * Gives the inbox page it's functionality
  * This code relies on the baseWsServerPath and sessionKey
  * variables being set before this file is loaded
  */
 
 // stops for the given number of miliseconds
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -25,7 +24,7 @@ async function flash() {
 }
 
 // stop flashing once window is in focus
-$(window).on('blur focus', function (e) {
+$(window).on('blur focus', function stopFlash(e) {
   const prevType = $(this).data('prevType');
 
   if (prevType !== e.type) {   //  reduce double fire issues
@@ -43,14 +42,14 @@ $(window).on('blur focus', function (e) {
 });
 
 $(document).ready(() => {
-    // tell user they have no messages
+  // tell user they have no messages
   if ($('#old-message-div').html().replace(/\s/g, '') === '') {
     $('#new-message-div').html($('#no-messages-template').html());
   }
 
-    // This will make it so that when you click on a row,
-    // it takes you to that conversation
-  $('.clickable-row').click(function () {
+  // This will make it so that when you click on a row,
+  // it takes you to that conversation
+  $('.clickable-row').click(function clickRow() {
     window.open($(this).data('href'), '_blank');
   });
 
@@ -59,7 +58,7 @@ $(document).ready(() => {
   function setupChatWebSocket() {
     websocket = new WebSocket(`${baseWsServerPath + sessionKey}/`);
 
-    websocket.onopen = function () {
+    websocket.onopen = function websocketOpen() {
       const onOnlineCheckPacket = JSON.stringify({
         type: 'check-online',
         session_key: sessionKey,
@@ -70,47 +69,37 @@ $(document).ready(() => {
 
       });
 
-      console.log('connected, sending:', onConnectPacket);
       websocket.send(onConnectPacket);
-      console.log('checking online opponents with:', onOnlineCheckPacket);
       websocket.send(onOnlineCheckPacket);
     };
 
 
-    window.onbeforeunload = function () {
+    window.onbeforeunload = function websocketClose() {
       const onClosePacket = JSON.stringify({
         type: 'offline',
         session_key: sessionKey,
       });
-      console.log('unloading, sending:', onClosePacket);
       websocket.send(onClosePacket);
       websocket.close();
     };
 
 
-    websocket.onmessage = function (event) {
-      let packet;
-
-      try {
-        packet = JSON.parse(event.data);
-        console.log(packet);
-      } catch (e) {
-        console.log(e);
-      }
+    websocket.onmessage = function handleMessage(event) {
+      const packet = JSON.parse(event.data);
 
       if (packet.type === 'new-message') {
         const username = packet.sender_name;
-                // remove no message div and any message div with the same username
+        // remove no message div and any message div with the same username
         $('#no-messages-element').remove();
         $(`#${username}-element`).remove();
-                // add new message to new message div
+        // add new message to new message div
         let newm = $('#new-message-template').html().replace(/\[username\]/g, username);
         newm = newm.replace(/\[message\]/g, packet.message);
         newm += $('#new-message-div').html();
         $('#new-message-div').html(newm);
-                // need to add click function for new row
+        // need to add click function for new row
 
-        $(`#${username}-element`).click(function () {
+        $(`#${username}-element`).click(function clickNewRow() {
           window.open($(this).data('href'), '_blank');
         });
 
