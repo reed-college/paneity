@@ -43,3 +43,12 @@ foldername
 To run our test suite, use the `python manage.py test tutor` command in the root directory for Paneity.
 
 You should take a look at our [wiki](https://github.com/reed-college/paneity/wiki) for more information.
+
+## Demo Shots
+Homepage of Tutoring Application
+https://user-images.githubusercontent.com/25315149/28596097-d5b7e44c-714b-11e7-91ea-3e48da20d9b7.png
+
+Mock-up of Available Tutoring for BIOLOGY 102
+https://user-images.githubusercontent.com/25315149/28596103-da199418-714b-11e7-9d3d-f1e7fa976312.png
+
+
