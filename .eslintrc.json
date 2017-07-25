@@ -18,6 +18,10 @@
         "func-names": [
             1,
             "as-needed"
+        ],
+        "no-console": [
+            "warn", 
+            { "allow": ["error"] }
         ]
     }
 }
