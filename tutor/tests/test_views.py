@@ -41,19 +41,6 @@ class TutorTestCase(TestCase):
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
 
-
-class StartStopTestCase(TestCase):
-    """
-    Tests for the startstop view
-    """
-
-    def test_startstop_doesnt_error(self):
-        response = self.client.get(reverse('tutor:startstop'))
-        # Assert that its not an error code
-        self.assertTrue(response.status_code < 400)
-        self.assertTrue(response.status_code >= 200)
-
-
 class DialogsTestCase(TestCase):
     """
     Tests for the dialogs view of django-private-chat

@@ -41,13 +41,8 @@ def tutors(request, course_id):
         context
     )
 
-
-def startstop(request):
-    return render(request, 'tutor/startstop.html')
-
 def about(request):
     return render(request, 'tutor/about.html')
-
 
 @login_required
 def inbox(request):

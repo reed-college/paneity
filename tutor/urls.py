@@ -8,9 +8,6 @@ urlpatterns = [
 
     # ex: /1/tutors/  --------- Page listing tutors
     url(r'^(?P<course_id>[0-9]+)/tutors/$', views.tutors, name='tutors'),
-
-    # ex: /startstop/  ------- Page with start and stop button to begin/end tutoring sessions
-    url(r'^startstop/$', views.startstop, name='startstop'),
     url(r'^inbox/$', views.inbox, name='inbox'),
     url(r'^about/$', views.about, name='about'),
 ]
