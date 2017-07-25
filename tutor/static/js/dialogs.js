@@ -51,18 +51,11 @@ $(document).ready(() => {
     $('#offline-status').show();
   }
 
-  function flashUserButton(username) {
-    const btn = $(`#user-${username}`);
-    btn.fadeTo(700, 0.1, function () {
-      $(this).fadeTo(800, 1.0);
-    });
-  }
-
   function setupChatWebSocket() {
     const opponentUsername = getOpponnentUsername();
     websocket = new WebSocket(`${baseWsServerPath + sessionKey}/${opponentUsername}`);
 
-    websocket.onopen = function () {
+    websocket.onopen = function websocketOpen() {
       const onOnlineCheckPacket = JSON.stringify({
         type: 'check-online',
         session_key: sessionKey,
@@ -75,42 +68,31 @@ $(document).ready(() => {
 
       });
 
-      console.log('connected, sending:', onConnectPacket);
       websocket.send(onConnectPacket);
-      console.log('checking online opponents with:', onOnlineCheckPacket);
       websocket.send(onOnlineCheckPacket);
     };
 
 
-    window.onbeforeunload = function () {
+    window.onbeforeunload = function websocketClose() {
       const onClosePacket = JSON.stringify({
         type: 'offline',
         session_key: sessionKey,
         username: opponentUsername,
                 // Sending username because to let opponnent know that the user went offline
       });
-      console.log('unloading, sending:', onClosePacket);
       websocket.send(onClosePacket);
       websocket.close();
     };
 
 
-    websocket.onmessage = function (event) {
-      let packet;
-
-      try {
-        packet = JSON.parse(event.data);
-        console.log(packet);
-      } catch (e) {
-        console.log(e);
-      }
+    websocket.onmessage = function websocketMessage(event) {
+      const packet = JSON.parse(event.data);
 
       switch (packet.type) {
         case 'new-dialog':
-                    // TODO: add new dialog to dialog_list
           break;
         case 'user-not-found':
-                    // TODO: dispay some kind of an error that the user is not found
+          // TODO: dispay some kind of an error that the user is not found
           break;
         case 'gone-online':
           if (packet.usernames.indexOf(opponentUsername) !== -1) {
@@ -128,11 +110,9 @@ $(document).ready(() => {
           }
           setUserOnlineOffline(packet.username, false);
           break;
-        case 'new-message':
+        case 'new-messagee':
           if (packet.sender_name === opponentUsername || packet.sender_name === $('#owner_username').val()) {
             addNewMessage(packet);
-          } else {
-            flashUserButton(packet.sender_name);
           }
           break;
         case 'opponent-typing': {
@@ -147,7 +127,7 @@ $(document).ready(() => {
           break;
         }
         default:
-          console.log('error: ', event);
+          console.error('error: ', event);
       }
     };
   }
@@ -163,7 +143,7 @@ $(document).ready(() => {
     websocket.send(newMessagePacket);
   }
 
-  $('#chat-message').keypress(function (e) {
+  $('#chat-message').keypress(function userTyping(e) {
     if (e.which === 13 && this.value) {
       sendMessage(this.value);
       this.value = '';
