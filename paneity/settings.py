@@ -26,6 +26,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '.ngrok.io',
     'localhost',
+    'halp.reed.edu',
 ]
 
 # Login url, will need to change to kerberos eventually
