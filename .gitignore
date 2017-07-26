@@ -115,8 +115,7 @@ client_secrets.json
 # javascript 
 /node_modules/
 
-# production settings
-/paneity/settings_prod.py
-
 # tmp directory on prod server
 /tmp/
+
+secret_key.txt
