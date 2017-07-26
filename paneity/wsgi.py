@@ -1,16 +1,15 @@
-"""
-WSGI config for paneity project.
+import sys, os
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+cwd = os.getcwd()
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.11/howto/deployment/wsgi/
-"""
+INTERP = os.path.expanduser("~/venv/bin/python")
+if sys.executable != INTERP: os.execl(INTERP, INTERP, *sys.argv)
 
-import os
-
-from django.core.wsgi import get_wsgi_application
+sys.path.insert(0,'$HOME/venv/bin')
+sys.path.insert(0,'$HOME/venv/lib/python3.4/site-packages/django')
+sys.path.insert(0,'$HOME/venv/lib/python3.4/site-packages')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "paneity.settings")
-
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
