@@ -117,3 +117,6 @@ client_secrets.json
 
 # production settings
 /paneity/settings_prod.py
+
+# tmp directory on prod server
+/tmp/
