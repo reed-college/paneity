@@ -1,3 +1,4 @@
+<!-- This page contains our banner, navigation bar, Reed College logo and text, and a login/logout button. -->
 <!doctype html>
 <html>
 <head>
@@ -45,7 +46,7 @@ Paneity | {% block title %}{% endblock %}
                         </div>
                     </div>
                 </div>
-
+<!-- This is the main navigation bar for our webapp -->
                 <div class="hidden-xs">
                     <div class="topnav" id="myTopnav">
                         <a class="menu-element" href="{% url "tutor:index" %}">HOMEPAGE</a>
@@ -53,6 +54,7 @@ Paneity | {% block title %}{% endblock %}
                         <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
                     </div>
                 </div>
+<!-- This code displays icons instead of words for the menu on mobile. -->
                 <div class="mobile-nav visible-xs-inline-block">
                     <ul class="nav nav-pills">
                         <li>
@@ -92,8 +94,9 @@ Paneity | {% block title %}{% endblock %}
                 <p>You are not logged in.</p>
                 {% endif %}
                 <div class="about">
-                    <a href="{% url "tutor:about" %}" >About Us</a>
+                    <a href="{% url "tutor:about" %}">About Us</a>
                 </div>
+                <!-- This button says 'login' if the user isn't logged in and it displays "logout" if the user is logged in. -->
                 <h6 class="login_logout">{% if user.username %}<a class="myButton" href= "{% url "admin:logout"%}">LOG OUT</a>{% else %}<a class="myButton" href="{% url "admin:index" %}">LOG IN</a>{% endif%}</h6>
 
             </div>
