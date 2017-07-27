@@ -114,3 +114,8 @@ client_secrets.json
 
 # javascript 
 /node_modules/
+
+# tmp directory on prod server
+/tmp/
+
+secret_key.txt
