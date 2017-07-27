@@ -32,7 +32,8 @@ class Subject(models.Model):
     name = models.CharField(
         max_length=50,
         help_text="Full name of the subject (i.e. Humanities)")
-    # below we are creating a one-to-one relationship between Subjects and Categories, so that the forum is structured
+    # below we are creating a one-to-one relationship between Subjects and
+    # Categories, so that the forum is structured
     # around Reed's departments, not arbitrary categories.
     category = models.OneToOneField(Category, on_delete=models.CASCADE,
                                     null=True, blank=True, editable=False)
@@ -66,9 +67,11 @@ class Course(models.Model):
     title = models.CharField(
         max_length=100,
         help_text="(i.e. Ancient Mediterranean, or Intro to Economic Analysis)")
-    office_hours = models.TextField(help_text = "(i.e. Eliot 314 M 15:00-17:00, WTh 11:00-11:30)", blank=True)
-    drop_in_hrs = models.TextField(help_text = "(i.e. Lib 389 MTWThF 19:00-21:00)", blank = True)
-
+    office_hours = models.TextField(
+        help_text="(i.e. Eliot 314 M 15:00-17:00, WTh 11:00-11:30)",
+        blank=True)
+    drop_in_hrs = models.TextField(help_text
+    ="(i.e. Lib 389 MTWThF 19:00-21:00)", blank=True)
 
     def __str__(self):
         return "{} {}".format(self.subject.abbreviation, self.number)

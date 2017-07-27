@@ -31,3 +31,4 @@ def make_tutor(sender, **kwargs):
     if stu.tutor is False and act == "post_add" and pks:
         stu.tutor = True
         stu.save()
+        
