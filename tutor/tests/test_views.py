@@ -3,18 +3,15 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import tutor.models as models
 
-
 class IndexTestCase(TestCase):
     """
     Tests for the index view
     """
-
     def test_index_doesnt_error(self):
         response = self.client.get(reverse('tutor:index'))
         # Assert that its not an error code
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
-
 
 class TutorTestCase(TestCase):
     """
@@ -45,7 +42,6 @@ class DialogsTestCase(TestCase):
     """
     Tests for the dialogs view of django-private-chat
     """
-
     def setUp(self):
         jim = User.objects.create_user("jim", password="baz")
         jim.save()
@@ -64,7 +60,6 @@ class DialogsTestCase(TestCase):
         # Assert that its not an error code
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
-
 
 class InboxTestCase(TestCase):
 

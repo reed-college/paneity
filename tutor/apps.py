@@ -6,4 +6,7 @@ class TutorConfig(AppConfig):
     verbose_name = 'Courses'
 
     def ready(self):
+        """
+        This imports signals.py
+        """
         from tutor import signals

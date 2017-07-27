@@ -9,6 +9,10 @@ import tutor.models as models
 
 
 def index(request):
+    """
+    View for the index/homepage. This has the context {"Subjects": list(models.Subject.objects.all())}.
+    This page lists all of the courses in each subject.
+    """
     return render(
         request,
         'tutor/index.html',
@@ -42,12 +46,16 @@ def tutors(request, course_id):
     )
 
 def about(request):
+    """
+    View for the about page. It's a simple webpage with just some text about who the creators of the app are.
+    """
     return render(request, 'tutor/about.html')
 
 @login_required
 def inbox(request):
     """
-    Message inbox for messaging tutors.
+    Message inbox for messaging tutors. If the user isn't logged in, they will be redirected to Django's
+    admin login system. Both tutors and students can see this page.
     """
     # Get websocket server
     context = {}
@@ -55,10 +63,9 @@ def inbox(request):
         settings.CHAT_WS_SERVER_HOST,
         settings.CHAT_WS_SERVER_PORT,
     )
-
-    # I am getting all of the conversations the tutor is
+    # I am getting all of the conversations the user is
     # involved in.
-    # This is gonna get weird because the tutor may be the
+    # This is gonna get weird because the user may be the
     # 'owner' of a conversation or the 'opponent' of a
     # conversation.
 
@@ -75,12 +82,9 @@ def inbox(request):
     # (Which will be either 0 or 1 since we are only looking at the
     #  messages from one dialog). This will be used to tell if the
     # dialog has messages or not
-
     dialogs = ownerds.union(opponentds).order_by("-null_m", "-lastm")
     # The above line combines the two querysets and orders them
     # first by whether or not they have messages and then by their
     # most recent message
-
     context['dialogs'] = dialogs
-
     return render(request, 'tutor/inbox.html', context)

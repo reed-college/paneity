@@ -11,7 +11,6 @@ class DatetimeGeTestCase(TestCase):
     """
     tests on the datetime_ge function
     """
-
     def test_that_one_date_is_greater_than_other(self):
         """
         Pretty silly test, but it will make sure that the function
@@ -21,12 +20,10 @@ class DatetimeGeTestCase(TestCase):
         dt2 = datetime(1990, 1, 1)
         self.assertTrue(tutor_extras.datetime_ge(dt2, dt1))
 
-
 class GetVcLinkTestCase(TestCase):
     """
     Tests for the get_vc_link function
     """
-
     def test_order_of_usernames_doesnt_matter(self):
         """
         Makes sure that the same two usernames passed in different
