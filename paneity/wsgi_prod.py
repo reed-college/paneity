@@ -13,8 +13,8 @@ if sys.executable != INTERP:
     os.execl(INTERP, INTERP, *sys.argv)
 
 sys.path.insert(0, '$HOME/venv/bin')
-sys.path.insert(0, '$HOME/venv/lib/python3.4/site-packages/django')
-sys.path.insert(0, '$HOME/venv/lib/python3.4/site-packages')
+sys.path.insert(0, '$HOME/venv/lib/python3.6/site-packages/django')
+sys.path.insert(0, '$HOME/venv/lib/python3.6/site-packages')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "paneity.settings_prod")
 from django.core.wsgi import get_wsgi_application
