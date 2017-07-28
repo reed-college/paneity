@@ -45,11 +45,13 @@ def tutors(request, course_id):
         context
     )
 
+
 def about(request):
     """
     View for the about page. It's a simple webpage with just some text about who the creators of the app are.
     """
     return render(request, 'tutor/about.html')
+
 
 @login_required
 def inbox(request):
