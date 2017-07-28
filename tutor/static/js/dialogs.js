@@ -110,7 +110,7 @@ $(document).ready(() => {
           }
           setUserOnlineOffline(packet.username, false);
           break;
-        case 'new-messagee':
+        case 'new-message':
           if (packet.sender_name === opponentUsername || packet.sender_name === $('#owner_username').val()) {
             addNewMessage(packet);
           }
