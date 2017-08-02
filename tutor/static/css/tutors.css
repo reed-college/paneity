@@ -89,3 +89,23 @@ td .tutorlink:hover {
         padding: 0;
     }
 }
+
+/* online/offline circles */
+.on-off-cell {
+    /* cell containing the circle */
+    vertical-align:middle !important;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px; 
+}
+
+.online {
+    background-color: green;
+}
+
+.offline {
+    background-color: red;
+}
