@@ -29,6 +29,9 @@
                     </tr>
                 {% for tutor in tutors %}
                     <tr>
+                        <td class="on-off-cell">
+                            <div id="user-{{tutor.user.username}}" class="circle offline"></div> 
+                        </td>
                     {% if tutor.user.first_name or tutor.user.last_name %}
                         <td>
                             {{tutor.user.first_name}}
