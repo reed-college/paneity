@@ -48,7 +48,6 @@ $(document).ready(() => {
           for (let i = 0; i < packet.usernames.length; i += 1) {
             setUserOnlineOffline(packet.usernames[i], true);
           }
-          console.log(packet);
           break;
         case 'gone-offline':
           setUserOnlineOffline(packet.username, false);
