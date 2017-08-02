@@ -1,5 +1,8 @@
-
 $(document).ready(() => {
+  /* global usersCheckList:false */
+
+  const opponentUsername = '';
+
   let websocket = null;
 
   function setUserOnlineOffline(username, online) {
@@ -12,12 +15,16 @@ $(document).ready(() => {
   }
 
   function setupChatWebSocket() {
-    websocket = new WebSocket(`${baseWsServerPath + sessionKey}/`);
+    websocket = new WebSocket(`${baseWsServerPath + sessionKey}/${opponentUsername}`);
 
     websocket.onopen = function websocketOpen() {
       const onOnlineCheckPacket = JSON.stringify({
         type: 'list-check-online',
         session_key: sessionKey,
+        // Send the users we want to check the status of
+        users_list: usersCheckList,
+        // need opponentUsername in order to get this websocket
+        username: opponentUsername,
       });
       websocket.send(onOnlineCheckPacket);
     };
@@ -41,6 +48,7 @@ $(document).ready(() => {
           for (let i = 0; i < packet.usernames.length; i += 1) {
             setUserOnlineOffline(packet.usernames[i], true);
           }
+          console.log(packet);
           break;
         case 'gone-offline':
           setUserOnlineOffline(packet.username, false);

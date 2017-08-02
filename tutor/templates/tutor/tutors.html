@@ -83,7 +83,12 @@
 {% block extra_js %}
     <script>
         var baseWsServerPath = "{{ ws_server_path }}";
-        var sessionKey = '{{ request.session.session_key }}'
+        var sessionKey = '{{ request.session.session_key }}';
+        var usersCheckList = [
+          {% for tutor in tutors %}
+              "{{ tutor.user.username }}",
+          {% endfor %}
+        ]
     </script>
     <script src="{% static 'js/tutors.js' %}"></script>
 {% endblock %}
