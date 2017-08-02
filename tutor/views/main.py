@@ -39,17 +39,24 @@ def tutors(request, course_id):
         "dnow": timezone.now(),
     }
 
+    context['ws_server_path'] = 'ws://{}:{}/'.format(
+        settings.CHAT_WS_SERVER_HOST,
+        settings.CHAT_WS_SERVER_PORT,
+    )
+
     return render(
         request,
         'tutor/tutors.html',
         context
     )
 
+
 def about(request):
     """
     View for the about page. It's a simple webpage with just some text about who the creators of the app are.
     """
     return render(request, 'tutor/about.html')
+
 
 @login_required
 def inbox(request):

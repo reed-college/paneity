@@ -29,6 +29,9 @@
                     </tr>
                 {% for tutor in tutors %}
                     <tr>
+                        <td class="on-off-cell">
+                            <div id="user-{{tutor.user.username}}" class="circle offline"></div> 
+                        </td>
                     {% if tutor.user.first_name or tutor.user.last_name %}
                         <td>
                             {{tutor.user.first_name}}
@@ -78,4 +81,17 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        var baseWsServerPath = "{{ ws_server_path }}";
+        var sessionKey = '{{ request.session.session_key }}';
+        var usersCheckList = [
+          {% for tutor in tutors %}
+              "{{ tutor.user.username }}",
+          {% endfor %}
+        ]
+    </script>
+    <script src="{% static 'js/tutors.js' %}"></script>
 {% endblock %}
