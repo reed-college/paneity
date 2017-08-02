@@ -12,35 +12,18 @@ $(document).ready(() => {
   }
 
   function setupChatWebSocket() {
-    const opponentUsername = getOpponnentUsername();
-    websocket = new WebSocket(`${baseWsServerPath + sessionKey}/${opponentUsername}`);
+    websocket = new WebSocket(`${baseWsServerPath + sessionKey}/`);
 
     websocket.onopen = function websocketOpen() {
       const onOnlineCheckPacket = JSON.stringify({
-        type: 'check-online',
+        type: 'list-check-online',
         session_key: sessionKey,
-        username: opponentUsername,
-                // Sending username because the user needs to know if his opponent is online
       });
-      const onConnectPacket = JSON.stringify({
-        type: 'online',
-        session_key: sessionKey,
-
-      });
-
-      websocket.send(onConnectPacket);
       websocket.send(onOnlineCheckPacket);
     };
 
 
     window.onbeforeunload = function websocketClose() {
-      const onClosePacket = JSON.stringify({
-        type: 'offline',
-        session_key: sessionKey,
-        username: opponentUsername,
-        // Sending username because to let opponnent know that the user went offline
-      });
-      websocket.send(onClosePacket);
       websocket.close();
     };
 

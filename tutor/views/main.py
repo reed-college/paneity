@@ -39,6 +39,11 @@ def tutors(request, course_id):
         "dnow": timezone.now(),
     }
 
+    context['ws_server_path'] = 'ws://{}:{}/'.format(
+        settings.CHAT_WS_SERVER_HOST,
+        settings.CHAT_WS_SERVER_PORT,
+    )
+
     return render(
         request,
         'tutor/tutors.html',
