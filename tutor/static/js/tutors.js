@@ -8,9 +8,9 @@ $(document).ready(() => {
   function setUserOnlineOffline(username, online) {
     const elem = $(`#user-${username}`);
     if (online) {
-      elem.attr('class', 'circle online');
+      elem.attr('class', 'online');
     } else {
-      elem.attr('class', 'circle offline');
+      elem.attr('class', 'offline');
     }
   }
 
