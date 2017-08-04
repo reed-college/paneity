@@ -96,16 +96,48 @@ td .tutorlink:hover {
     vertical-align:middle !important;
 }
 
-.circle {
+/*.circle {
     border-radius: 50%;
     width: 10px;
     height: 10px; 
-}
+}*/
+
+/*.online {
+    background-color: green;
+} */
 
 .online {
-    background-color: green;
+    width: 10px;
+    margin: .5em;
+    padding: .5em 1em;
+    border-radius: .25em;
+    display: inline-block;
+    background-color: #24af1f;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .75);
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, .3);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .75);
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 1em),
+                      linear-gradient(0deg, rgba(0, 0, 0, .2), transparent);
 }
 
-.offline {
+/*.offline {
     background-color: red;
+}*/
+
+.offline {
+    width: 10px;
+    margin: .5em;
+    padding: .5em 1em;
+    border-radius: .25em;
+    display: inline-block;
+    background-color: #ce2f2f;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .75);
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, .3);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .75);
+    background-image: linear-gradient(145deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 1em),
+                      linear-gradient(0deg, rgba(0, 0, 0, .2), transparent);
 }
