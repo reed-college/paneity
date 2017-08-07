@@ -112,10 +112,12 @@ client_secrets.json
 # Mac os .DS_Store Files
 .DS_Store
 
-# javascript 
+# javascript
 /node_modules/
 
 # tmp directory on prod server
 /tmp/
 
 secret_key.txt
+
+/django_private_chat
