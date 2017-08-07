@@ -31,6 +31,13 @@ $(document).ready(() => {
 
 
     window.onbeforeunload = function websocketClose() {
+      const onClosePacket = JSON.stringify({
+        type: 'offline',
+        session_key: sessionKey,
+        username: opponentUsername,
+        // Sending username because we can't find socket otherwise
+      });
+      websocket.send(onClosePacket);
       websocket.close();
     };
 
