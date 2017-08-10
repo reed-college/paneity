@@ -6,6 +6,12 @@
  * also needs the moment.js library
  */
 
+try {
+  jQuery();
+} catch (ReferenceError) {
+  throw Error('dialogs.js requires jquery');
+}
+
 $(document).ready(() => {
   let websocket = null;
 
