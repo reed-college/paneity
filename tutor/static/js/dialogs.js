@@ -11,6 +11,26 @@ try {
 } catch (ReferenceError) {
   throw Error('dialogs.js requires jquery');
 }
+try {
+  moment();
+} catch (ReferenceError) {
+  throw Error('dialogs.js requires moment.js');
+}
+try {
+  baseWsServerPath.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the baseWsServerPath variable before loading dialogs.js');
+}
+try {
+  sessionKey.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the sessionKey variable before loading dialogs.js');
+}
+try {
+  getOpponnentUsername();
+} catch (ReferenceError) {
+  throw Error('You need to set the getOpponentUsername function before loading dialogs.js');
+}
 
 $(document).ready(() => {
   let websocket = null;
