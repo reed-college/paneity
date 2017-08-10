@@ -1,3 +1,26 @@
+try {
+  jQuery();
+} catch (ReferenceError) {
+  throw Error('tutors.js requires jquery');
+}
+try {
+  baseWsServerPath.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the baseWsServerPath variable before loading tutors.js');
+}
+try {
+  sessionKey.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the sessionKey variable before loading tutors.js');
+}
+try {
+  if (!Array.isArray(usersCheckList)) {
+    throw Error('The variable usersCheckList must be an array');
+  }
+} catch (ReferenceError) {
+  throw Error('You need to make the usersCheckList array before loading tutors.js');
+}
+
 $(document).ready(() => {
   /* global usersCheckList:false */
 
