@@ -34,57 +34,7 @@ Paneity | {% block title %}{% endblock %}
 {% endblock %}
 </head>
 <body>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="banner">
-                 <div class="row">
-                    <div class="col-lg-3">
-                        <div id="bannerdiv">
-                                <a href="{% url 'spirit:index' %}">
-                                    <h1 class="bannertext">REED COLLEGE</h1>
-                                </a>
-                        </div>
-                    </div>
-                </div>
-<!-- This is the main navigation bar for our webapp -->
-                <div class="hidden-xs">
-                    <div class="topnav" id="myTopnav">
-                        <a class="menu-element" href="{% url "spirit:index" %}">FORUM</a>
-                        <a class="menu-element" href="{% url "tutor:inbox" %}">MESSAGES</a>
-                        <a class="menu-element" href="{% url "tutor:index" %}">TUTORING</a>
-                    </div>
-                </div>
-<!-- This code displays icons instead of words for the menu on mobile. -->
-                <div class="mobile-nav visible-xs-inline-block">
-                    <ul class="nav nav-pills">
-                        <li>
-                            <a href="{% url "tutor:index" %}">
-                                <span style="font-size: 2em;">
-                                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="menu-element" href="{% url "tutor:inbox" %}">
-                                <span style="font-size: 2em;">
-                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url "spirit:index" %}">
-                                <span style="font-size: 2em;">
-                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+    {% include 'spirit/_banner.html' %}
     <div class="row">
         <div class="col-xs-12">
             <div class="username_login">
