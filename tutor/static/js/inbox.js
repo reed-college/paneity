@@ -3,6 +3,21 @@
  * This code relies on the baseWsServerPath and sessionKey
  * variables being set before this file is loaded
  */
+try {
+  jQuery();
+} catch (ReferenceError) {
+  throw Error('inbox.js requires jquery');
+}
+try {
+  baseWsServerPath.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the baseWsServerPath variable before loading inbox.js');
+}
+try {
+  sessionKey.valueOf();
+} catch (ReferenceError) {
+  throw Error('You need to set the sessionKey variable before loading inbox.js');
+}
 
 // stops for the given number of miliseconds
 function sleep(ms) {
