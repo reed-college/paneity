@@ -1,24 +1,41 @@
 import ldap3
 from django.conf import settings
+from django.contrib.auth.backends import RemoteUserBackend
 
 
-class ReedAuthBackend(object):
+class ReedAuthBackend(RemoteUserBackend):
     """
     On a request, it looks for request.META['REMOTE_USER'] and then returns the
     user associated with that username. If that user doesn't exist, it creates
     it based on their data from reed's directory using ldap
     """
 
-    def authenticate(self, request):
-        username = request.META.get('REMOTE_USER')
-        if username:
-            pass
+    def authenticate(self, request, remote_user):
+        # getting the user object that authenticate returns
+        user = super().authenticate(request, remote_user)
+        # if data about them is not in the db, get it from ldap
+        if user:
+            if not (user.first_name and user.last_name and user.email):
+                username = remote_user
+                if user.username:
+                    username = user.username
+                result = get_ldap_data(username)
+                last_name = result.get("sn")
+                if last_name:
+                    user.last_name = last_name[0]
+                first_name = result.get("givenName")
+                if first_name:
+                    user.first_name = first_name[0]
+                email = result.get("mail")
+                if email:
+                    user.email = email[0]
+                user.save()
+        return user
 
 
-def get_or_create_from_ldap(username):
+def get_ldap_data(username):
     """
-    based on username it gets the associated user. If that user does
-    not exist, it creates it based on their ldap data
+    gets data about a username from reed's ldap dictory
     """
     result = {}
     if settings.DEBUG:
