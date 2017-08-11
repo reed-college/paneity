@@ -3,15 +3,18 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import tutor.models as models
 
+
 class IndexTestCase(TestCase):
     """
     Tests for the index view
     """
+
     def test_index_doesnt_error(self):
         response = self.client.get(reverse('tutor:index'))
         # Assert that its not an error code
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
+
 
 class TutorTestCase(TestCase):
     """
@@ -38,10 +41,12 @@ class TutorTestCase(TestCase):
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
 
+
 class DialogsTestCase(TestCase):
     """
     Tests for the dialogs view of django-private-chat
     """
+
     def setUp(self):
         jim = User.objects.create_user("jim", password="baz")
         jim.save()
@@ -61,6 +66,7 @@ class DialogsTestCase(TestCase):
         self.assertTrue(response.status_code < 400)
         self.assertTrue(response.status_code >= 200)
 
+
 class InboxTestCase(TestCase):
 
     def test_redirects_if_not_logged_in(self):
@@ -75,10 +81,12 @@ class InboxTestCase(TestCase):
         Makes sure that non-tutors can login
         """
         bob = User.objects.create_user("bob", password="bar")
+        bob.first_name = "Bob"
+        bob.last_name = "Jones"
+        bob.email = "bob@example.com"
         bob.save()
         self.client.login(username="bob", password="bar")
-        # bob doesn't have the right permissions
-        response = self.client.get(reverse('tutor:inbox'))
+        response = self.client.get(reverse('tutor:inbox'), REMOTE_USER="bob")
         self.assertEqual(response.status_code, 200)
         bob.delete()
 
@@ -88,10 +96,14 @@ class InboxTestCase(TestCase):
         you can access the page
         """
         johnny = User.objects.create_user("johnny", password="foo")
+        johnny.first_name = "Johnny"
+        johnny.last_name = "Wiseau"
+        johnny.email = "johnny@example.com"
         johnny.save()
         models.Student.objects.create(user=johnny)
         self.client.login(username="johnny", password="foo")
-        response = self.client.get(reverse('tutor:inbox'))
+        response = self.client.get(reverse('tutor:inbox'),
+                                   REMOTE_USER="johnny")
         self.assertEqual(response.status_code, 200)
         johnny.delete()
 
@@ -100,14 +112,16 @@ class InboxTestCase(TestCase):
         Tutors should be able to access the page
         """
         mark = User.objects.create_user("mark", password="ohhai")
+        mark.first_name = "Mark"
+        mark.last_name = "Sestero"
+        mark.email = "mark@example.com"
         mark.save()
         stu = models.Student.objects.create(user=mark)
         stu.tutor = True
         stu.save()
         self.client.login(username="mark", password="ohhai")
-        response = self.client.get(reverse('tutor:inbox'))
-        self.assertTrue(response.status_code < 400)
-        self.assertTrue(response.status_code >= 200)
+        response = self.client.get(reverse('tutor:inbox'), REMOTE_USER="mark")
+        self.assertTrue(response.status_code == 200)
         mark.delete()
 
     def test_superuser_can_access_page(self):
@@ -116,9 +130,11 @@ class InboxTestCase(TestCase):
         """
         lisa = User.objects.create_user("lisa", password="tear")
         lisa.is_superuser = True
+        lisa.first_name = "Lisa"
+        lisa.last_name = "MeApart"
+        lisa.email = "lisa@example.com"
         lisa.save()
         self.client.login(username="lisa", password="tear")
-        response = self.client.get(reverse('tutor:inbox'))
-        self.assertTrue(response.status_code < 400)
-        self.assertTrue(response.status_code >= 200)
+        response = self.client.get(reverse('tutor:inbox'), REMOTE_USER="lisa")
+        self.assertTrue(response.status_code == 200)
         lisa.delete()
