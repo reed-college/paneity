@@ -47,7 +47,7 @@ Paneity | {% block title %}{% endblock %}
                     <a href="{% url "tutor:about" %}">About Us</a>
                 </div>
                 <!-- This button says 'login' if the user isn't logged in and it displays "logout" if the user is logged in. -->
-                <h6 class="login_logout">{% if user.username %}<a class="myButton" href= "{% url "admin:logout"%}">LOG OUT</a>{% else %}<a class="myButton" href="{% url "admin:index" %}">LOG IN</a>{% endif%}</h6>
+                <h6 class="login_logout">{% if user.username %}<a class="myButton" href= "{{ LOGOUT_URL }}">LOG OUT</a>{% else %}<a class="myButton" href="{{LOGIN_URL}}">LOG IN</a>{% endif%}</h6>
 
             </div>
         </div>

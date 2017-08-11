@@ -29,8 +29,9 @@ ALLOWED_HOSTS = [
     'halp.reed.edu',
 ]
 
-# Login url, will need to change to kerberos eventually
+# Login url and logout url
 LOGIN_URL = "/admin/"
+LOGOUT_URL = "/admin/logout/"
 
 
 # Application definition
@@ -105,6 +106,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'djconfig.context_processors.config',
+                'tutor.context_processors.login_logout',
             ],
         },
     },
