@@ -52,7 +52,9 @@ def get_ldap_data(username):
                   ["F"], "sn": ["Jorissen"], "uid": ["isjoriss"], "uidNumber":
                   39878}
     else:
-        server = ldap3.Server('ldap.reed.edu', port=389, get_info=ldap3.ALL)
+        server = ldap3.Server(settings.LDAP_ADDRESS,
+                              port=settings.LDAP_PORT,
+                              get_info=ldap3.ALL)
         con = ldap3.Connection(server, auto_bind=True)
         query = 'uid={!s},ou=people,dc=reed,dc=edu'.format(username)
         con.search(
