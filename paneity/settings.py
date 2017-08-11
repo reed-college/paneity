@@ -29,8 +29,9 @@ ALLOWED_HOSTS = [
     'halp.reed.edu',
 ]
 
-# Login url, will need to change to kerberos eventually
+# Login url and logout url
 LOGIN_URL = "/admin/"
+LOGOUT_URL = "/admin/logout/"
 
 
 # Application definition
@@ -85,6 +86,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'djconfig.middleware.DjConfigMiddleware',
@@ -104,6 +106,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'djconfig.context_processors.config',
+                'tutor.context_processors.login_logout',
             ],
         },
     },
@@ -144,6 +147,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'paneity.reed_auth_backend.ReedAuthBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -213,3 +219,7 @@ HAYSTACK_CONNECTIONS = {
 # Stuff for django_private_chat
 CHAT_WS_SERVER_HOST = 'localhost'
 CHAT_WS_SERVER_PORT = 5002
+
+# ldap server for getting user info
+LDAP_ADDRESS = 'ldap.reed.edu'
+LDAP_PORT = 389
