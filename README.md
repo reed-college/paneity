@@ -48,7 +48,7 @@ You should take a look at our [wiki](https://github.com/reed-college/paneity/wik
 Homepage of Paneity Tutoring Application
 ![Homepage of Paneity Tutoring Application](tutor/static/images/Homepage.png?raw=true "Paneity homepage")
 Forum Question Example
-![Forum Question Example](tutor/static/images/Forum question.png?raw=true "ForumQuestion")
+![Forum Question Example](tutor/static/images/ForumQuestion.png?raw=true "Forum Question")
 Tutoring Mainpage
 ![Tutoring Mainpage](tutor/static/images/demoshot2.png?raw=true "Tutoring mainpage")
 Mock-up of Available Tutoring for BIOLOGY 102
