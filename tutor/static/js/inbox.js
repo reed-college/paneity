@@ -104,12 +104,14 @@ $(document).ready(() => {
 
       if (packet.type === 'new-message') {
         const username = packet.sender_name;
+        const name = packet.sender_first_name + " " + packet.sender_last_name;
         // remove no message div and any message div with the same username
         $('#no-messages-element').remove();
         $(`#${username}-element`).remove();
         // add new message to new message div
         let newm = $('#new-message-template').html().replace(/\[username\]/g, username);
         newm = newm.replace(/\[message\]/g, packet.message);
+        newm = newm.replace(/\[name\]/g, name);
         newm += $('#new-message-div').html();
         $('#new-message-div').html(newm);
         // need to add click function for new row

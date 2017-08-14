@@ -149,6 +149,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = [
     'paneity.reed_auth_backend.ReedAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Internationalization
