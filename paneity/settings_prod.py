@@ -18,4 +18,4 @@ DATABASES = {
 
 # Login url and logout url
 LOGIN_URL = "https://weblogin.reed.edu/?cosign-halp"
-LOGOUT_URL = "https://weblogin.reed.edu/cgi-bin/logout.cgi"
+LOGOUT_URL = "/logout"

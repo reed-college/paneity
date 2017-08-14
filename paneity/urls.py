@@ -1,7 +1,10 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from auth.views import logout
 
 urlpatterns = [
+    # This is the logout url
+    url(r'^logout/', logout, name='logout'), 
     # This redirects to the urlpatterns in spirit.urls
     # This makes the spirit forum our homepage
     url(r'^', include('spirit.urls')),
