@@ -1,7 +1,7 @@
 # Paneity [![Build Status](https://travis-ci.org/reed-college/paneity.svg?branch=master)](https://travis-ci.org/reed-college/paneity)
 ## Overview
 
-Paniety is a Python based [Django](https://www.djangoproject.com) project developed by the [Reed College Software Design Studio](http://www.reed.edu/sds/). This web application is meant to provide online tutoring to Reed College students. Some of the features include: 
+Paniety is a Python based [Django](https://www.djangoproject.com) project developed by the [Reed College Software Design Studio](http://www.reed.edu/sds/). This web application is meant to provide online tutoring to Reed College students. Some of the features include:
 * Instant messaging with tutors
 * Forum-style discussion pages
 * Search function for finding courses
@@ -46,6 +46,12 @@ You should take a look at our [wiki](https://github.com/reed-college/paneity/wik
 
 ## Demo Shots
 Homepage of Paneity Tutoring Application
-![Homepage of Tutoring Application](tutor/static/images/demoshot2.png?raw=true "Paneity Homepage")
+![Homepage of Paneity Tutoring Application](tutor/static/images/Homepage.png?raw=true "Paneity homepage")
+Forum Question Example
+![Forum Question Example](tutor/static/images/ForumQuestion.png?raw=true "Forum Question")
+Tutoring Mainpage
+![Tutoring Mainpage](tutor/static/images/demoshot2.png?raw=true "Tutoring mainpage")
 Mock-up of Available Tutoring for BIOLOGY 102
 ![BIOL 102 Tutors](tutor/static/images/demoshot.png?raw=true "Tutoring for Biology 102")
+Instant Messaging Feature
+![Instant Messaging Feature](tutor/static/images/Messages.png?raw=true "Messages")
