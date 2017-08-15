@@ -8,7 +8,9 @@ before_script:
     - psql -c "CREATE DATABASE paneity_dev WITH OWNER paneity_usr;" -U postgres
     - cd .. && git clone https://github.com/reed-college/Spirit.git && rm Spirit/.travis.yml && cd paneity 
     - python manage.py migrate
+    - "npm install"
 install: "pip install -r requirements.txt"
 script: 
     - "python manage.py test tutor"
     - "python manage.py loaddata subjects courses users questions chats"
+    - "npm test" 
