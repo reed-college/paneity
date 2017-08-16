@@ -19,3 +19,7 @@ DATABASES = {
 # Login url and logout url
 LOGIN_URL = "https://weblogin.reed.edu/?cosign-halp"
 LOGOUT_URL = "/logout"
+
+# Stuff for django_private_chat
+CHAT_WS_SERVER_HOST = 'halp.reed.edu'
+CHAT_WS_SERVER_PORT = 5002
