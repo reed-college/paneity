@@ -10,7 +10,8 @@ import tutor.models as models
 
 def index(request):
     """
-    View for the index/homepage. This has the context {"Subjects": list(models.Subject.objects.all())}.
+    View for the index/homepage. This has the context
+    {"Subjects": list(models.Subject.objects.all())}.
     This page lists all of the courses in each subject.
     """
     return render(
@@ -39,10 +40,7 @@ def tutors(request, course_id):
         "dnow": timezone.now(),
     }
 
-    context['ws_server_path'] = 'ws://{}:{}/'.format(
-        settings.CHAT_WS_SERVER_HOST,
-        settings.CHAT_WS_SERVER_PORT,
-    )
+    context['ws_server_path'] = settings.CHAT_WS_BASE
 
     return render(
         request,
@@ -53,7 +51,8 @@ def tutors(request, course_id):
 
 def about(request):
     """
-    View for the about page. It's a simple webpage with just some text about who the creators of the app are.
+    View for the about page. It's a simple webpage with just some text about
+    who the creators of the app are.
     """
     return render(request, 'tutor/about.html')
 
@@ -61,15 +60,14 @@ def about(request):
 @login_required
 def inbox(request):
     """
-    Message inbox for messaging tutors. If the user isn't logged in, they will be redirected to Django's
-    admin login system. Both tutors and students can see this page.
+    Message inbox for messaging tutors. If the user isn't logged in, they will
+    be redirected to Django's admin login system if in local dev. Both tutors
+    and students can see this page.
     """
     # Get websocket server
     context = {}
-    context['ws_server_path'] = 'ws://{}:{}/'.format(
-        settings.CHAT_WS_SERVER_HOST,
-        settings.CHAT_WS_SERVER_PORT,
-    )
+    context['ws_server_path'] = settings.CHAT_WS_BASE
+
     # I am getting all of the conversations the user is
     # involved in.
     # This is gonna get weird because the user may be the

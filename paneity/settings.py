@@ -220,6 +220,11 @@ HAYSTACK_CONNECTIONS = {
 # Stuff for django_private_chat
 CHAT_WS_SERVER_HOST = 'localhost'
 CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_BASE = 'ws://{}:{}/'.format(
+    CHAT_WS_SERVER_HOST,
+    CHAT_WS_SERVER_PORT,
+)
+ 
 
 # ldap server for getting user info
 LDAP_ADDRESS = 'ldap.reed.edu'

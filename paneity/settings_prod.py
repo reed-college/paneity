@@ -23,3 +23,7 @@ LOGOUT_URL = "/logout"
 # Stuff for django_private_chat
 CHAT_WS_SERVER_HOST = 'halp.reed.edu'
 CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_BASE = 'wss://{}:{}/'.format(
+    CHAT_WS_SERVER_HOST,
+    CHAT_WS_SERVER_PORT,
+)
